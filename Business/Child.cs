@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace inf2010s_semesterProject.Business
 {
-    public class Child:Person
+    public class Child:Guest
     {
         #region Fields
         private int Age;
-        private double TotalCost;
         #endregion
         #region Properties
         public int age
@@ -18,21 +17,23 @@ namespace inf2010s_semesterProject.Business
             get { return Age; }
             set { Age = value; }
         }
-        public double totalCost
-        {
-            get { return TotalCost; }
-            set { TotalCost = value; }
-        }
         #endregion
 
         #region Contructors
         public Child():base() {
             age = -1;
-            totalCost = -1;
         }
-        public Child(string name, string lastName, string phone, string email, int age, double totalCost):base(name, lastName, phone, email) { 
+        public Child(string name, string lastName, string phone, string email, int age):base(name, lastName, phone, email) { 
             this.Age = age;
-            this.TotalCost = totalCost;
+        }
+        #endregion
+        #region
+        public override double CalculateCost(double totalCost, int numDays)
+        {
+            if (age < 5) {
+                return 0.0;
+            }
+            return totalCost * 0.5*numDays;
         }
         #endregion
 

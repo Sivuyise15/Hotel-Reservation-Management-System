@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Business\Adult.cs" />
     <Compile Include="Business\Child.cs" />
+    <Compile Include="Business\Date.cs" />
     <Compile Include="Business\Guest.cs" />
     <Compile Include="Business\Reservation.cs" />
     <Compile Include="Business\Room.cs" />
@@ -79,10 +80,22 @@
     <Compile Include="Presantation\MDIParent1.Designer.cs">
       <DependentUpon>MDIParent1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presantation\ReservationDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presantation\ReservationDetailsForm.Designer.cs">
+      <DependentUpon>ReservationDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presantation\MDIParent1.resx">
       <DependentUpon>MDIParent1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presantation\ReservationDetailsForm.resx">
+      <DependentUpon>ReservationDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

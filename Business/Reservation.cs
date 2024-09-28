@@ -9,10 +9,12 @@ namespace inf2010s_semesterProject.Business
     public class Reservation
     {
         #region Fields
-        private string reservationID, check_inDate, check_outDate, roomID;
+        private string reservationID, roomID;
         private int numberOfAdults, numberOfChildren;
-        private double totalCost;
+        private double price;
         private Season season;
+        private Guest guest;
+        private Date check_inDate, check_outDate;
 
         public enum Season
         {
@@ -21,12 +23,17 @@ namespace inf2010s_semesterProject.Business
         }
         #endregion
         #region Properties
-        public string Check_inDate
+        public Guest Guest
+        {
+            get { return guest; }
+            set { guest = value; }
+        }
+        public Date Check_inDate
         {
             get { return check_inDate; }
             set { check_inDate = value; }
         }
-        public string Check_outDate
+        public Date Check_outDate
         {
             get { return check_outDate; }
             set { check_outDate = value; }
@@ -53,8 +60,8 @@ namespace inf2010s_semesterProject.Business
         }
         public double TotalCost
         {
-            get { return totalCost; }
-            set { totalCost = value; }
+            get { return price; }
+            set { price = value; }
         }
         public Season Season_Enum
         {
@@ -62,28 +69,37 @@ namespace inf2010s_semesterProject.Business
             set { season = value; }
         }
         #endregion
+
         #region Constructor
         public Reservation()
         {
             reservationID = "";
-            check_inDate = "";
-            check_outDate = "";
+            check_inDate = null;
+            check_outDate = null;
             roomID = "";
             numberOfAdults = 0;
             numberOfChildren = 0;
-            totalCost = 0;
+            price = 0;
             season = Season.Low;
         }
-        public Reservation(string reservationID, string check_inDate, string check_outDate, string roomID, int numberOfAdults, int numberOfChildren, double totalCost, Season season)
+        public Reservation(Guest guest, string reservationID, Date check_inDate, Date check_outDate, string roomID, int numberOfAdults, int numberOfChildren, double price, Season season)
         {
+            this.guest = guest;
             this.reservationID = reservationID;
             this.check_inDate = check_inDate;
             this.check_outDate = check_outDate;
             this.roomID = roomID;
             this.numberOfAdults = numberOfAdults;
             this.numberOfChildren = numberOfChildren;
-            this.totalCost = totalCost;
+            this.price = price;
             this.season = season;
+        }
+        #endregion
+        #region
+        public double CalculateTotalCost()
+        {
+            int totalDays = check_outDate.Day - check_inDate.Day;
+            return guest.CalculateCost(price, totalDays);
         }
         #endregion
     }
