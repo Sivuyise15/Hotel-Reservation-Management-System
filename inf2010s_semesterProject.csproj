@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Adult.cs" />
+    <Compile Include="Business\Child.cs" />
+    <Compile Include="Business\Guest.cs" />
+    <Compile Include="Business\Reservation.cs" />
+    <Compile Include="Business\Room.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,7 +83,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Business\" />
     <Folder Include="Data\" />
     <Folder Include="Presantation\" />
   </ItemGroup>

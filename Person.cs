@@ -10,14 +10,19 @@ namespace inf2010s_semesterProject
     { 
 
         #region data members
-        private string Id, name, Phone, email;
+        private string name, lastName, Phone, email;
         #endregion
 
         #region Properties
-        public string ID
+        public string LastName
         {
-            get { return Id; }
-            set { Id = value; }
+            get { return lastName; }
+            set { lastName = value; }
+        }
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
         }
 
         public string Name
@@ -34,24 +39,28 @@ namespace inf2010s_semesterProject
 
         #region Construtor
         public Person()
-        {
-            Id = "";
+        {   
+            lastName = "";
             name = "";
             Phone = "";
+            email = "";
+
         }
 
-        public Person(string pID, string pName, string pPhone)
+        public Person(string pName, string lastName, string pPhone, string email)
         {
-            Id = pID;
+            
             name = pName;
             Phone = pPhone;
+            this.lastName = lastName;
+            this.email = email;
         }
         #endregion
 
         #region ToStringMethod
         public override string ToString()
         {
-            return name + '\n' + Phone;
+            return name + '\n'+ lastName + '\n' + Phone + '\n' + email;
         }
 
         #endregion
