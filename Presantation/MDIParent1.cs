@@ -103,5 +103,10 @@ namespace inf2010s_semesterProject.Presantation
                 childForm.Close();
             }
         }
+
+        private void makeReservationButton_Click(object sender, EventArgs e)
+        {
+            new ReservationDetailsForm().Show();
+        }
     }
 }

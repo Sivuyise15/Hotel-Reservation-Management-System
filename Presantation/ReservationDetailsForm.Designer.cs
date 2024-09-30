@@ -191,6 +191,7 @@
             this.individualRadioButton.TabStop = true;
             this.individualRadioButton.Text = "Individual";
             this.individualRadioButton.UseVisualStyleBackColor = true;
+            this.individualRadioButton.CheckedChanged += new System.EventHandler(this.individualRadioButton_CheckedChanged);
             // 
             // travellingAgentRadioButton
             // 
@@ -268,18 +269,18 @@
             this.checkInLabel.AutoSize = true;
             this.checkInLabel.Location = new System.Drawing.Point(40, 37);
             this.checkInLabel.Name = "checkInLabel";
-            this.checkInLabel.Size = new System.Drawing.Size(73, 13);
+            this.checkInLabel.Size = new System.Drawing.Size(149, 13);
             this.checkInLabel.TabIndex = 23;
-            this.checkInLabel.Text = "Check-in date";
+            this.checkInLabel.Text = "Check-in date(DD/MM,YYYY)";
             // 
             // checkOutLabel
             // 
             this.checkOutLabel.AutoSize = true;
             this.checkOutLabel.Location = new System.Drawing.Point(40, 98);
             this.checkOutLabel.Name = "checkOutLabel";
-            this.checkOutLabel.Size = new System.Drawing.Size(80, 13);
+            this.checkOutLabel.Size = new System.Drawing.Size(158, 13);
             this.checkOutLabel.TabIndex = 24;
-            this.checkOutLabel.Text = "Check-out date";
+            this.checkOutLabel.Text = "Check-out date(DD/MM/YYYY)";
             // 
             // checkOutTextBox
             // 
@@ -298,11 +299,11 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(972, 514);
+            this.submitButton.Location = new System.Drawing.Point(976, 514);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 27;
-            this.submitButton.Text = "SUBMIT";
+            this.submitButton.Text = "NEXT";
             this.submitButton.UseVisualStyleBackColor = true;
             // 
             // customerDetailsGroupBox

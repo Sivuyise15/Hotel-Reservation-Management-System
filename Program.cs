@@ -1,4 +1,5 @@
-﻿using System;
+﻿using inf2010s_semesterProject.Presantation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace inf2010s_semesterProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MDIParent1());
         }
     }
 }

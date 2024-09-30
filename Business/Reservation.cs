@@ -9,7 +9,8 @@ namespace inf2010s_semesterProject.Business
     public class Reservation
     {
         #region Fields
-        private string reservationID, roomID;
+        private string reservationID;
+        private Room room;
         private int numberOfAdults, numberOfChildren;
         private double price;
         private Season season;
@@ -43,10 +44,10 @@ namespace inf2010s_semesterProject.Business
             get { return reservationID; }
             set { reservationID = value; }
         }
-        public string RoomID
+        public Room Room
         {
-            get { return roomID; }
-            set { roomID = value; }
+            get { return room; }
+            set { room = value; }
         }
         public int NumberOfAdults
         {
@@ -76,19 +77,19 @@ namespace inf2010s_semesterProject.Business
             reservationID = "";
             check_inDate = null;
             check_outDate = null;
-            roomID = "";
+            room = null;
             numberOfAdults = 0;
             numberOfChildren = 0;
             price = 0;
             season = Season.Low;
         }
-        public Reservation(Guest guest, string reservationID, Date check_inDate, Date check_outDate, string roomID, int numberOfAdults, int numberOfChildren, double price, Season season)
+        public Reservation(Guest guest, string reservationID, Date check_inDate, Date check_outDate, Room room, int numberOfAdults, int numberOfChildren, double price, Season season)
         {
             this.guest = guest;
             this.reservationID = reservationID;
             this.check_inDate = check_inDate;
             this.check_outDate = check_outDate;
-            this.roomID = roomID;
+            this.room = room;
             this.numberOfAdults = numberOfAdults;
             this.numberOfChildren = numberOfChildren;
             this.price = price;

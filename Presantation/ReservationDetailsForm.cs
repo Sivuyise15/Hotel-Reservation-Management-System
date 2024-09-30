@@ -46,5 +46,10 @@ namespace inf2010s_semesterProject.Presantation
         {
 
         }
+
+        private void individualRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+        }
     }
 }
+ 
