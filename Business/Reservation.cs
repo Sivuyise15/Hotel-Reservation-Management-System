@@ -16,6 +16,7 @@ namespace inf2010s_semesterProject.Business
         private Season season;
         private Guest guest;
         private Date check_inDate, check_outDate;
+        private int numberOfGuests;
 
         public enum Season
         {
@@ -24,17 +25,22 @@ namespace inf2010s_semesterProject.Business
         }
         #endregion
         #region Properties
+        public int NumberOfGuests
+        {
+            get { return numberOfGuests; }
+            set { numberOfGuests = numberOfAdults + numberOfChildren; }
+        }
         public Guest Guest
         {
             get { return guest; }
             set { guest = value; }
         }
-        public Date Check_inDate
+        public Date CheckInDate
         {
             get { return check_inDate; }
             set { check_inDate = value; }
         }
-        public Date Check_outDate
+        public Date CheckOutDate
         {
             get { return check_outDate; }
             set { check_outDate = value; }
@@ -96,7 +102,7 @@ namespace inf2010s_semesterProject.Business
             this.season = season;
         }
         #endregion
-        #region
+        #region Methods
         public double CalculateTotalCost()
         {
             int totalDays = check_outDate.Day - check_inDate.Day;

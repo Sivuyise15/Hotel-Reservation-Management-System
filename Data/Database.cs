@@ -5,13 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-
+using inf2010s_semesterProject.Properties;
+/**
+ * This class 
+ * 
+ */
 namespace inf2010s_semesterProject.Data
 {
     public class Database
     {
         #region Fields
-        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\SIVUYISE\\OneDrive - University of Cape Town\\INF2011S\\Semester Project\\phumlakamnandiProject\\inf2010s_semesterProject\\phumlaKamnandiDataBase.mdf\";Integrated Security=True";
+        private string connectionString = Settings.Default.phumlaKamnandiDataBaseConnectionString;
         protected SqlConnection sqlConnection;
         protected DataSet dataSet;
         protected SqlDataAdapter dataAdapter;
@@ -57,18 +61,22 @@ namespace inf2010s_semesterProject.Data
             bool sucess;
             try
             {
+                sqlConnection = new SqlConnection(connectionString);
                 dataAdapter = new SqlDataAdapter(sql, sqlConnection);
-                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
                 sqlConnection.Open();
                 dataAdapter.Update(dataSet, table);
                 sqlConnection.Close();
                 FillDataSet(sql, table);
-                return true;
+                sucess =  true;
             }
             catch (Exception ex)
             {
-                throw ex;
                 sucess = false;
+                throw ex;
+                
+            }
+            finally { 
+            
             }
             return sucess;
         }

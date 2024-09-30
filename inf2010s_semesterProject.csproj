@@ -66,9 +66,11 @@
     <Compile Include="Business\Date.cs" />
     <Compile Include="Business\Guest.cs" />
     <Compile Include="Business\Reservation.cs" />
+    <Compile Include="Business\ReservationController.cs" />
     <Compile Include="Business\Room.cs" />
     <Compile Include="Data\Database.cs" />
     <Compile Include="Data\GuestDatabase.cs" />
+    <Compile Include="Data\ReservationDataBase.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +78,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Person.cs" />
+    <Compile Include="phumlaKamnandiDataBaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>phumlaKamnandiDataBaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Presantation\MDIParent1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +127,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="phumlaKamnandiDataBaseDataSet.xsc">
+      <DependentUpon>phumlaKamnandiDataBaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="phumlaKamnandiDataBaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>phumlaKamnandiDataBaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="phumlaKamnandiDataBaseDataSet.xss">
+      <DependentUpon>phumlaKamnandiDataBaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
