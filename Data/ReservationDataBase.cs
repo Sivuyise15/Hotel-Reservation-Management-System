@@ -1,6 +1,7 @@
 ﻿using inf2010s_semesterProject.Business;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,105 +15,123 @@ namespace inf2010s_semesterProject.Data
 {
     public class ReservationDataBase : Database
     {
-        #region Fields
-        private string tableName = "Reservation";
-        private string sql1 = "INSERT INTO Reservation (ReservationID,GuestID, RoomID, CheckInDate, CheckOutDate, SpecialRequests) " +
-                            "VALUES (@ReservationID, @GuestID, @RoomID, @CheckInDate, @CheckOutDate, @SpecialRequests)";
+        #region Data members
+        private string table1 = "Reservation";
+        private string sqlLocal1 = "SELECT * FROM Reservation";
+        private Collection<Reservation> reservations;
+        #endregion
+
+        #region Property Method: Collection
+        public Collection<Reservation> AllReservations
+        {
+            get
+            {
+                return reservations;
+            }
+        }
         #endregion
 
         #region Constructor
         public ReservationDataBase() : base()
         {
+            reservations = new Collection<Reservation>();
+            FillDataSet(sqlLocal1, table1);
+            Add2Collection(table1);
         }
         #endregion
 
-        #region Database operations CRUD
-
-        public void DataSetChanges(Reservation reservation, Database.DBOperation operation)
+        #region Utility Methods
+        private void Add2Collection(string table)
         {
-            DataRow dr = null;
+            DataRow myRow;
+            Reservation res;
 
-            try
+            foreach (DataRow myRow_loopVariable in dsMain.Tables[table].Rows)
             {
-                dr = dsMain.Tables[tableName].NewRow();
-                dr["ReservationID"] = reservation.ReservationID;
-                dr["GuestID"] = reservation.Guest.GuestID;
-                dr["RoomID"] = reservation.Room.RoomID;
-                dr["CheckInDate"] = reservation.CheckInDate;
-                dr["CheckOutDate"] = reservation.CheckOutDate;
-                dr["SpecialRequests"] = reservation.SpecialRequests;
-
-                dsMain.Tables[tableName].Rows.Add(dr);
-                if (operation == DBOperation.Add)
+                myRow = myRow_loopVariable;
+                if (!(myRow.RowState == DataRowState.Deleted))
                 {
-                    if (UpdateDataSource(reservation))
-                    {
-                        daMain.Update(dsMain, tableName);
-                    }
+                    // Instantiate a new Reservation object
+                    res = new Reservation();
+                    res.Room = new Room();
+                    res.Guest = new Guest();
+                    // Obtain each reservation attribute from the row in the table
+                    res.ReservationID = Convert.ToString(myRow["ReservationID"]).TrimEnd();
+                    res.Room.RoomID = Convert.ToString(myRow["RoomID"]).TrimEnd();
+                    res.Guest.GuestID = Convert.ToString(myRow["GuestID"]).TrimEnd();
+                    res.CheckInDate = Convert.ToString(myRow["CheckInDate"]).TrimEnd();
+                    res.CheckOutDate = Convert.ToString(myRow["CheckOutDate"]).TrimEnd();
+                    // Add to the collection
+                    reservations.Add(res);
                 }
-                else if (operation == DBOperation.Edit)
-                {
-                    daMain.Update(dsMain, tableName);
-                }
-                else if (operation == DBOperation.Delete)
-                {
-                    dr = dsMain.Tables[tableName].Rows.Find(reservation.ReservationID);
-                    dr.Delete();
-                    daMain.Update(dsMain, tableName);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
         }
-        /**
-         * Adds a reservation to the database.
-         * @param reservation The reservation to add to the database.
-         * @return True if the reservation was added successfully, false otherwise.
-         */
-        private void Build_Insert_Parameters(Reservation reservation) { 
-            SqlParameter param  = default(SqlParameter);
-            param = new SqlParameter("@ReservationID", SqlDbType.NVarChar, 50, "ReservationID");
+
+
+
+        private void FillRow(DataRow aRow, Reservation aReservation)
+        {
+            aRow["ReservationID"] = aReservation.ReservationID;
+            aRow["RoomID"] = aReservation.Room.RoomID;
+            aRow["GuestID"] = aReservation.Guest.GuestID;
+            aRow["CheckInDate"] = aReservation.CheckInDate;
+            aRow["CheckOutDate"] = aReservation.CheckOutDate;
+        }
+        #endregion
+
+        #region Database Operations CRUD
+        public void DataSetChange(Reservation res, Database.DBOperation dBOperation)
+        {
+            DataRow aRow = null;
+            switch (dBOperation)
+            {
+                case Database.DBOperation.Add:
+                    aRow = dsMain.Tables[table1].NewRow();
+                    FillRow(aRow, res);
+                    dsMain.Tables[table1].Rows.Add(aRow); // Add to the dataset
+                    break;
+                case Database.DBOperation.Edit:
+                    // To implement the edit logic here
+                    break;
+            }
+        }
+        #endregion
+
+        #region Build Parameters, Create Commands & Update Database
+        private void Build_INSERT_Parameters(Reservation aReservation)
+        {
+            SqlParameter param = default(SqlParameter);
+            param = new SqlParameter("@ReservationID", SqlDbType.NVarChar, 15, "ReservationID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@GuestID", SqlDbType.NVarChar, 50, "GuestID");
+            param = new SqlParameter("GuestID", SqlDbType.NVarChar, 15, "GuestID");
+            daMain.InsertCommand.Parameters.Add(param);
+            param = new SqlParameter("RoomID", SqlDbType.NVarChar, 15, "RoomID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@RoomID", SqlDbType.NVarChar, 50, "RoomID");
+            param = new SqlParameter("@CheckInDate", SqlDbType.NVarChar, 15, "CheckInDate");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@CheckInDate", SqlDbType.NVarChar, 50, "CheckInDate");
-            daMain.InsertCommand.Parameters.Add(param);
             param = new SqlParameter(
-                "@CheckOutDate", SqlDbType.NVarChar, 50, "CheckOutDate");
+                "@CheckOutDate", SqlDbType.NVarChar, 15, "CheckOutDate");
             daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@SpecialRequests", SqlDbType.NVarChar, 50, "SpecialRequests");
-            daMain.InsertCommand.Parameters.Add(param);
-
         }
 
-        private void Create_Insert_Command(Reservation reservation) {
-            daMain.InsertCommand = new SqlCommand(sql1, cnMain);
-            Build_Insert_Parameters(reservation);
+        private void Create_INSERT_Command(Reservation aReservation)
+        {
+            daMain.InsertCommand = new SqlCommand("INSERT INTO Reservation (ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate) VALUES (@ReservationID, @GuestID, @RoomID, @CheckInDate, @CheckOutDate)", cnMain);
+            Build_INSERT_Parameters(aReservation);
         }
 
-        public bool UpdateDataSource(Reservation reservation) {
-            bool success = false;
-
-            try {
-                Create_Insert_Command(reservation);
-                daMain.Update(dsMain, tableName);
-                success = true;
-            } catch (Exception ex) {
-                throw ex;
-            }
-
+        public bool UpdateDataSource(Reservation res)
+        {
+            bool success = true;
+            Create_INSERT_Command(res);
+            success = UpdateDataSource(sqlLocal1, table1);
             return success;
         }
-
         #endregion
-
     }
+
+
 }
