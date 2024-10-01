@@ -15,7 +15,6 @@ namespace inf2010s_semesterProject.Presantation
     public partial class ReservationDetailsForm : Form
     {
         #region Fields
-        ReservationController ReservationController;
         Guest guest;
         Room room;
         Reservation reservation;
@@ -24,10 +23,13 @@ namespace inf2010s_semesterProject.Presantation
         public ReservationDetailsForm()
         {
             InitializeComponent();
-            ReservationController = new ReservationController();
             guest = new Guest();
             room = new Room();
             reservation = new Reservation();
+        }
+        private void ReservationDetailsForm_Load(object sender, EventArgs e)
+        {
+
         }
 
         /**
@@ -69,17 +71,9 @@ namespace inf2010s_semesterProject.Presantation
                 room = new Room(roomID, 2000, 4, Room.RoomStatus.Available);
                 reservation = new Reservation(guest, reservationID, checkIn, checkOut, room, Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren), 2000, Reservation.Season.High, specialRequest);
 
-                bool isAdded = ReservationController.FinalizeChanges(reservation);
-
-                if (isAdded)
-                {
-                    MessageBox.Show("Reservation has been made successfully.");
-                    Clear();
-                }
-                else
-                {
-                    MessageBox.Show("Reservation could not be made.");
-                }
+                ReservationDatabase db = new ReservationDatabase("Reservation");
+                db.AddReservation(reservationID, roomID, guestID, checkIn, checkOut, specialRequest);
+                
             }
             catch (Exception ex)
             {
@@ -89,11 +83,6 @@ namespace inf2010s_semesterProject.Presantation
         public void Clear()
         {
             nameTextBox.Text = lastNameTextBox.Text = phoneTextBox.Text = emailTextBox.Text = roomTextBox.Text = checkInTextBox.Text = checkOutTextBox.Text = adultsTextBox.Text = childrenTextBox.Text = regionTextBox.Text = specialRequestTextBox.Text = "";
-        }
-
-        private void ReservationDetailsForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
