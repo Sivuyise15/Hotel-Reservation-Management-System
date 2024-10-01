@@ -66,7 +66,7 @@
             // regionTextBox
             // 
             this.regionTextBox.Location = new System.Drawing.Point(79, 231);
-            this.regionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.regionTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.regionTextBox.Name = "regionTextBox";
             this.regionTextBox.Size = new System.Drawing.Size(132, 22);
             this.regionTextBox.TabIndex = 0;
@@ -74,7 +74,7 @@
             // phoneTextBox
             // 
             this.phoneTextBox.Location = new System.Drawing.Point(508, 153);
-            this.phoneTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.phoneTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(164, 22);
             this.phoneTextBox.TabIndex = 1;
@@ -82,7 +82,7 @@
             // emailTextBox
             // 
             this.emailTextBox.Location = new System.Drawing.Point(79, 153);
-            this.emailTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.emailTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(301, 22);
             this.emailTextBox.TabIndex = 2;
@@ -90,7 +90,7 @@
             // lastNameTextBox
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(508, 79);
-            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(277, 22);
             this.lastNameTextBox.TabIndex = 3;
@@ -98,7 +98,7 @@
             // nameTextBox
             // 
             this.nameTextBox.Location = new System.Drawing.Point(79, 79);
-            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(239, 22);
             this.nameTextBox.TabIndex = 4;
@@ -196,7 +196,7 @@
             // 
             this.individualRadioButton.AutoSize = true;
             this.individualRadioButton.Location = new System.Drawing.Point(79, 309);
-            this.individualRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.individualRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.individualRadioButton.Name = "individualRadioButton";
             this.individualRadioButton.Size = new System.Drawing.Size(85, 20);
             this.individualRadioButton.TabIndex = 15;
@@ -208,7 +208,7 @@
             // 
             this.travellingAgentRadioButton.AutoSize = true;
             this.travellingAgentRadioButton.Location = new System.Drawing.Point(79, 337);
-            this.travellingAgentRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.travellingAgentRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.travellingAgentRadioButton.Name = "travellingAgentRadioButton";
             this.travellingAgentRadioButton.Size = new System.Drawing.Size(125, 20);
             this.travellingAgentRadioButton.TabIndex = 16;
@@ -220,7 +220,7 @@
             // 
             this.companyRadioButton.AutoSize = true;
             this.companyRadioButton.Location = new System.Drawing.Point(80, 366);
-            this.companyRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.companyRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.companyRadioButton.Name = "companyRadioButton";
             this.companyRadioButton.Size = new System.Drawing.Size(86, 20);
             this.companyRadioButton.TabIndex = 17;
@@ -241,9 +241,9 @@
             this.bookingDetailsGroupBox.Controls.Add(this.adultsLabel);
             this.bookingDetailsGroupBox.Controls.Add(this.childrenLabel);
             this.bookingDetailsGroupBox.Location = new System.Drawing.Point(53, 48);
-            this.bookingDetailsGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bookingDetailsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.bookingDetailsGroupBox.Name = "bookingDetailsGroupBox";
-            this.bookingDetailsGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bookingDetailsGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.bookingDetailsGroupBox.Size = new System.Drawing.Size(445, 505);
             this.bookingDetailsGroupBox.TabIndex = 18;
             this.bookingDetailsGroupBox.TabStop = false;
@@ -262,7 +262,7 @@
             // checkInTextBox
             // 
             this.checkInTextBox.Location = new System.Drawing.Point(57, 79);
-            this.checkInTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkInTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.checkInTextBox.Name = "checkInTextBox";
             this.checkInTextBox.Size = new System.Drawing.Size(160, 22);
             this.checkInTextBox.TabIndex = 26;
@@ -270,7 +270,7 @@
             // checkOutTextBox
             // 
             this.checkOutTextBox.Location = new System.Drawing.Point(57, 153);
-            this.checkOutTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkOutTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.checkOutTextBox.Name = "checkOutTextBox";
             this.checkOutTextBox.Size = new System.Drawing.Size(160, 22);
             this.checkOutTextBox.TabIndex = 25;
@@ -278,7 +278,7 @@
             // childrenTextBox
             // 
             this.childrenTextBox.Location = new System.Drawing.Point(264, 309);
-            this.childrenTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.childrenTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.childrenTextBox.Name = "childrenTextBox";
             this.childrenTextBox.Size = new System.Drawing.Size(64, 22);
             this.childrenTextBox.TabIndex = 21;
@@ -286,7 +286,7 @@
             // roomTextBox
             // 
             this.roomTextBox.Location = new System.Drawing.Point(57, 231);
-            this.roomTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.roomTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.roomTextBox.Name = "roomTextBox";
             this.roomTextBox.Size = new System.Drawing.Size(59, 22);
             this.roomTextBox.TabIndex = 20;
@@ -294,7 +294,7 @@
             // adultsTextBox
             // 
             this.adultsTextBox.Location = new System.Drawing.Point(57, 309);
-            this.adultsTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.adultsTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.adultsTextBox.Name = "adultsTextBox";
             this.adultsTextBox.Size = new System.Drawing.Size(59, 22);
             this.adultsTextBox.TabIndex = 19;
@@ -312,7 +312,7 @@
             // specialRequestTextBox
             // 
             this.specialRequestTextBox.Location = new System.Drawing.Point(13, 23);
-            this.specialRequestTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.specialRequestTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.specialRequestTextBox.Name = "specialRequestTextBox";
             this.specialRequestTextBox.Size = new System.Drawing.Size(572, 117);
             this.specialRequestTextBox.TabIndex = 22;
@@ -321,7 +321,7 @@
             // submitButton
             // 
             this.submitButton.Location = new System.Drawing.Point(1301, 633);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(100, 28);
             this.submitButton.TabIndex = 27;
@@ -347,9 +347,9 @@
             this.customerDetailsGroupBox.Controls.Add(this.regionTextBox);
             this.customerDetailsGroupBox.Controls.Add(this.bookingAsLabel);
             this.customerDetailsGroupBox.Location = new System.Drawing.Point(549, 48);
-            this.customerDetailsGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.customerDetailsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.customerDetailsGroupBox.Name = "customerDetailsGroupBox";
-            this.customerDetailsGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.customerDetailsGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.customerDetailsGroupBox.Size = new System.Drawing.Size(896, 420);
             this.customerDetailsGroupBox.TabIndex = 28;
             this.customerDetailsGroupBox.TabStop = false;
@@ -369,9 +369,9 @@
             // 
             this.specialRequestsGroupBox.Controls.Add(this.specialRequestTextBox);
             this.specialRequestsGroupBox.Location = new System.Drawing.Point(549, 494);
-            this.specialRequestsGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.specialRequestsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.specialRequestsGroupBox.Name = "specialRequestsGroupBox";
-            this.specialRequestsGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.specialRequestsGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.specialRequestsGroupBox.Size = new System.Drawing.Size(595, 167);
             this.specialRequestsGroupBox.TabIndex = 29;
             this.specialRequestsGroupBox.TabStop = false;
@@ -386,7 +386,7 @@
             this.Controls.Add(this.customerDetailsGroupBox);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.bookingDetailsGroupBox);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ReservationDetailsForm";
             this.Text = "ReservationDetailsForm";
             this.Load += new System.EventHandler(this.ReservationDetailsForm_Load);

@@ -112,6 +112,7 @@ namespace inf2010s_semesterProject.Business
         #region Methods
         public double CalculateTotalCost()
         {
+            //Edit later to use DateTime instead of parsed integers
             int[] checkIn = Array.ConvertAll(check_inDate.Split('/'), int.Parse);
             int[] checkOut = Array.ConvertAll(check_outDate.Split('/'), int.Parse);
             int totalDays = (checkOut[0] - checkIn[0]) + (checkOut[1] - checkIn[1]) + (checkOut[2] - checkIn[2]);

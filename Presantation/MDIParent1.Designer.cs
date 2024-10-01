@@ -88,6 +88,7 @@
             this.makeReservationButton = new System.Windows.Forms.Button();
             this.checkReservationButton = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -96,6 +97,7 @@
             // 
             // menuStrip
             // 
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.editMenu,
@@ -364,6 +366,7 @@
             // 
             // toolStrip
             // 
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripButton,
             this.openToolStripButton,
@@ -426,6 +429,7 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
             resources.ApplyResources(this.statusStrip, "statusStrip");
@@ -476,11 +480,17 @@
             resources.ApplyResources(this.logoLabel, "logoLabel");
             this.logoLabel.Name = "logoLabel";
             // 
+            // dateTimePicker1
+            // 
+            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            // 
             // MDIParent1
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.logoLabel);
             this.Controls.Add(this.welcomeGroupBox);
             this.Controls.Add(this.statusStrip);
@@ -562,6 +572,7 @@
         private System.Windows.Forms.Button makeReservationButton;
         private System.Windows.Forms.Button checkReservationButton;
         private System.Windows.Forms.Label logoLabel;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 
