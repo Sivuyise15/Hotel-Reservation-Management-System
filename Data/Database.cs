@@ -1,86 +1,96 @@
 ﻿using System;
+//Name Spaces
+using System.Data;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
-using inf2010s_semesterProject.Properties;
-/**
- * This class 
- * 
- */
+using System.Windows.Forms;
+using inf2010s_semesterProject.Properties;//***needs to be added to be able to use the Settings property
+
 namespace inf2010s_semesterProject.Data
 {
     public class Database
     {
-        #region Fields
-        private string connectionString = Settings.Default.phumlaKamnandiDataBaseConnectionString;
-        protected SqlConnection sqlConnection;
-        protected DataSet dataSet;
-        protected SqlDataAdapter dataAdapter;
-
-        public enum dataBaseOperation
+        #region Variable declaration
+        //***Once the database is created you can find the correct connection string by using the Settings.Default object to select the correct connection string
+        private string strConn = Settings.Default.phumlaKamnandiDataBaseConnectionString;
+        protected SqlConnection cnMain;
+        protected DataSet dsMain;
+        protected SqlDataAdapter daMain;
+        public enum DBOperation
         {
-            Add = 0, Update = 1, Delete = 2, Select = 3
-        }
-        #endregion
-        #region
-        public Database() {
-            try { 
-                sqlConnection = new SqlConnection(connectionString);
-                dataSet = new DataSet();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            Add = 0,
+            Edit = 1,
+            Delete = 2,
         }
         #endregion
 
-        #region update the dataSet
-        public void FillDataSet(string sql, string table)
+        #region Constructor
+        public Database()
         {
             try
             {
-                dataAdapter = new SqlDataAdapter(sql, sqlConnection);
-                sqlConnection.Open();
-                dataAdapter.Fill(dataSet, table);
-                sqlConnection.Close();
+                //Open a connection & create a new dataset object
+                cnMain = new SqlConnection(strConn);
+                dsMain = new DataSet();
             }
-            catch (Exception ex)
+            catch (SystemException e)
             {
-                throw ex;
+                System.Windows.Forms.MessageBox.Show(e.Message, "Error");
+                return;
             }
         }
+
         #endregion
 
-        #region update the data source
-        public bool UpdateDataSource(string sql, string table)
+        #region Update the DateSet
+        public void FillDataSet(string aSQLstring, string aTable)
         {
-            bool sucess;
+            //fills dataset fresh from the db for a specific table and with a specific Query
             try
             {
-                sqlConnection = new SqlConnection(connectionString);
-                dataAdapter = new SqlDataAdapter(sql, sqlConnection);
-                sqlConnection.Open();
-                dataAdapter.Update(dataSet, table);
-                sqlConnection.Close();
-                FillDataSet(sql, table);
-                sucess =  true;
+                daMain = new SqlDataAdapter(aSQLstring, cnMain);
+                cnMain.Open();
+                //dsMain.Clear();
+                daMain.Fill(dsMain, aTable);
+                cnMain.Close();
             }
-            catch (Exception ex)
+            catch (Exception errObj)
             {
-                sucess = false;
-                throw ex;
-                
+                MessageBox.Show(errObj.Message + "  " + errObj.StackTrace);
             }
-            finally { 
-            
-            }
-            return sucess;
         }
 
+        #endregion
+
+        #region Update the data source 
+        protected bool UpdateDataSource(string sqlLocal, string table)
+        {
+            bool success;
+            try
+            {
+                //open the connection
+                cnMain.Open();
+                //***update the database table via the data adapter
+                daMain.Update(dsMain, table);
+                //---close the connection
+                cnMain.Close();
+                //refresh the dataset
+                FillDataSet(sqlLocal, table);
+                success = true;
+            }
+            catch (Exception errObj)
+            {
+                MessageBox.Show(errObj.Message + "  " + errObj.StackTrace);
+                success = false;
+            }
+            finally
+            {
+            }
+            return success;
+        }
         #endregion
     }
 }

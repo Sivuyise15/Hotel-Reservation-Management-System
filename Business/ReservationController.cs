@@ -29,5 +29,17 @@ namespace inf2010s_semesterProject.Business
             reservationDatabase = new ReservationDataBase();
         }
         #endregion
+
+        #region Methods
+        public void DataMaintenance(Reservation reservation, Database.DBOperation dBOperation)
+        {
+            reservationDatabase.DataSetChanges(reservation, dBOperation);
+        }
+
+        public bool FinalizeReservation(Reservation reservation)
+        {
+           return reservationDatabase.UpdateDataSource(reservation);
+        }
+        #endregion
     }
 }

@@ -63,13 +63,12 @@
   <ItemGroup>
     <Compile Include="Business\Adult.cs" />
     <Compile Include="Business\Child.cs" />
-    <Compile Include="Business\Date.cs" />
     <Compile Include="Business\Guest.cs" />
     <Compile Include="Business\Reservation.cs" />
     <Compile Include="Business\ReservationController.cs" />
     <Compile Include="Business\Room.cs" />
     <Compile Include="Data\Database.cs" />
-    <Compile Include="Data\GuestDatabase.cs" />
+    <Compile Include="Data\GuestDataBase.cs" />
     <Compile Include="Data\ReservationDataBase.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

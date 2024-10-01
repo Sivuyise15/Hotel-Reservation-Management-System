@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,54 +12,107 @@ using System.Threading.Tasks;
  */
 namespace inf2010s_semesterProject.Data
 {
-    public class ReservationDataBase: Database
+    public class ReservationDataBase : Database
     {
-        public ReservationDataBase():base()
+        #region Fields
+        private string tableName = "Reservation";
+        private string sql1 = "INSERT INTO Reservation (ReservationID,GuestID, RoomID, CheckInDate, CheckOutDate, SpecialRequests) " +
+                            "VALUES (@ReservationID, @GuestID, @RoomID, @CheckInDate, @CheckOutDate, @SpecialRequests)";
+        #endregion
+
+        #region Constructor
+        public ReservationDataBase() : base()
         {
         }
-        /**Method to retrieve all reservations from the database.
-         * @return DataSet containing all reservations.
-         */
-        public DataSet GetAllReservation() { 
-            string sql = "SELECT * FROM Reservation";
-            FillDataSet(sql, "Reservation");
-            return dataSet;
+        #endregion
+
+        #region Database operations CRUD
+
+        public void DataSetChanges(Reservation reservation, Database.DBOperation operation)
+        {
+            DataRow dr = null;
+
+            try
+            {
+                dr = dsMain.Tables[tableName].NewRow();
+                dr["ReservationID"] = reservation.ReservationID;
+                dr["GuestID"] = reservation.Guest.GuestID;
+                dr["RoomID"] = reservation.Room.RoomID;
+                dr["CheckInDate"] = reservation.CheckInDate;
+                dr["CheckOutDate"] = reservation.CheckOutDate;
+                dr["SpecialRequests"] = reservation.SpecialRequests;
+
+                dsMain.Tables[tableName].Rows.Add(dr);
+                if (operation == DBOperation.Add)
+                {
+                    if (UpdateDataSource(reservation))
+                    {
+                        daMain.Update(dsMain, tableName);
+                    }
+                }
+                else if (operation == DBOperation.Edit)
+                {
+                    daMain.Update(dsMain, tableName);
+                }
+                else if (operation == DBOperation.Delete)
+                {
+                    dr = dsMain.Tables[tableName].Rows.Find(reservation.ReservationID);
+                    dr.Delete();
+                    daMain.Update(dsMain, tableName);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-        /**Method to add a reservation to the database.
-         * @param reservation The reservation to be added.
+        /**
+         * Adds a reservation to the database.
+         * @param reservation The reservation to add to the database.
          * @return True if the reservation was added successfully, false otherwise.
          */
-        public bool AddReservation(Reservation reservation) { 
-            string sql = "INSERT INTO Reservation (ReservationID, CheckInDate, CheckOutDate, NumberOfGuests, RoomID, GuestID) VALUES ('" + reservation.ReservationID + "', '" + reservation.CheckInDate + "', '" + reservation.CheckOutDate + "', '" + reservation.NumberOfGuests + "', '" + reservation.Room.RoomID + "', '" + reservation.Guest.GuestID + "')";
-            return UpdateDataSource(sql, "Reservation");
+        private void Build_Insert_Parameters(Reservation reservation) { 
+            SqlParameter param  = default(SqlParameter);
+            param = new SqlParameter("@ReservationID", SqlDbType.NVarChar, 50, "ReservationID");
+            daMain.InsertCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@GuestID", SqlDbType.NVarChar, 50, "GuestID");
+            daMain.InsertCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@RoomID", SqlDbType.NVarChar, 50, "RoomID");
+            daMain.InsertCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CheckInDate", SqlDbType.NVarChar, 50, "CheckInDate");
+            daMain.InsertCommand.Parameters.Add(param);
+            param = new SqlParameter(
+                "@CheckOutDate", SqlDbType.NVarChar, 50, "CheckOutDate");
+            daMain.InsertCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@SpecialRequests", SqlDbType.NVarChar, 50, "SpecialRequests");
+            daMain.InsertCommand.Parameters.Add(param);
 
         }
-        /**Method to update a reservation in the database.
-         * @param reservation The reservation to be updated.
-         * @return True if the reservation was updated successfully, false otherwise.
-         */
-        public bool UpdateReservation(Reservation reservation) { 
-            string sql = "UPDATE Reservation SET CheckInDate = '" + reservation.CheckInDate + "', CheckOutDate = '" + reservation.CheckOutDate + "', NumberOfGuests = '" + reservation.NumberOfGuests + "', RoomID = '" + reservation.Room.RoomID + "', GuestID = '" + reservation.Guest.GuestID + "' WHERE ReservationID = '" + reservation.ReservationID + "'";
-            return UpdateDataSource(sql, "Reservation");
+
+        private void Create_Insert_Command(Reservation reservation) {
+            daMain.InsertCommand = new SqlCommand(sql1, cnMain);
+            Build_Insert_Parameters(reservation);
         }
-        /**Method to remove a reservation from the database.
-         * @param reservation The reservation to be removed.
-         * @return True if the reservation was removed successfully, false otherwise.
-         */
-        public bool DeleteReservation(Reservation reservation) { 
-            string sql = "DELETE FROM Reservation WHERE ReservationID = '" + reservation.ReservationID + "'";
-            return UpdateDataSource(sql, "Reservation");
+
+        public bool UpdateDataSource(Reservation reservation) {
+            bool success = false;
+
+            try {
+                Create_Insert_Command(reservation);
+                daMain.Update(dsMain, tableName);
+                success = true;
+            } catch (Exception ex) {
+                throw ex;
+            }
+
+            return success;
         }
-        /**Method to retrieve a reservation from the database by its ID.
-         * @param reservationID The ID of the reservation to be retrieved.
-         * @return DataSet containing the reservation with the specified ID.
-         */
-        public DataSet GetReservationByGuestID(string guestID)
-        {
-            string sql = "SELECT * FROM Reservation WHERE GuestID = '" + guestID + "'";
-            FillDataSet(sql, "Reservation");
-            return dataSet;
-        }
+
+        #endregion
 
     }
 }

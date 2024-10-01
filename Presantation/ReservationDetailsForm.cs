@@ -35,13 +35,6 @@ namespace inf2010s_semesterProject.Presantation
             }
             return StringBuilder.ToString();
         }
-        /** A method that will take a string and divide it by "/" and return the date
-         */
-        public  Date GetDate(string date)
-        {
-            string[] dateArray = date.Split('/');
-            return new Date(int.Parse(dateArray[0]), int.Parse(dateArray[1]), int.Parse(dateArray[2]));
-        }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
@@ -59,26 +52,28 @@ namespace inf2010s_semesterProject.Presantation
                 string specialRequest = specialRequestTextBox.Text;
 
                 string guestID = RandomString(7);
-                string reservationID = RandomString(7);
-                string roomID = RandomString(7);
+                string reservationID = RandomString(8);
+                string roomID = RandomString(9);
 
                 Guest guest = new Guest(name, lastName, phone, email, guestID, reservationID, roomID, checkIn, checkOut);
                 Room room = new Room(roomID, 2000, 4, Room.RoomStatus.Available);
-                Date date = new Date();
-                Date checkingIn = GetDate(checkIn);
-                Date checkingOut = GetDate(checkOut);
 
-                Reservation reservation = new Reservation(guest, reservationID, checkingIn, checkingOut, room , Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren), 2000, Reservation.Season.High);
+                Reservation reservation = new Reservation(guest, reservationID, checkIn, checkOut, room , Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren), 2000, Reservation.Season.High, specialRequest);
                 ReservationDataBase reservationData = new ReservationDataBase();
-                bool success = reservationData.AddReservation(reservation);
-                if (success)
-                    {
-                    MessageBox.Show("Reservation added successfully");
+                Database database = new Database();
+
+                ReservationController reservationController = new ReservationController();
+
+                bool isAdded = reservationController.FinalizeReservation(reservation);
+
+                if (isAdded)
+                {
+                    MessageBox.Show("Reservation has been made successfully");
                     Clear();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to add reservation");
+                    MessageBox.Show("Reservation has not been made successfully");
                 }
             }
             catch (Exception ex)
