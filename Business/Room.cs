@@ -22,7 +22,7 @@ namespace inf2010s_semesterProject.Business
         }
         #endregion
 
-        #region
+        #region Properties
         public string RoomID
         {
             get { return roomID; }
@@ -37,6 +37,12 @@ namespace inf2010s_semesterProject.Business
         {
             get { return roomCapacity; }
             set { roomCapacity = value; }
+        }
+
+        public RoomStatus Status
+        {
+            get { return roomStatus; }
+            set { roomStatus = value; }
         }
         #endregion
 
