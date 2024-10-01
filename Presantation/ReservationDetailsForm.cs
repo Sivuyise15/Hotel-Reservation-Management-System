@@ -85,6 +85,11 @@ namespace inf2010s_semesterProject.Presantation
         {
             nameTextBox.Text = lastNameTextBox.Text = phoneTextBox.Text = emailTextBox.Text = roomTextBox.Text = checkInTextBox.Text = checkOutTextBox.Text = adultsTextBox.Text = childrenTextBox.Text = regionTextBox.Text = specialRequestTextBox.Text = "";
         }
+
+        private void ReservationDetailsForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
  

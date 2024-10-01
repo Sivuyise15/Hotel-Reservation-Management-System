@@ -21,5 +21,10 @@ namespace inf2010s_semesterProject.Presantation
         {
 
         }
+
+        private void PaymentForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

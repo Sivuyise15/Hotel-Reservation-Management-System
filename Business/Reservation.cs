@@ -20,6 +20,7 @@ namespace inf2010s_semesterProject.Business
         public enum Season
         {
             Low,
+            Mid,
             High
         }
         #endregion
