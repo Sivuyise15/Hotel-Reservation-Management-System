@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace inf2010s_semesterProject.Business
 {
@@ -33,10 +34,11 @@ namespace inf2010s_semesterProject.Business
         #region
         public override double CalculateCost(double totalCost, int numDays)
         {
-            if (age < 5) {
+            if (this.Age < 5) {
                 return 0.0;
             }
-            return totalCost * 0.5*numDays;
+            double toReturn = totalCost * 0.5*numDays;
+            return toReturn;
         }
         #endregion
 

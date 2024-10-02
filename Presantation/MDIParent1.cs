@@ -108,5 +108,10 @@ namespace inf2010s_semesterProject.Presantation
         {
             new ReservationDetailsForm().Show();
         }
+
+        private void cancelReservationButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

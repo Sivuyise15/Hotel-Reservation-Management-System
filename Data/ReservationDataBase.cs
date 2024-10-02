@@ -34,6 +34,19 @@ namespace inf2010s_semesterProject.Data
             MessageBox.Show("Reservation Added");
 
         }
+
+        /**
+         * Cancell reservaation by ReservationID
+         */
+
+        public void CancelReservation(string ReservationID) { 
+            SqlCommand sqlCommand = new SqlCommand("DELETE FROM Reservation WHERE ReservationID = @ReservationID", conStr);
+            sqlCommand.Parameters.Add(@"ReservationID", SqlDbType.NVarChar, 50, "ReservationID").Value = ReservationID;
+            
+            conStr.Open();
+            sqlCommand.ExecuteNonQuery();
+            conStr.Close();
+        }
     
     }
 }

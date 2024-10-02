@@ -454,6 +454,7 @@
             resources.ApplyResources(this.cancelReservationButton, "cancelReservationButton");
             this.cancelReservationButton.Name = "cancelReservationButton";
             this.cancelReservationButton.UseVisualStyleBackColor = true;
+            this.cancelReservationButton.Click += new System.EventHandler(this.cancelReservationButton_Click);
             // 
             // updateReservationButton
             // 

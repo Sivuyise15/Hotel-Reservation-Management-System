@@ -75,14 +75,15 @@ namespace inf2010s_semesterProject.Presantation
                 string roomID = RandomString(9);
 
                 List<Guest> guests = new List<Guest>();
-                for (int i = 0; i < Convert.ToInt32(numberOfAdults); i++)
-                {
-                    guests.Add(new Adult(name, lastName, phone, email, guestID));
-                }
                 for (int i = 0; i < Convert.ToInt32(numberOfChildren); i++)
                 {
                     guests.Add(new Child(name, lastName, phone, email, guestID, 15));
                 }
+                for (int i = 0; i < Convert.ToInt32(numberOfAdults); i++)
+                {
+                    guests.Add(new Adult(name, lastName, phone, email, guestID));
+                }
+                
 
 
                 room = new Room(roomID, 2000, 4, Room.RoomStatus.Available);
