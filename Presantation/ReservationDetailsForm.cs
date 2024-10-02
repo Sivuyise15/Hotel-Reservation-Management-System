@@ -94,6 +94,8 @@ namespace inf2010s_semesterProject.Presantation
 
         private void btnCalcPrice_Click(object sender, EventArgs e)
         {
+            int inDate = checkinPicker.Value.Day;
+            int outDate = checkoutPicker.Value.Day;
             int adults = 0;
             int kids = 0;
             decimal totalCost = 0;
@@ -101,8 +103,26 @@ namespace inf2010s_semesterProject.Presantation
             {
                 adults = Convert.ToInt32(adultsTextBox.Text);
                 kids = Convert.ToInt32(childrenTextBox.Text);
-                totalCost = adults * 550 + kids * (550 / 2);
-                totalLabel.Text = "Total Price: " + totalCost;
+                int i = 0;
+                while (inDate <= outDate)
+                {
+                    if (inDate >= 1 && inDate <= 7)
+                    {
+                        totalCost += adults * 550;
+                        totalCost += kids * 550 / 2;
+                    } else if (inDate >= 8 && inDate <= 15)
+                    {
+                        totalCost += adults * 750;
+                        totalCost += kids * 750 / 2;
+                    } else if (inDate >= 16 && inDate <= 31)
+                    {
+                        totalCost += adults * 995;
+                        totalCost += kids * 995 / 2;
+                    }
+                    inDate++;
+                }
+                //totalCost = adults * 550 + kids * (550 / 2);
+                totalLabel.Text = "Total Price: R" + totalCost;
             } else
             {
                 MessageBox.Show("Please enter in amounts for both children and adults");
