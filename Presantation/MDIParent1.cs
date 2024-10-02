@@ -114,5 +114,10 @@ namespace inf2010s_semesterProject.Presantation
             CancelReservation cancelReservation = new CancelReservation();
             cancelReservation.Show();
         }
+
+        private void viewReservationsButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

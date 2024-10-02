@@ -34,7 +34,7 @@ namespace inf2010s_semesterProject.Presantation
 
         private void paymentButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Payment Successful");
+            MessageBox.Show("Reservation succesfully completed! A confirmation email will be sent to customer shortly with all the reservation details. Thank you.");
             this.Close();
         }
     }

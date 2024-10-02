@@ -472,43 +472,25 @@
     <value>180, 22</value>
   </data>
   <data name="newWindowToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;New Window</value>
+    <value>&amp;List reservations</value>
   </data>
-  <data name="cascadeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="fccscsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="cascadeToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Cascade</value>
+  <data name="fccscsToolStripMenuItem.Text" xml:space="preserve">
+    <value>List guests</value>
   </data>
-  <data name="tileVerticalToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="listRoomsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="tileVerticalToolStripMenuItem.Text" xml:space="preserve">
-    <value>Tile &amp;Vertical</value>
-  </data>
-  <data name="tileHorizontalToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="tileHorizontalToolStripMenuItem.Text" xml:space="preserve">
-    <value>Tile &amp;Horizontal</value>
-  </data>
-  <data name="closeAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="closeAllToolStripMenuItem.Text" xml:space="preserve">
-    <value>C&amp;lose All</value>
-  </data>
-  <data name="arrangeIconsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="arrangeIconsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Arrange Icons</value>
+  <data name="listRoomsToolStripMenuItem.Text" xml:space="preserve">
+    <value>List rooms</value>
   </data>
   <data name="windowsMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 20</value>
+    <value>72, 20</value>
   </data>
   <data name="windowsMenu.Text" xml:space="preserve">
-    <value>&amp;Windows</value>
+    <value>&amp;Databases</value>
   </data>
   <data name="contentsToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+F1</value>
@@ -1164,36 +1146,6 @@
   <data name="&gt;&gt;newWindowToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cascadeToolStripMenuItem.Name" xml:space="preserve">
-    <value>cascadeToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;cascadeToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tileVerticalToolStripMenuItem.Name" xml:space="preserve">
-    <value>tileVerticalToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;tileVerticalToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tileHorizontalToolStripMenuItem.Name" xml:space="preserve">
-    <value>tileHorizontalToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;tileHorizontalToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;closeAllToolStripMenuItem.Name" xml:space="preserve">
-    <value>closeAllToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;closeAllToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;arrangeIconsToolStripMenuItem.Name" xml:space="preserve">
-    <value>arrangeIconsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;arrangeIconsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;helpMenu.Name" xml:space="preserve">
     <value>helpMenu</value>
   </data>
@@ -1289,6 +1241,18 @@
   </data>
   <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fccscsToolStripMenuItem.Name" xml:space="preserve">
+    <value>fccscsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;fccscsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listRoomsToolStripMenuItem.Name" xml:space="preserve">
+    <value>listRoomsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;listRoomsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MDIParent1</value>

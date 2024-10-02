@@ -27,9 +27,6 @@ namespace inf2010s_semesterProject.Data
             conStr.Open();
             SqlInsert.ExecuteNonQuery();
             conStr.Close();
-
-            MessageBox.Show("Guest Added");
-
         }
     }
 }

@@ -27,7 +27,8 @@ namespace inf2010s_semesterProject.Presantation
         }
         private void ReservationDetailsForm_Load(object sender, EventArgs e)
         {
-            
+            ageTextBox.Visible = false;
+            ageLabel.Visible = false;
         }
 
         /**
@@ -52,7 +53,16 @@ namespace inf2010s_semesterProject.Presantation
 
         private void childrenTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            if(childrenTextBox.Text != "" && Convert.ToInt32(childrenTextBox.Text) != 0)
+            {
+                ageTextBox.Visible = true;
+                ageLabel.Visible = true;
+            }
+            else
+            {
+                ageTextBox.Visible = false;
+                ageLabel.Visible = false;
+            }
         }
 
         private void nextButton_Click(object sender, EventArgs e)
@@ -69,15 +79,18 @@ namespace inf2010s_semesterProject.Presantation
                 string numberOfAdults = adultsTextBox.Text;
                 string numberOfChildren = childrenTextBox.Text;
                 string specialRequest = specialRequestTextBox.Text;
+                string age = ageTextBox.Text;
 
                 string guestID = RandomString(7);
                 string reservationID = RandomString(8);
                 string roomID = RandomString(9);
 
+                int[] ageList = age.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+
                 List<Guest> guests = new List<Guest>();
                 for (int i = 0; i < Convert.ToInt32(numberOfChildren); i++)
                 {
-                    guests.Add(new Child(name, lastName, phone, email, guestID, 15));
+                    guests.Add(new Child(name, lastName, phone, email, guestID, ageList[i] ));
                 }
                 for (int i = 0; i < Convert.ToInt32(numberOfAdults); i++)
                 {
@@ -89,8 +102,6 @@ namespace inf2010s_semesterProject.Presantation
                 room = new Room(roomID, 2000, 4, Room.RoomStatus.Available);
                 reservation = new Reservation(guests, reservationID, checkInDateTime, checkOutDateTime, room, Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren), specialRequest);
                 double cost = reservation.CalculateTotalCost();
-
-                costTextBox.Text = "R" + cost.ToString();
                 
                 ReservationDatabase db = new ReservationDatabase("Reservation");
                 GuestDatabase guestDb = new GuestDatabase("Guest");
@@ -105,7 +116,9 @@ namespace inf2010s_semesterProject.Presantation
 
                 db.AddReservation(reservationID, roomID, guestID, checkInDateTime, checkOutDateTime, specialRequest, cost);
                 guestDb.AddGuest(guestID, name, lastName, phone, email);
-                Clear();
+                this.Clear();
+                this.Close();
+
             }
             catch (Exception ex)
             {

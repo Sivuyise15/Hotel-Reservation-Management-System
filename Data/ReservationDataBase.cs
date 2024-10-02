@@ -31,8 +31,6 @@ namespace inf2010s_semesterProject.Data
             SqlInsert.ExecuteNonQuery();
             conStr.Close();
 
-            MessageBox.Show("Reservation Added");
-
         }
 
         /**
