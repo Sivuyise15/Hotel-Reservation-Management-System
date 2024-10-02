@@ -9,7 +9,7 @@ namespace inf2010s_semesterProject.Business
     public class Reservation
     {
         #region Fields
-        // prices
+
         private double lowSeasonPrice = 550;
         private double midSeasonPrice = 750;
         private double highSeasonPrice = 995;
@@ -30,16 +30,17 @@ namespace inf2010s_semesterProject.Business
             get { return guests; }
             set { guests = value; }
         }
-        public string CheckInDate
+        public string Check_inDate
         {
             get { return check_inDate; }
             set { check_inDate = value; }
         }
-        public string CheckOutDate
+        public string Check_outDate
         {
             get { return check_outDate; }
             set { check_outDate = value; }
         }
+
         public string SpecialRequests
         {
             get { return specialRequests; }
@@ -78,8 +79,8 @@ namespace inf2010s_semesterProject.Business
         public Reservation()
         {
             reservationID = "";
-            check_inDate = null;
-            check_outDate = null;
+            check_inDate = "";
+            check_outDate = "";
             room = null;
             numberOfAdults = 0;
             numberOfChildren = 0;
@@ -99,6 +100,7 @@ namespace inf2010s_semesterProject.Business
         #region Methods
         public double CalculateTotalCost()
         {
+
             int totalGuests = numberOfAdults + numberOfChildren;
             int[] checkIn = Array.ConvertAll(check_inDate.Split('/'), int.Parse);
             int[] checkOut = Array.ConvertAll(check_outDate.Split('/'), int.Parse);

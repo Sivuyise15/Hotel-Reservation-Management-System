@@ -27,7 +27,7 @@ namespace inf2010s_semesterProject.Presantation
         }
         private void ReservationDetailsForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         /**
@@ -55,8 +55,8 @@ namespace inf2010s_semesterProject.Presantation
                 string phone = phoneTextBox.Text;
                 string email = emailTextBox.Text;
                 string roomsRequired = roomTextBox.Text;
-                string checkIn = checkInTextBox.Text;
-                string checkOut = checkOutTextBox.Text;
+                DateTime checkIn = checkinPicker.Value;
+                DateTime checkOut = checkoutPicker.Value;
                 string numberOfAdults = adultsTextBox.Text;
                 string numberOfChildren = childrenTextBox.Text;
                 string specialRequest = specialRequestTextBox.Text;
@@ -102,7 +102,51 @@ namespace inf2010s_semesterProject.Presantation
         }
         public void Clear()
         {
-            nameTextBox.Text = lastNameTextBox.Text = phoneTextBox.Text = emailTextBox.Text = roomTextBox.Text = checkInTextBox.Text = checkOutTextBox.Text = adultsTextBox.Text = childrenTextBox.Text = regionTextBox.Text = specialRequestTextBox.Text = "";
+            nameTextBox.Text = lastNameTextBox.Text = phoneTextBox.Text = emailTextBox.Text = roomTextBox.Text = adultsTextBox.Text = childrenTextBox.Text = regionTextBox.Text = specialRequestTextBox.Text = "";
+            checkinPicker.Value = DateTime.Now;
+            checkoutPicker.Value = DateTime.Now;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCalcPrice_Click(object sender, EventArgs e)
+        {
+            int inDate = checkinPicker.Value.Day;
+            int outDate = checkoutPicker.Value.Day;
+            int adults = 0;
+            int kids = 0;
+            decimal totalCost = 0;
+            if (adultsTextBox.Text != "" && childrenTextBox.Text != "")
+            {
+                adults = Convert.ToInt32(adultsTextBox.Text);
+                kids = Convert.ToInt32(childrenTextBox.Text);
+                int i = 0;
+                while (inDate <= outDate)
+                {
+                    if (inDate >= 1 && inDate <= 7)
+                    {
+                        totalCost += adults * 550;
+                        totalCost += kids * 550 / 2;
+                    } else if (inDate >= 8 && inDate <= 15)
+                    {
+                        totalCost += adults * 750;
+                        totalCost += kids * 750 / 2;
+                    } else if (inDate >= 16 && inDate <= 31)
+                    {
+                        totalCost += adults * 995;
+                        totalCost += kids * 995 / 2;
+                    }
+                    inDate++;
+                }
+                //totalCost = adults * 550 + kids * (550 / 2);
+                totalLabel.Text = "Total Price: R" + totalCost;
+            } else
+            {
+                MessageBox.Show("Please enter in amounts for both children and adults");
+            }
         }
     }
 }

@@ -20,10 +20,13 @@ namespace inf2010s_semesterProject.Business
         #endregion
 
         #region Contructors
-        public Child():base() {
+        public Child() : base()
+        {
             age = -1;
         }
+
         public Child(string pName, string lastName, string pPhone, string email, string guestID, int age):base(pName, lastName, pPhone, email, guestID) { 
+
             this.Age = age;
         }
         #endregion

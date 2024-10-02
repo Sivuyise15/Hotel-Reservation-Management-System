@@ -77,8 +77,8 @@
     </Compile>
     <Compile Include="Person.cs" />
     <Compile Include="phumlaKamnandiDataBaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>phumlaKamnandiDataBaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Presantation\MDIParent1.cs">

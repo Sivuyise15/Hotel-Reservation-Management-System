@@ -46,9 +46,10 @@
             this.travellingAgentRadioButton = new System.Windows.Forms.RadioButton();
             this.companyRadioButton = new System.Windows.Forms.RadioButton();
             this.bookingDetailsGroupBox = new System.Windows.Forms.GroupBox();
-            this.checkOutLabel = new System.Windows.Forms.Label();
-            this.checkInTextBox = new System.Windows.Forms.TextBox();
             this.checkOutTextBox = new System.Windows.Forms.TextBox();
+            this.checkInTextBox = new System.Windows.Forms.TextBox();
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.checkOutLabel = new System.Windows.Forms.Label();
             this.childrenTextBox = new System.Windows.Forms.TextBox();
             this.roomTextBox = new System.Windows.Forms.TextBox();
             this.adultsTextBox = new System.Windows.Forms.TextBox();
@@ -58,6 +59,8 @@
             this.customerDetailsGroupBox = new System.Windows.Forms.GroupBox();
             this.regionLab = new System.Windows.Forms.Label();
             this.specialRequestsGroupBox = new System.Windows.Forms.GroupBox();
+            this.reservationCostLabel = new System.Windows.Forms.Label();
+            this.costLabel = new System.Windows.Forms.Label();
             this.bookingDetailsGroupBox.SuspendLayout();
             this.customerDetailsGroupBox.SuspendLayout();
             this.specialRequestsGroupBox.SuspendLayout();
@@ -65,37 +68,42 @@
             // 
             // regionTextBox
             // 
-            this.regionTextBox.Location = new System.Drawing.Point(59, 188);
+            this.regionTextBox.Location = new System.Drawing.Point(59, 178);
+            this.regionTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.regionTextBox.Name = "regionTextBox";
             this.regionTextBox.Size = new System.Drawing.Size(100, 20);
             this.regionTextBox.TabIndex = 0;
             // 
             // phoneTextBox
             // 
-            this.phoneTextBox.Location = new System.Drawing.Point(381, 124);
+            this.phoneTextBox.Location = new System.Drawing.Point(381, 115);
+            this.phoneTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(124, 20);
             this.phoneTextBox.TabIndex = 1;
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(59, 124);
+            this.emailTextBox.Location = new System.Drawing.Point(59, 115);
+            this.emailTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(227, 20);
             this.emailTextBox.TabIndex = 2;
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(381, 64);
+            this.lastNameTextBox.Location = new System.Drawing.Point(381, 54);
+            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(209, 20);
             this.lastNameTextBox.TabIndex = 3;
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(59, 64);
+            this.nameTextBox.Location = new System.Drawing.Point(59, 54);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(180, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(189, 20);
             this.nameTextBox.TabIndex = 4;
             // 
             // emailLabel
@@ -181,7 +189,8 @@
             // individualRadioButton
             // 
             this.individualRadioButton.AutoSize = true;
-            this.individualRadioButton.Location = new System.Drawing.Point(59, 251);
+            this.individualRadioButton.Location = new System.Drawing.Point(59, 244);
+            this.individualRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.individualRadioButton.Name = "individualRadioButton";
             this.individualRadioButton.Size = new System.Drawing.Size(70, 17);
             this.individualRadioButton.TabIndex = 15;
@@ -192,7 +201,8 @@
             // travellingAgentRadioButton
             // 
             this.travellingAgentRadioButton.AutoSize = true;
-            this.travellingAgentRadioButton.Location = new System.Drawing.Point(59, 274);
+            this.travellingAgentRadioButton.Location = new System.Drawing.Point(59, 269);
+            this.travellingAgentRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.travellingAgentRadioButton.Name = "travellingAgentRadioButton";
             this.travellingAgentRadioButton.Size = new System.Drawing.Size(101, 17);
             this.travellingAgentRadioButton.TabIndex = 16;
@@ -203,7 +213,8 @@
             // companyRadioButton
             // 
             this.companyRadioButton.AutoSize = true;
-            this.companyRadioButton.Location = new System.Drawing.Point(60, 297);
+            this.companyRadioButton.Location = new System.Drawing.Point(59, 294);
+            this.companyRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.companyRadioButton.Name = "companyRadioButton";
             this.companyRadioButton.Size = new System.Drawing.Size(69, 17);
             this.companyRadioButton.TabIndex = 17;
@@ -213,9 +224,12 @@
             // 
             // bookingDetailsGroupBox
             // 
-            this.bookingDetailsGroupBox.Controls.Add(this.checkOutLabel);
-            this.bookingDetailsGroupBox.Controls.Add(this.checkInTextBox);
+            this.bookingDetailsGroupBox.Controls.Add(this.costLabel);
+            this.bookingDetailsGroupBox.Controls.Add(this.reservationCostLabel);
             this.bookingDetailsGroupBox.Controls.Add(this.checkOutTextBox);
+            this.bookingDetailsGroupBox.Controls.Add(this.checkInTextBox);
+            this.bookingDetailsGroupBox.Controls.Add(this.totalLabel);
+            this.bookingDetailsGroupBox.Controls.Add(this.checkOutLabel);
             this.bookingDetailsGroupBox.Controls.Add(this.childrenTextBox);
             this.bookingDetailsGroupBox.Controls.Add(this.roomTextBox);
             this.bookingDetailsGroupBox.Controls.Add(this.adultsTextBox);
@@ -223,12 +237,37 @@
             this.bookingDetailsGroupBox.Controls.Add(this.roomsLabel);
             this.bookingDetailsGroupBox.Controls.Add(this.adultsLabel);
             this.bookingDetailsGroupBox.Controls.Add(this.childrenLabel);
-            this.bookingDetailsGroupBox.Location = new System.Drawing.Point(40, 39);
+            this.bookingDetailsGroupBox.Location = new System.Drawing.Point(53, 48);
+            this.bookingDetailsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.bookingDetailsGroupBox.Name = "bookingDetailsGroupBox";
-            this.bookingDetailsGroupBox.Size = new System.Drawing.Size(334, 410);
+            this.bookingDetailsGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.bookingDetailsGroupBox.Size = new System.Drawing.Size(445, 505);
             this.bookingDetailsGroupBox.TabIndex = 18;
             this.bookingDetailsGroupBox.TabStop = false;
             this.bookingDetailsGroupBox.Text = "Booking details";
+            // 
+            // checkOutTextBox
+            // 
+            this.checkOutTextBox.Location = new System.Drawing.Point(43, 115);
+            this.checkOutTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.checkOutTextBox.Name = "checkOutTextBox";
+            this.checkOutTextBox.Size = new System.Drawing.Size(204, 20);
+            this.checkOutTextBox.TabIndex = 19;
+            // 
+            // checkInTextBox
+            // 
+            this.checkInTextBox.Location = new System.Drawing.Point(43, 54);
+            this.checkInTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.checkInTextBox.Name = "checkInTextBox";
+            this.checkInTextBox.Size = new System.Drawing.Size(204, 20);
+            this.checkInTextBox.TabIndex = 20;
+            // 
+            // totalLabel
+            // 
+            this.totalLabel.Location = new System.Drawing.Point(0, 0);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(100, 23);
+            this.totalLabel.TabIndex = 21;
             // 
             // checkOutLabel
             // 
@@ -239,37 +278,27 @@
             this.checkOutLabel.TabIndex = 24;
             this.checkOutLabel.Text = "Check-out date(YYYY/MM/DD)";
             // 
-            // checkInTextBox
-            // 
-            this.checkInTextBox.Location = new System.Drawing.Point(43, 64);
-            this.checkInTextBox.Name = "checkInTextBox";
-            this.checkInTextBox.Size = new System.Drawing.Size(121, 20);
-            this.checkInTextBox.TabIndex = 26;
-            // 
-            // checkOutTextBox
-            // 
-            this.checkOutTextBox.Location = new System.Drawing.Point(43, 124);
-            this.checkOutTextBox.Name = "checkOutTextBox";
-            this.checkOutTextBox.Size = new System.Drawing.Size(121, 20);
-            this.checkOutTextBox.TabIndex = 25;
-            // 
             // childrenTextBox
             // 
-            this.childrenTextBox.Location = new System.Drawing.Point(198, 251);
+            this.childrenTextBox.Location = new System.Drawing.Point(198, 244);
+            this.childrenTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.childrenTextBox.Name = "childrenTextBox";
             this.childrenTextBox.Size = new System.Drawing.Size(49, 20);
             this.childrenTextBox.TabIndex = 21;
+            this.childrenTextBox.TextChanged += new System.EventHandler(this.childrenTextBox_TextChanged);
             // 
             // roomTextBox
             // 
-            this.roomTextBox.Location = new System.Drawing.Point(43, 188);
+            this.roomTextBox.Location = new System.Drawing.Point(43, 178);
+            this.roomTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.roomTextBox.Name = "roomTextBox";
             this.roomTextBox.Size = new System.Drawing.Size(45, 20);
             this.roomTextBox.TabIndex = 20;
             // 
             // adultsTextBox
             // 
-            this.adultsTextBox.Location = new System.Drawing.Point(43, 251);
+            this.adultsTextBox.Location = new System.Drawing.Point(43, 244);
+            this.adultsTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.adultsTextBox.Name = "adultsTextBox";
             this.adultsTextBox.Size = new System.Drawing.Size(45, 20);
             this.adultsTextBox.TabIndex = 19;
@@ -285,7 +314,8 @@
             // 
             // specialRequestTextBox
             // 
-            this.specialRequestTextBox.Location = new System.Drawing.Point(10, 19);
+            this.specialRequestTextBox.Location = new System.Drawing.Point(20, 21);
+            this.specialRequestTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.specialRequestTextBox.Name = "specialRequestTextBox";
             this.specialRequestTextBox.Size = new System.Drawing.Size(430, 96);
             this.specialRequestTextBox.TabIndex = 22;
@@ -293,7 +323,8 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(976, 514);
+            this.submitButton.Location = new System.Drawing.Point(1301, 633);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 27;
@@ -318,9 +349,11 @@
             this.customerDetailsGroupBox.Controls.Add(this.regionLabel);
             this.customerDetailsGroupBox.Controls.Add(this.regionTextBox);
             this.customerDetailsGroupBox.Controls.Add(this.bookingAsLabel);
-            this.customerDetailsGroupBox.Location = new System.Drawing.Point(412, 39);
+            this.customerDetailsGroupBox.Location = new System.Drawing.Point(527, 48);
+            this.customerDetailsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.customerDetailsGroupBox.Name = "customerDetailsGroupBox";
-            this.customerDetailsGroupBox.Size = new System.Drawing.Size(672, 341);
+            this.customerDetailsGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.customerDetailsGroupBox.Size = new System.Drawing.Size(681, 343);
             this.customerDetailsGroupBox.TabIndex = 28;
             this.customerDetailsGroupBox.TabStop = false;
             this.customerDetailsGroupBox.Text = "Enter customer details";
@@ -337,22 +370,45 @@
             // specialRequestsGroupBox
             // 
             this.specialRequestsGroupBox.Controls.Add(this.specialRequestTextBox);
-            this.specialRequestsGroupBox.Location = new System.Drawing.Point(412, 401);
+            this.specialRequestsGroupBox.Location = new System.Drawing.Point(541, 409);
+            this.specialRequestsGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.specialRequestsGroupBox.Name = "specialRequestsGroupBox";
-            this.specialRequestsGroupBox.Size = new System.Drawing.Size(446, 136);
+            this.specialRequestsGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.specialRequestsGroupBox.Size = new System.Drawing.Size(595, 167);
             this.specialRequestsGroupBox.TabIndex = 29;
             this.specialRequestsGroupBox.TabStop = false;
             this.specialRequestsGroupBox.Text = "Any special requests? (optional)";
+            // 
+            // reservationCostLabel
+            // 
+            this.reservationCostLabel.AutoSize = true;
+            this.reservationCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reservationCostLabel.Location = new System.Drawing.Point(49, 315);
+            this.reservationCostLabel.Name = "reservationCostLabel";
+            this.reservationCostLabel.Size = new System.Drawing.Size(151, 24);
+            this.reservationCostLabel.TabIndex = 19;
+            this.reservationCostLabel.Text = "Reservation Cost";
+            // 
+            // costLabel
+            // 
+            this.costLabel.AutoSize = true;
+            this.costLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costLabel.Location = new System.Drawing.Point(75, 352);
+            this.costLabel.Name = "costLabel";
+            this.costLabel.Size = new System.Drawing.Size(55, 18);
+            this.costLabel.TabIndex = 19;
+            this.costLabel.Text = "R00,00";
             // 
             // ReservationDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1118, 582);
+            this.ClientSize = new System.Drawing.Size(1233, 597);
             this.Controls.Add(this.specialRequestsGroupBox);
             this.Controls.Add(this.customerDetailsGroupBox);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.bookingDetailsGroupBox);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ReservationDetailsForm";
             this.Text = "ReservationDetailsForm";
             this.Load += new System.EventHandler(this.ReservationDetailsForm_Load);
@@ -391,11 +447,14 @@
         private System.Windows.Forms.RichTextBox specialRequestTextBox;
         private System.Windows.Forms.Label checkInLabel;
         private System.Windows.Forms.Label checkOutLabel;
-        private System.Windows.Forms.TextBox checkOutTextBox;
-        private System.Windows.Forms.TextBox checkInTextBox;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.GroupBox customerDetailsGroupBox;
         private System.Windows.Forms.GroupBox specialRequestsGroupBox;
         private System.Windows.Forms.Label regionLab;
+        private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.TextBox checkOutTextBox;
+        private System.Windows.Forms.TextBox checkInTextBox;
+        private System.Windows.Forms.Label reservationCostLabel;
+        private System.Windows.Forms.Label costLabel;
     }
 }
