@@ -114,5 +114,12 @@ namespace inf2010s_semesterProject.Presantation
             CancelReservation cancelReservation = new CancelReservation();
             cancelReservation.Show();
         }
+
+        private void showReservationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReservationListingForm reservationForm = new ReservationListingForm();
+
+            reservationForm.Show();
+        }
     }
 }

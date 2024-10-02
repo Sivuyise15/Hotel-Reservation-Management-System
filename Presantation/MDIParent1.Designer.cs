@@ -88,6 +88,8 @@
             this.makeReservationButton = new System.Windows.Forms.Button();
             this.checkReservationButton = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
+            this.reservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showReservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -103,7 +105,8 @@
             this.viewMenu,
             this.toolsMenu,
             this.windowsMenu,
-            this.helpMenu});
+            this.helpMenu,
+            this.reservationsToolStripMenuItem});
             resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
@@ -480,6 +483,19 @@
             resources.ApplyResources(this.logoLabel, "logoLabel");
             this.logoLabel.Name = "logoLabel";
             // 
+            // reservationsToolStripMenuItem
+            // 
+            this.reservationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showReservationsToolStripMenuItem});
+            this.reservationsToolStripMenuItem.Name = "reservationsToolStripMenuItem";
+            resources.ApplyResources(this.reservationsToolStripMenuItem, "reservationsToolStripMenuItem");
+            // 
+            // showReservationsToolStripMenuItem
+            // 
+            this.showReservationsToolStripMenuItem.Name = "showReservationsToolStripMenuItem";
+            resources.ApplyResources(this.showReservationsToolStripMenuItem, "showReservationsToolStripMenuItem");
+            this.showReservationsToolStripMenuItem.Click += new System.EventHandler(this.showReservationsToolStripMenuItem_Click);
+            // 
             // MDIParent1
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -566,6 +582,8 @@
         private System.Windows.Forms.Button makeReservationButton;
         private System.Windows.Forms.Button checkReservationButton;
         private System.Windows.Forms.Label logoLabel;
+        private System.Windows.Forms.ToolStripMenuItem reservationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showReservationsToolStripMenuItem;
     }
 }
 
