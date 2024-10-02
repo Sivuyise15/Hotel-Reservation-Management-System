@@ -26,5 +26,16 @@ namespace inf2010s_semesterProject.Presantation
         {
 
         }
+
+        private void totalCostTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void paymentButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Payment Successful");
+            this.Close();
+        }
     }
 }

@@ -67,6 +67,7 @@
     <Compile Include="Business\Reservation.cs" />
     <Compile Include="Business\Room.cs" />
     <Compile Include="Data\Database.cs" />
+    <Compile Include="Data\GuestDatabase.cs" />
     <Compile Include="Data\ReservationDatabase.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

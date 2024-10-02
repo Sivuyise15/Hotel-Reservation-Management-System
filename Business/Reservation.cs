@@ -9,22 +9,27 @@ namespace inf2010s_semesterProject.Business
     public class Reservation
     {
         #region Fields
+        // prices
+        private double lowSeasonPrice = 550;
+        private double midSeasonPrice = 750;
+        private double highSeasonPrice = 995;
+        private double generalPrice = 600;
+
+        // fields
         private string reservationID, check_inDate, check_outDate;
         private Room room;
         private int numberOfAdults, numberOfChildren;
-        private double price;
-        private Season season;
-        private Guest guest;
         private int numberOfGuests;
         private string specialRequests;
-        public enum Season
-        {
-            Low,
-            Mid,
-            High
-        }
+        private List<Guest> guests;
+
         #endregion
         #region Properties
+        public List<Guest> Guests
+        {
+            get { return guests; }
+            set { guests = value; }
+        }
         public string CheckInDate
         {
             get { return check_inDate; }
@@ -44,11 +49,6 @@ namespace inf2010s_semesterProject.Business
         {
             get { return numberOfGuests; }
             set { numberOfGuests = numberOfAdults + numberOfChildren; }
-        }
-        public Guest Guest
-        {
-            get { return guest; }
-            set { guest = value; }
         }
         
         public string ReservationID
@@ -71,16 +71,7 @@ namespace inf2010s_semesterProject.Business
             get { return numberOfChildren; }
             set { numberOfChildren = value; }
         }
-        public double TotalCost
-        {
-            get { return price; }
-            set { price = value; }
-        }
-        public Season Season_Enum
-        {
-            get { return season; }
-            set { season = value; }
-        }
+
         #endregion
 
         #region Constructor
@@ -92,30 +83,48 @@ namespace inf2010s_semesterProject.Business
             room = null;
             numberOfAdults = 0;
             numberOfChildren = 0;
-            price = 0;
-            season = Season.Low;
         }
-        public Reservation(Guest guest, string reservationID, string check_inDate, string check_outDate, Room room, int numberOfAdults, int numberOfChildren, double price, Season season, string specialRequests)
+        public Reservation(List<Guest> guests, string reservationID, string check_inDate, string check_outDate, Room room, int numberOfAdults, int numberOfChildren, string specialRequests)
         {
-            this.guest = guest;
+            this.guests = guests;
             this.reservationID = reservationID;
             this.check_inDate = check_inDate;
             this.check_outDate = check_outDate;
             this.room = room;
             this.numberOfAdults = numberOfAdults;
             this.numberOfChildren = numberOfChildren;
-            this.price = price;
-            this.season = season;
             this.specialRequests = specialRequests;
         }
         #endregion
         #region Methods
         public double CalculateTotalCost()
         {
+            int totalGuests = numberOfAdults + numberOfChildren;
             int[] checkIn = Array.ConvertAll(check_inDate.Split('/'), int.Parse);
             int[] checkOut = Array.ConvertAll(check_outDate.Split('/'), int.Parse);
-            int totalDays = (checkOut[0] - checkIn[0]) + (checkOut[1] - checkIn[1]) + (checkOut[2] - checkIn[2]);
-            return guest.CalculateCost(price, totalDays);
+            int totalDays = (checkOut[2] - checkIn[2]) + (checkOut[1] - checkIn[1]) + (checkOut[0] - checkIn[0]);
+            double totalCost = 0;
+
+            for (int i = 0; i < guests.Count; i++)
+            {
+                if (checkIn[2] > 0 && checkIn[2] <= 7 && checkIn[1] == 12)
+                {
+                    totalCost =+ guests[i].CalculateCost(lowSeasonPrice, totalDays) * totalGuests;
+                }
+                else if (checkIn[2] >= 8 && checkIn[2] <= 15 && checkIn[1] == 12)
+                {
+                    totalCost = +guests[i].CalculateCost(midSeasonPrice, totalDays) * totalGuests;
+                }
+                else if (checkIn[2] > 15 && checkIn[2] <= 31 && checkIn[1] == 12)
+                {
+                    totalCost = +guests[i].CalculateCost(highSeasonPrice, totalDays) * totalGuests;
+                }
+                else
+                {
+                    totalCost = +guests[i].CalculateCost(generalPrice, totalDays) * totalGuests;
+                }
+            }
+            return totalCost;
         }
         #endregion
     }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace inf2010s_semesterProject.Business
 {
-    public class Guest:Person
+    public abstract class Guest:Person
     {
         #region Fields
         private string guestID;
-        private string reservationID;
-        private string roomID;
+        private string check_inDate, check_outDate;
+
         #endregion
         #region Properties
         public string GuestID
@@ -19,40 +19,25 @@ namespace inf2010s_semesterProject.Business
             get { return guestID; }
             set { guestID = value; }
         }
-        public string ReservationID
-        {
-            get { return reservationID; }
-            set { reservationID = value; }
-        }
-        public string RoomID
-        {
-            get { return roomID; }
-            set { roomID = value; }
-        }
         #endregion
         #region Constructor
         public Guest():base()
         {
             guestID = "";
-            reservationID = "";
-            roomID = "";
+            check_inDate = "";
         }
-        public Guest(string pName, string lastName, string pPhone, string email, string guestID, string reservationID, string roomID, string check_inDate, string check_outDate):base(pName,lastName,pPhone, email)
+        public Guest(string pName, string lastName, string pPhone, string email, string guestID):base(pName,lastName,pPhone, email)
         {
             this.guestID = guestID;
-            this.reservationID = reservationID;
-            this.roomID = roomID;
         }
         #endregion
         #region Methods
         public override string ToString()
         {
-            return "Guest ID: " + guestID + "\nReservation ID: " + reservationID + "\nRoom ID: " + roomID + "\nCheck-in Date: " + "\nSeason: " + "\nTotal Cost: " ;
+            return base.ToString() + " GuestID: " + guestID;
         }
 
-        public virtual double CalculateCost(double totalCost, int numDays) {
-            return totalCost*numDays;
-        }
+        public abstract double CalculateCost(double totalCost, int numDays);
         #endregion
     }
 }

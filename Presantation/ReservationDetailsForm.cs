@@ -15,7 +15,6 @@ namespace inf2010s_semesterProject.Presantation
     public partial class ReservationDetailsForm : Form
     {
         #region Fields
-        Guest guest;
         Room room;
         Reservation reservation;
         #endregion
@@ -23,7 +22,6 @@ namespace inf2010s_semesterProject.Presantation
         public ReservationDetailsForm()
         {
             InitializeComponent();
-            guest = new Guest();
             room = new Room();
             reservation = new Reservation();
         }
@@ -67,13 +65,35 @@ namespace inf2010s_semesterProject.Presantation
                 string reservationID = RandomString(8);
                 string roomID = RandomString(9);
 
-                guest = new Guest(name, lastName, phone, email, guestID, reservationID, roomID, checkIn, checkOut);
+                List<Guest> guests = new List<Guest>();
+                for (int i = 0; i < Convert.ToInt32(numberOfAdults); i++)
+                {
+                    guests.Add(new Adult(name, lastName, phone, email, guestID));
+                }
+                for (int i = 0; i < Convert.ToInt32(numberOfChildren); i++)
+                {
+                    guests.Add(new Child(name, lastName, phone, email, guestID, 15));
+                }
+
+
                 room = new Room(roomID, 2000, 4, Room.RoomStatus.Available);
-                reservation = new Reservation(guest, reservationID, checkIn, checkOut, room, Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren), 2000, Reservation.Season.High, specialRequest);
+                reservation = new Reservation(guests, reservationID, checkIn, checkOut, room, Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren), specialRequest);
+                double cost = reservation.CalculateTotalCost();
 
                 ReservationDatabase db = new ReservationDatabase("Reservation");
-                db.AddReservation(reservationID, roomID, guestID, checkIn, checkOut, specialRequest);
+                GuestDatabase guestDb = new GuestDatabase("Guest");
                 
+                
+                if(individualRadioButton.Checked)
+                {
+                    PaymentForm paymentForm = new PaymentForm();
+                    paymentForm.Show();
+                    paymentForm.totalCostTextBox.Text = "R"+cost.ToString();
+                }
+
+                db.AddReservation(reservationID, roomID, guestID, checkIn, checkOut, specialRequest, cost);
+                guestDb.AddGuest(guestID, name, lastName, phone, email);
+                Clear();
             }
             catch (Exception ex)
             {

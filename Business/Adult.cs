@@ -11,7 +11,7 @@ namespace inf2010s_semesterProject
     {
         #region Contructors
         public Adult():base() { }
-        public Adult(string pName, string lastName, string pPhone, string email, string guestID, string reservationID, string roomID, string check_inDate, string check_outDate) : base(pName, lastName, pPhone, email, guestID, reservationID, roomID, check_inDate, check_outDate) { }
+        public Adult(string pName, string lastName, string pPhone, string email, string guestID) : base(pName, lastName, pPhone, email, guestID) { }
         #endregion
         #region Methods
         public override double CalculateCost(double totalCost, int numDays)
