@@ -14,10 +14,22 @@ namespace inf2010s_semesterProject.Presantation
 {
     public partial class ReservationDetailsForm : Form
     {
-        
+        #region Fields
+        Guest guest;
+        Room room;
+        Reservation reservation;
+        #endregion
+
         public ReservationDetailsForm()
         {
             InitializeComponent();
+            guest = new Guest();
+            room = new Room();
+            reservation = new Reservation();
+        }
+        private void ReservationDetailsForm_Load(object sender, EventArgs e)
+        {
+
         }
 
         /**
@@ -25,7 +37,7 @@ namespace inf2010s_semesterProject.Presantation
          */
         public string RandomString(int length)
         {
-            StringBuilder StringBuilder = new StringBuilder(7);
+            StringBuilder StringBuilder = new StringBuilder(length);
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             Random random = new Random();
             StringBuilder.Clear();
@@ -38,43 +50,30 @@ namespace inf2010s_semesterProject.Presantation
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            try { 
+            try
+            {
                 string name = nameTextBox.Text;
                 string lastName = lastNameTextBox.Text;
                 string phone = phoneTextBox.Text;
                 string email = emailTextBox.Text;
-                string roomsRequied = roomTextBox.Text;
+                string roomsRequired = roomTextBox.Text;
                 string checkIn = checkInTextBox.Text;
                 string checkOut = checkOutTextBox.Text;
                 string numberOfAdults = adultsTextBox.Text;
                 string numberOfChildren = childrenTextBox.Text;
-                string region = regionTextBox.Text;
                 string specialRequest = specialRequestTextBox.Text;
 
                 string guestID = RandomString(7);
                 string reservationID = RandomString(8);
                 string roomID = RandomString(9);
 
-                Guest guest = new Guest(name, lastName, phone, email, guestID, reservationID, roomID, checkIn, checkOut);
-                Room room = new Room(roomID, 2000, 4, Room.RoomStatus.Available);
+                guest = new Guest(name, lastName, phone, email, guestID, reservationID, roomID, checkIn, checkOut);
+                room = new Room(roomID, 2000, 4, Room.RoomStatus.Available);
+                reservation = new Reservation(guest, reservationID, checkIn, checkOut, room, Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren), 2000, Reservation.Season.High, specialRequest);
 
-                Reservation reservation = new Reservation(guest, reservationID, checkIn, checkOut, room , Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren), 2000, Reservation.Season.High, specialRequest);
-                ReservationDataBase reservationData = new ReservationDataBase();
-                Database database = new Database();
-
-                ReservationController reservationController = new ReservationController();
-
-                bool isAdded = reservationController.FinalizeReservation(reservation);
-
-                if (isAdded)
-                {
-                    MessageBox.Show("Reservation has been made successfully");
-                    Clear();
-                }
-                else
-                {
-                    MessageBox.Show("Reservation has not been made successfully");
-                }
+                ReservationDatabase db = new ReservationDatabase("Reservation");
+                db.AddReservation(reservationID, roomID, guestID, checkIn, checkOut, specialRequest);
+                
             }
             catch (Exception ex)
             {
@@ -87,11 +86,6 @@ namespace inf2010s_semesterProject.Presantation
         }
 
         private void ReservationDetailsForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }
