@@ -9,7 +9,8 @@ namespace inf2010s_semesterProject.Business
     public class Reservation
     {
         #region Fields
-        private string reservationID, check_inDate, check_outDate;
+        private string reservationID /*, check_inDate, check_outDate*/;
+        private DateTime check_inDate, check_outDate;
         private Room room;
         private int numberOfAdults, numberOfChildren;
         private double price;
@@ -25,12 +26,12 @@ namespace inf2010s_semesterProject.Business
         }
         #endregion
         #region Properties
-        public string CheckInDate
+        public DateTime CheckInDate
         {
             get { return check_inDate; }
             set { check_inDate = value; }
         }
-        public string CheckOutDate
+        public DateTime CheckOutDate
         {
             get { return check_outDate; }
             set { check_outDate = value; }
@@ -87,15 +88,15 @@ namespace inf2010s_semesterProject.Business
         public Reservation()
         {
             reservationID = "";
-            check_inDate = null;
-            check_outDate = null;
+            check_inDate = new DateTime();
+            check_outDate = new DateTime();
             room = null;
             numberOfAdults = 0;
             numberOfChildren = 0;
             price = 0;
             season = Season.Low;
         }
-        public Reservation(Guest guest, string reservationID, string check_inDate, string check_outDate, Room room, int numberOfAdults, int numberOfChildren, double price, Season season, string specialRequests)
+        public Reservation(Guest guest, string reservationID, DateTime check_inDate, DateTime check_outDate, Room room, int numberOfAdults, int numberOfChildren, double price, Season season, string specialRequests)
         {
             this.guest = guest;
             this.reservationID = reservationID;
@@ -113,10 +114,11 @@ namespace inf2010s_semesterProject.Business
         public double CalculateTotalCost()
         {
             //Edit later to use DateTime instead of parsed integers
-            int[] checkIn = Array.ConvertAll(check_inDate.Split('/'), int.Parse);
-            int[] checkOut = Array.ConvertAll(check_outDate.Split('/'), int.Parse);
-            int totalDays = (checkOut[0] - checkIn[0]) + (checkOut[1] - checkIn[1]) + (checkOut[2] - checkIn[2]);
-            return guest.CalculateCost(price, totalDays);
+            //int[] checkIn = Array.ConvertAll(check_inDate.Split('/'), int.Parse);
+            //int[] checkOut = Array.ConvertAll(check_outDate.Split('/'), int.Parse);
+            //int totalDays = (checkOut[0] - checkIn[0]) + (checkOut[1] - checkIn[1]) + (checkOut[2] - checkIn[2]);
+            //return guest.CalculateCost(price, totalDays);
+            return 120;
         }
         #endregion
     }

@@ -57,8 +57,8 @@ namespace inf2010s_semesterProject.Presantation
                 string phone = phoneTextBox.Text;
                 string email = emailTextBox.Text;
                 string roomsRequired = roomTextBox.Text;
-                string checkIn = checkInTextBox.Text;
-                string checkOut = checkOutTextBox.Text;
+                DateTime checkIn = checkinPicker.Value;
+                DateTime checkOut = checkoutPicker.Value;
                 string numberOfAdults = adultsTextBox.Text;
                 string numberOfChildren = childrenTextBox.Text;
                 string specialRequest = specialRequestTextBox.Text;
@@ -82,7 +82,9 @@ namespace inf2010s_semesterProject.Presantation
         }
         public void Clear()
         {
-            nameTextBox.Text = lastNameTextBox.Text = phoneTextBox.Text = emailTextBox.Text = roomTextBox.Text = checkInTextBox.Text = checkOutTextBox.Text = adultsTextBox.Text = childrenTextBox.Text = regionTextBox.Text = specialRequestTextBox.Text = "";
+            nameTextBox.Text = lastNameTextBox.Text = phoneTextBox.Text = emailTextBox.Text = roomTextBox.Text = adultsTextBox.Text = childrenTextBox.Text = regionTextBox.Text = specialRequestTextBox.Text = "";
+            checkinPicker.Value = DateTime.Now;
+            checkoutPicker.Value = DateTime.Now;
         }
 
     }

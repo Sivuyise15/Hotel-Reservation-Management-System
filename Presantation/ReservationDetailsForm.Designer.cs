@@ -47,8 +47,6 @@
             this.companyRadioButton = new System.Windows.Forms.RadioButton();
             this.bookingDetailsGroupBox = new System.Windows.Forms.GroupBox();
             this.checkOutLabel = new System.Windows.Forms.Label();
-            this.checkInTextBox = new System.Windows.Forms.TextBox();
-            this.checkOutTextBox = new System.Windows.Forms.TextBox();
             this.childrenTextBox = new System.Windows.Forms.TextBox();
             this.roomTextBox = new System.Windows.Forms.TextBox();
             this.adultsTextBox = new System.Windows.Forms.TextBox();
@@ -58,6 +56,8 @@
             this.customerDetailsGroupBox = new System.Windows.Forms.GroupBox();
             this.regionLab = new System.Windows.Forms.Label();
             this.specialRequestsGroupBox = new System.Windows.Forms.GroupBox();
+            this.checkinPicker = new System.Windows.Forms.DateTimePicker();
+            this.checkoutPicker = new System.Windows.Forms.DateTimePicker();
             this.bookingDetailsGroupBox.SuspendLayout();
             this.customerDetailsGroupBox.SuspendLayout();
             this.specialRequestsGroupBox.SuspendLayout();
@@ -230,9 +230,9 @@
             // 
             // bookingDetailsGroupBox
             // 
+            this.bookingDetailsGroupBox.Controls.Add(this.checkoutPicker);
+            this.bookingDetailsGroupBox.Controls.Add(this.checkinPicker);
             this.bookingDetailsGroupBox.Controls.Add(this.checkOutLabel);
-            this.bookingDetailsGroupBox.Controls.Add(this.checkInTextBox);
-            this.bookingDetailsGroupBox.Controls.Add(this.checkOutTextBox);
             this.bookingDetailsGroupBox.Controls.Add(this.childrenTextBox);
             this.bookingDetailsGroupBox.Controls.Add(this.roomTextBox);
             this.bookingDetailsGroupBox.Controls.Add(this.adultsTextBox);
@@ -258,22 +258,6 @@
             this.checkOutLabel.Size = new System.Drawing.Size(191, 16);
             this.checkOutLabel.TabIndex = 24;
             this.checkOutLabel.Text = "Check-out date(DD/MM/YYYY)";
-            // 
-            // checkInTextBox
-            // 
-            this.checkInTextBox.Location = new System.Drawing.Point(57, 79);
-            this.checkInTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.checkInTextBox.Name = "checkInTextBox";
-            this.checkInTextBox.Size = new System.Drawing.Size(160, 22);
-            this.checkInTextBox.TabIndex = 26;
-            // 
-            // checkOutTextBox
-            // 
-            this.checkOutTextBox.Location = new System.Drawing.Point(57, 153);
-            this.checkOutTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.checkOutTextBox.Name = "checkOutTextBox";
-            this.checkOutTextBox.Size = new System.Drawing.Size(160, 22);
-            this.checkOutTextBox.TabIndex = 25;
             // 
             // childrenTextBox
             // 
@@ -377,6 +361,20 @@
             this.specialRequestsGroupBox.TabStop = false;
             this.specialRequestsGroupBox.Text = "Any special requests? (optional)";
             // 
+            // checkinPicker
+            // 
+            this.checkinPicker.Location = new System.Drawing.Point(56, 79);
+            this.checkinPicker.Name = "checkinPicker";
+            this.checkinPicker.Size = new System.Drawing.Size(200, 22);
+            this.checkinPicker.TabIndex = 25;
+            // 
+            // checkoutPicker
+            // 
+            this.checkoutPicker.Location = new System.Drawing.Point(56, 153);
+            this.checkoutPicker.Name = "checkoutPicker";
+            this.checkoutPicker.Size = new System.Drawing.Size(200, 22);
+            this.checkoutPicker.TabIndex = 26;
+            // 
             // ReservationDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -425,11 +423,11 @@
         private System.Windows.Forms.RichTextBox specialRequestTextBox;
         private System.Windows.Forms.Label checkInLabel;
         private System.Windows.Forms.Label checkOutLabel;
-        private System.Windows.Forms.TextBox checkOutTextBox;
-        private System.Windows.Forms.TextBox checkInTextBox;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.GroupBox customerDetailsGroupBox;
         private System.Windows.Forms.GroupBox specialRequestsGroupBox;
         private System.Windows.Forms.Label regionLab;
+        private System.Windows.Forms.DateTimePicker checkoutPicker;
+        private System.Windows.Forms.DateTimePicker checkinPicker;
     }
 }

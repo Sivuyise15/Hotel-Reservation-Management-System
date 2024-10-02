@@ -16,14 +16,14 @@ namespace inf2010s_semesterProject.Data
         {
         }
 
-        public void AddReservation(string ReservationID, string RoomID, string GuestID, string CheckIn, string CheckOut, string specialRequest)
+        public void AddReservation(string ReservationID, string RoomID, string GuestID, DateTime CheckIn, DateTime CheckOut, string specialRequest)
         {
             SqlCommand SqlInsert = new SqlCommand("INSERT INTO Reservation (ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialRequests) VALUES (@ReservationID, @GuestID, @RoomID, @CheckInDate, @CheckOutDate, @SpecialRequests)", conStr);
             SqlInsert.Parameters.Add(@"ReservationID",SqlDbType.NVarChar, 50, "ReservationID").Value = ReservationID;
             SqlInsert.Parameters.Add(@"RoomID", SqlDbType.NVarChar, 50, "RoomID").Value = RoomID;
             SqlInsert.Parameters.Add(@"GuestID", SqlDbType.NVarChar, 50, "GuestID").Value = GuestID;
-            SqlInsert.Parameters.Add(@"CheckInDate", SqlDbType.NVarChar, 50, "CheckIn").Value = CheckIn;
-            SqlInsert.Parameters.Add(@"CheckOutDate", SqlDbType.NVarChar, 50, "CheckOut").Value = CheckOut;
+            SqlInsert.Parameters.Add(@"CheckInDate", SqlDbType.Date).Value = CheckIn;
+            SqlInsert.Parameters.Add(@"CheckOutDate", SqlDbType.Date).Value = CheckOut;
             SqlInsert.Parameters.Add(@"SpecialRequests", SqlDbType.NVarChar, 50, "SpecialRequests").Value = specialRequest;
 
             conStr.Open();

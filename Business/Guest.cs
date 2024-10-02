@@ -37,7 +37,7 @@ namespace inf2010s_semesterProject.Business
             reservationID = "";
             roomID = "";
         }
-        public Guest(string pName, string lastName, string pPhone, string email, string guestID, string reservationID, string roomID, string check_inDate, string check_outDate):base(pName,lastName,pPhone, email)
+        public Guest(string pName, string lastName, string pPhone, string email, string guestID, string reservationID, string roomID, DateTime check_inDate, DateTime check_outDate):base(pName,lastName,pPhone, email)
         {
             this.guestID = guestID;
             this.reservationID = reservationID;
