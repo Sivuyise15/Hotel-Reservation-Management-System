@@ -30,9 +30,9 @@ namespace inf2010s_semesterProject {
         
         private RoomDataTable tableRoom;
         
-        private global::System.Data.DataRelation relationFK_Reservation_ToGuest;
+        private global::System.Data.DataRelation relationFK_Reservation_ToTable;
         
-        private global::System.Data.DataRelation relationFK_Reservation_ToRoom;
+        private global::System.Data.DataRelation relationFK_Reservation_ToTable_1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -246,8 +246,8 @@ namespace inf2010s_semesterProject {
                     this.tableRoom.InitVars();
                 }
             }
-            this.relationFK_Reservation_ToGuest = this.Relations["FK_Reservation_ToGuest"];
-            this.relationFK_Reservation_ToRoom = this.Relations["FK_Reservation_ToRoom"];
+            this.relationFK_Reservation_ToTable = this.Relations["FK_Reservation_ToTable"];
+            this.relationFK_Reservation_ToTable_1 = this.Relations["FK_Reservation_ToTable_1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -264,14 +264,14 @@ namespace inf2010s_semesterProject {
             base.Tables.Add(this.tableReservation);
             this.tableRoom = new RoomDataTable();
             base.Tables.Add(this.tableRoom);
-            this.relationFK_Reservation_ToGuest = new global::System.Data.DataRelation("FK_Reservation_ToGuest", new global::System.Data.DataColumn[] {
+            this.relationFK_Reservation_ToTable = new global::System.Data.DataRelation("FK_Reservation_ToTable", new global::System.Data.DataColumn[] {
                         this.tableGuest.GuestIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableReservation.GuestIDColumn}, false);
-            this.Relations.Add(this.relationFK_Reservation_ToGuest);
-            this.relationFK_Reservation_ToRoom = new global::System.Data.DataRelation("FK_Reservation_ToRoom", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_Reservation_ToTable);
+            this.relationFK_Reservation_ToTable_1 = new global::System.Data.DataRelation("FK_Reservation_ToTable_1", new global::System.Data.DataColumn[] {
                         this.tableRoom.RoomIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableReservation.RoomIDColumn}, false);
-            this.Relations.Add(this.relationFK_Reservation_ToRoom);
+            this.Relations.Add(this.relationFK_Reservation_ToTable_1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -363,21 +363,15 @@ namespace inf2010s_semesterProject {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class GuestDataTable : global::System.Data.TypedTableBase<GuestRow> {
             
-            private global::System.Data.DataColumn columnID;
-            
             private global::System.Data.DataColumn columnGuestID;
             
-            private global::System.Data.DataColumn columnFirst_Name;
+            private global::System.Data.DataColumn columnFirstName;
             
-            private global::System.Data.DataColumn columnLast_Name;
+            private global::System.Data.DataColumn columnLastName;
             
             private global::System.Data.DataColumn columnEmail;
             
             private global::System.Data.DataColumn columnPhoneNumber;
-            
-            private global::System.Data.DataColumn columnGuestType;
-            
-            private global::System.Data.DataColumn columnAge;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -414,14 +408,6 @@ namespace inf2010s_semesterProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn GuestIDColumn {
                 get {
                     return this.columnGuestID;
@@ -430,17 +416,17 @@ namespace inf2010s_semesterProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn First_NameColumn {
+            public global::System.Data.DataColumn FirstNameColumn {
                 get {
-                    return this.columnFirst_Name;
+                    return this.columnFirstName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Last_NameColumn {
+            public global::System.Data.DataColumn LastNameColumn {
                 get {
-                    return this.columnLast_Name;
+                    return this.columnLastName;
                 }
             }
             
@@ -457,22 +443,6 @@ namespace inf2010s_semesterProject {
             public global::System.Data.DataColumn PhoneNumberColumn {
                 get {
                     return this.columnPhoneNumber;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn GuestTypeColumn {
-                get {
-                    return this.columnGuestType;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn AgeColumn {
-                get {
-                    return this.columnAge;
                 }
             }
             
@@ -513,17 +483,14 @@ namespace inf2010s_semesterProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public GuestRow AddGuestRow(int ID, string GuestID, string First_Name, string Last_Name, string Email, string PhoneNumber, string GuestType, int Age) {
+            public GuestRow AddGuestRow(string GuestID, string FirstName, string LastName, string Email, string PhoneNumber) {
                 GuestRow rowGuestRow = ((GuestRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
                         GuestID,
-                        First_Name,
-                        Last_Name,
+                        FirstName,
+                        LastName,
                         Email,
-                        PhoneNumber,
-                        GuestType,
-                        Age};
+                        PhoneNumber};
                 rowGuestRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGuestRow);
                 return rowGuestRow;
@@ -553,51 +520,35 @@ namespace inf2010s_semesterProject {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
                 this.columnGuestID = base.Columns["GuestID"];
-                this.columnFirst_Name = base.Columns["First Name"];
-                this.columnLast_Name = base.Columns["Last Name"];
+                this.columnFirstName = base.Columns["FirstName"];
+                this.columnLastName = base.Columns["LastName"];
                 this.columnEmail = base.Columns["Email"];
                 this.columnPhoneNumber = base.Columns["PhoneNumber"];
-                this.columnGuestType = base.Columns["GuestType"];
-                this.columnAge = base.Columns["Age"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
                 this.columnGuestID = new global::System.Data.DataColumn("GuestID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGuestID);
-                this.columnFirst_Name = new global::System.Data.DataColumn("First Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFirst_Name);
-                this.columnLast_Name = new global::System.Data.DataColumn("Last Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLast_Name);
+                this.columnFirstName = new global::System.Data.DataColumn("FirstName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFirstName);
+                this.columnLastName = new global::System.Data.DataColumn("LastName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLastName);
                 this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmail);
                 this.columnPhoneNumber = new global::System.Data.DataColumn("PhoneNumber", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhoneNumber);
-                this.columnGuestType = new global::System.Data.DataColumn("GuestType", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGuestType);
-                this.columnAge = new global::System.Data.DataColumn("Age", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAge);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnGuestID}, true));
-                this.columnID.AllowDBNull = false;
                 this.columnGuestID.AllowDBNull = false;
                 this.columnGuestID.Unique = true;
-                this.columnGuestID.MaxLength = 50;
-                this.columnFirst_Name.AllowDBNull = false;
-                this.columnFirst_Name.MaxLength = 50;
-                this.columnLast_Name.AllowDBNull = false;
-                this.columnLast_Name.MaxLength = 50;
-                this.columnEmail.AllowDBNull = false;
+                this.columnGuestID.MaxLength = 20;
+                this.columnFirstName.MaxLength = 100;
+                this.columnLastName.MaxLength = 100;
                 this.columnEmail.MaxLength = 50;
-                this.columnPhoneNumber.AllowDBNull = false;
-                this.columnPhoneNumber.MaxLength = 50;
-                this.columnGuestType.AllowDBNull = false;
-                this.columnGuestType.MaxLength = 50;
+                this.columnPhoneNumber.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -731,8 +682,6 @@ namespace inf2010s_semesterProject {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ReservationDataTable : global::System.Data.TypedTableBase<ReservationRow> {
             
-            private global::System.Data.DataColumn columnID;
-            
             private global::System.Data.DataColumn columnReservationID;
             
             private global::System.Data.DataColumn columnGuestID;
@@ -776,14 +725,6 @@ namespace inf2010s_semesterProject {
             protected ReservationDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -871,21 +812,20 @@ namespace inf2010s_semesterProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ReservationRow AddReservationRow(string ID, string ReservationID, GuestRow parentGuestRowByFK_Reservation_ToGuest, RoomRow parentRoomRowByFK_Reservation_ToRoom, System.DateTime CheckInDate, System.DateTime CheckOutDate, string SpecialRequests) {
+            public ReservationRow AddReservationRow(string ReservationID, GuestRow parentGuestRowByFK_Reservation_ToTable, RoomRow parentRoomRowByFK_Reservation_ToTable_1, System.DateTime CheckInDate, System.DateTime CheckOutDate, string SpecialRequests) {
                 ReservationRow rowReservationRow = ((ReservationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
                         ReservationID,
                         null,
                         null,
                         CheckInDate,
                         CheckOutDate,
                         SpecialRequests};
-                if ((parentGuestRowByFK_Reservation_ToGuest != null)) {
-                    columnValuesArray[2] = parentGuestRowByFK_Reservation_ToGuest[1];
+                if ((parentGuestRowByFK_Reservation_ToTable != null)) {
+                    columnValuesArray[1] = parentGuestRowByFK_Reservation_ToTable[0];
                 }
-                if ((parentRoomRowByFK_Reservation_ToRoom != null)) {
-                    columnValuesArray[3] = parentRoomRowByFK_Reservation_ToRoom[1];
+                if ((parentRoomRowByFK_Reservation_ToTable_1 != null)) {
+                    columnValuesArray[2] = parentRoomRowByFK_Reservation_ToTable_1[0];
                 }
                 rowReservationRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReservationRow);
@@ -916,7 +856,6 @@ namespace inf2010s_semesterProject {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
                 this.columnReservationID = base.Columns["ReservationID"];
                 this.columnGuestID = base.Columns["GuestID"];
                 this.columnRoomID = base.Columns["RoomID"];
@@ -928,8 +867,6 @@ namespace inf2010s_semesterProject {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
                 this.columnReservationID = new global::System.Data.DataColumn("ReservationID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnReservationID);
                 this.columnGuestID = new global::System.Data.DataColumn("GuestID", typeof(string), null, global::System.Data.MappingType.Element);
@@ -944,18 +881,17 @@ namespace inf2010s_semesterProject {
                 base.Columns.Add(this.columnSpecialRequests);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnReservationID}, true));
-                this.columnID.AllowDBNull = false;
-                this.columnID.MaxLength = 15;
                 this.columnReservationID.AllowDBNull = false;
                 this.columnReservationID.Unique = true;
-                this.columnReservationID.MaxLength = 50;
+                this.columnReservationID.MaxLength = 20;
                 this.columnGuestID.AllowDBNull = false;
-                this.columnGuestID.MaxLength = 50;
+                this.columnGuestID.MaxLength = 20;
                 this.columnRoomID.AllowDBNull = false;
-                this.columnRoomID.MaxLength = 50;
+                this.columnRoomID.MaxLength = 20;
                 this.columnCheckInDate.AllowDBNull = false;
                 this.columnCheckOutDate.AllowDBNull = false;
-                this.columnSpecialRequests.MaxLength = 2147483647;
+                this.columnSpecialRequests.AllowDBNull = false;
+                this.columnSpecialRequests.MaxLength = 300;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1089,8 +1025,6 @@ namespace inf2010s_semesterProject {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class RoomDataTable : global::System.Data.TypedTableBase<RoomRow> {
             
-            private global::System.Data.DataColumn columnID;
-            
             private global::System.Data.DataColumn columnRoomID;
             
             private global::System.Data.DataColumn columnMaxOccupancy;
@@ -1128,14 +1062,6 @@ namespace inf2010s_semesterProject {
             protected RoomDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1199,10 +1125,9 @@ namespace inf2010s_semesterProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RoomRow AddRoomRow(int ID, string RoomID, int MaxOccupancy, string Status) {
+            public RoomRow AddRoomRow(string RoomID, int MaxOccupancy, string Status) {
                 RoomRow rowRoomRow = ((RoomRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
                         RoomID,
                         MaxOccupancy,
                         Status};
@@ -1235,7 +1160,6 @@ namespace inf2010s_semesterProject {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
                 this.columnRoomID = base.Columns["RoomID"];
                 this.columnMaxOccupancy = base.Columns["MaxOccupancy"];
                 this.columnStatus = base.Columns["Status"];
@@ -1244,8 +1168,6 @@ namespace inf2010s_semesterProject {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
                 this.columnRoomID = new global::System.Data.DataColumn("RoomID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRoomID);
                 this.columnMaxOccupancy = new global::System.Data.DataColumn("MaxOccupancy", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1254,13 +1176,12 @@ namespace inf2010s_semesterProject {
                 base.Columns.Add(this.columnStatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnRoomID}, true));
-                this.columnID.AllowDBNull = false;
                 this.columnRoomID.AllowDBNull = false;
                 this.columnRoomID.Unique = true;
-                this.columnRoomID.MaxLength = 50;
+                this.columnRoomID.MaxLength = 20;
                 this.columnMaxOccupancy.AllowDBNull = false;
                 this.columnStatus.AllowDBNull = false;
-                this.columnStatus.MaxLength = 50;
+                this.columnStatus.MaxLength = 15;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1403,17 +1324,6 @@ namespace inf2010s_semesterProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableGuest.IDColumn]));
-                }
-                set {
-                    this[this.tableGuest.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string GuestID {
                 get {
                     return ((string)(this[this.tableGuest.GuestIDColumn]));
@@ -1425,23 +1335,33 @@ namespace inf2010s_semesterProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string First_Name {
+            public string FirstName {
                 get {
-                    return ((string)(this[this.tableGuest.First_NameColumn]));
+                    try {
+                        return ((string)(this[this.tableGuest.FirstNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FirstName\' in table \'Guest\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableGuest.First_NameColumn] = value;
+                    this[this.tableGuest.FirstNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Last_Name {
+            public string LastName {
                 get {
-                    return ((string)(this[this.tableGuest.Last_NameColumn]));
+                    try {
+                        return ((string)(this[this.tableGuest.LastNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LastName\' in table \'Guest\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableGuest.Last_NameColumn] = value;
+                    this[this.tableGuest.LastNameColumn] = value;
                 }
             }
             
@@ -1449,7 +1369,12 @@ namespace inf2010s_semesterProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Email {
                 get {
-                    return ((string)(this[this.tableGuest.EmailColumn]));
+                    try {
+                        return ((string)(this[this.tableGuest.EmailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Email\' in table \'Guest\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableGuest.EmailColumn] = value;
@@ -1460,7 +1385,12 @@ namespace inf2010s_semesterProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string PhoneNumber {
                 get {
-                    return ((string)(this[this.tableGuest.PhoneNumberColumn]));
+                    try {
+                        return ((string)(this[this.tableGuest.PhoneNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PhoneNumber\' in table \'Guest\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableGuest.PhoneNumberColumn] = value;
@@ -1469,51 +1399,60 @@ namespace inf2010s_semesterProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string GuestType {
-                get {
-                    return ((string)(this[this.tableGuest.GuestTypeColumn]));
-                }
-                set {
-                    this[this.tableGuest.GuestTypeColumn] = value;
-                }
+            public bool IsFirstNameNull() {
+                return this.IsNull(this.tableGuest.FirstNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Age {
-                get {
-                    try {
-                        return ((int)(this[this.tableGuest.AgeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Age\' in table \'Guest\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGuest.AgeColumn] = value;
-                }
+            public void SetFirstNameNull() {
+                this[this.tableGuest.FirstNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsAgeNull() {
-                return this.IsNull(this.tableGuest.AgeColumn);
+            public bool IsLastNameNull() {
+                return this.IsNull(this.tableGuest.LastNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetAgeNull() {
-                this[this.tableGuest.AgeColumn] = global::System.Convert.DBNull;
+            public void SetLastNameNull() {
+                this[this.tableGuest.LastNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEmailNull() {
+                return this.IsNull(this.tableGuest.EmailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEmailNull() {
+                this[this.tableGuest.EmailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPhoneNumberNull() {
+                return this.IsNull(this.tableGuest.PhoneNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPhoneNumberNull() {
+                this[this.tableGuest.PhoneNumberColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ReservationRow[] GetReservationRows() {
-                if ((this.Table.ChildRelations["FK_Reservation_ToGuest"] == null)) {
+                if ((this.Table.ChildRelations["FK_Reservation_ToTable"] == null)) {
                     return new ReservationRow[0];
                 }
                 else {
-                    return ((ReservationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Reservation_ToGuest"])));
+                    return ((ReservationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Reservation_ToTable"])));
                 }
             }
         }
@@ -1530,17 +1469,6 @@ namespace inf2010s_semesterProject {
             internal ReservationRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableReservation = ((ReservationDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string ID {
-                get {
-                    return ((string)(this[this.tableReservation.IDColumn]));
-                }
-                set {
-                    this[this.tableReservation.IDColumn] = value;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1602,12 +1530,7 @@ namespace inf2010s_semesterProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string SpecialRequests {
                 get {
-                    try {
-                        return ((string)(this[this.tableReservation.SpecialRequestsColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SpecialRequests\' in table \'Reservation\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableReservation.SpecialRequestsColumn]));
                 }
                 set {
                     this[this.tableReservation.SpecialRequestsColumn] = value;
@@ -1618,10 +1541,10 @@ namespace inf2010s_semesterProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public GuestRow GuestRow {
                 get {
-                    return ((GuestRow)(this.GetParentRow(this.Table.ParentRelations["FK_Reservation_ToGuest"])));
+                    return ((GuestRow)(this.GetParentRow(this.Table.ParentRelations["FK_Reservation_ToTable"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Reservation_ToGuest"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Reservation_ToTable"]);
                 }
             }
             
@@ -1629,23 +1552,11 @@ namespace inf2010s_semesterProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public RoomRow RoomRow {
                 get {
-                    return ((RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK_Reservation_ToRoom"])));
+                    return ((RoomRow)(this.GetParentRow(this.Table.ParentRelations["FK_Reservation_ToTable_1"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Reservation_ToRoom"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Reservation_ToTable_1"]);
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSpecialRequestsNull() {
-                return this.IsNull(this.tableReservation.SpecialRequestsColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSpecialRequestsNull() {
-                this[this.tableReservation.SpecialRequestsColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1661,17 +1572,6 @@ namespace inf2010s_semesterProject {
             internal RoomRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableRoom = ((RoomDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableRoom.IDColumn]));
-                }
-                set {
-                    this[this.tableRoom.IDColumn] = value;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1710,11 +1610,11 @@ namespace inf2010s_semesterProject {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ReservationRow[] GetReservationRows() {
-                if ((this.Table.ChildRelations["FK_Reservation_ToRoom"] == null)) {
+                if ((this.Table.ChildRelations["FK_Reservation_ToTable_1"] == null)) {
                     return new ReservationRow[0];
                 }
                 else {
-                    return ((ReservationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Reservation_ToRoom"])));
+                    return ((ReservationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Reservation_ToTable_1"])));
                 }
             }
         }
@@ -1946,63 +1846,56 @@ namespace inf2010s_semesterProject.phumlaKamnandiDataBaseDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Guest";
-            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("GuestID", "GuestID");
-            tableMapping.ColumnMappings.Add("First Name", "First Name");
-            tableMapping.ColumnMappings.Add("Last Name", "Last Name");
+            tableMapping.ColumnMappings.Add("FirstName", "FirstName");
+            tableMapping.ColumnMappings.Add("LastName", "LastName");
             tableMapping.ColumnMappings.Add("Email", "Email");
             tableMapping.ColumnMappings.Add("PhoneNumber", "PhoneNumber");
-            tableMapping.ColumnMappings.Add("GuestType", "GuestType");
-            tableMapping.ColumnMappings.Add("Age", "Age");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Guest] WHERE (([ID] = @Original_ID) AND ([GuestID] = @Original_GuestID) AND ([First Name] = @Original_First_Name) AND ([Last Name] = @Original_Last_Name) AND ([Email] = @Original_Email) AND ([PhoneNumber] = @Original_PhoneNumber) AND ([GuestType] = @Original_GuestType) AND ((@IsNull_Age = 1 AND [Age] IS NULL) OR ([Age] = @Original_Age)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Guest] WHERE (([GuestID] = @Original_GuestID) AND ((@IsNull_FirstName = 1 AND [FirstName] IS NULL) OR ([FirstName] = @Original_FirstName)) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_PhoneNumber = 1 AND [PhoneNumber] IS NULL) OR ([PhoneNumber] = @Original_PhoneNumber)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GuestID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_First_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "First Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Last_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Last Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FirstName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LastName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Email", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PhoneNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PhoneNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GuestType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Age", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Age", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Age", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Age", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Guest] ([ID], [GuestID], [First Name], [Last Name], [Email], [PhoneNumber], [GuestType], [Age]) VALUES (@ID, @GuestID, @First_Name, @Last_Name, @Email, @PhoneNumber, @GuestType, @Age);
-SELECT ID, GuestID, [First Name], [Last Name], Email, PhoneNumber, GuestType, Age FROM Guest WHERE (GuestID = @GuestID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Guest] ([GuestID], [FirstName], [LastName], [Email], [PhoneNum" +
+                "ber]) VALUES (@GuestID, @FirstName, @LastName, @Email, @PhoneNumber);\r\nSELECT Gu" +
+                "estID, FirstName, LastName, Email, PhoneNumber FROM Guest WHERE (GuestID = @Gues" +
+                "tID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GuestID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@First_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "First Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Last_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Last Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhoneNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GuestType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Age", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Age", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Guest] SET [ID] = @ID, [GuestID] = @GuestID, [First Name] = @First_Name, [Last Name] = @Last_Name, [Email] = @Email, [PhoneNumber] = @PhoneNumber, [GuestType] = @GuestType, [Age] = @Age WHERE (([ID] = @Original_ID) AND ([GuestID] = @Original_GuestID) AND ([First Name] = @Original_First_Name) AND ([Last Name] = @Original_Last_Name) AND ([Email] = @Original_Email) AND ([PhoneNumber] = @Original_PhoneNumber) AND ([GuestType] = @Original_GuestType) AND ((@IsNull_Age = 1 AND [Age] IS NULL) OR ([Age] = @Original_Age)));
-SELECT ID, GuestID, [First Name], [Last Name], Email, PhoneNumber, GuestType, Age FROM Guest WHERE (GuestID = @GuestID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Guest] SET [GuestID] = @GuestID, [FirstName] = @FirstName, [LastName] = @LastName, [Email] = @Email, [PhoneNumber] = @PhoneNumber WHERE (([GuestID] = @Original_GuestID) AND ((@IsNull_FirstName = 1 AND [FirstName] IS NULL) OR ([FirstName] = @Original_FirstName)) AND ((@IsNull_LastName = 1 AND [LastName] IS NULL) OR ([LastName] = @Original_LastName)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_PhoneNumber = 1 AND [PhoneNumber] IS NULL) OR ([PhoneNumber] = @Original_PhoneNumber)));
+SELECT GuestID, FirstName, LastName, Email, PhoneNumber FROM Guest WHERE (GuestID = @GuestID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GuestID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@First_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "First Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Last_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Last Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhoneNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GuestType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Age", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Age", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GuestID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_First_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "First Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Last_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Last Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FirstName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LastName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Email", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PhoneNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PhoneNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GuestType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Age", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Age", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Age", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Age", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2018,8 +1911,7 @@ SELECT ID, GuestID, [First Name], [Last Name], Email, PhoneNumber, GuestType, Ag
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, GuestID, [First Name], [Last Name], Email, PhoneNumber, GuestType, Age" +
-                " FROM dbo.Guest";
+            this._commandCollection[0].CommandText = "SELECT GuestID, FirstName, LastName, Email, PhoneNumber FROM dbo.Guest";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2080,51 +1972,44 @@ SELECT ID, GuestID, [First Name], [Last Name], Email, PhoneNumber, GuestType, Ag
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_GuestID, string Original_First_Name, string Original_Last_Name, string Original_Email, string Original_PhoneNumber, string Original_GuestType, global::System.Nullable<int> Original_Age) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
+        public virtual int Delete(string Original_GuestID, string Original_FirstName, string Original_LastName, string Original_Email, string Original_PhoneNumber) {
             if ((Original_GuestID == null)) {
                 throw new global::System.ArgumentNullException("Original_GuestID");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_GuestID));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_GuestID));
             }
-            if ((Original_First_Name == null)) {
-                throw new global::System.ArgumentNullException("Original_First_Name");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_First_Name));
-            }
-            if ((Original_Last_Name == null)) {
-                throw new global::System.ArgumentNullException("Original_Last_Name");
+            if ((Original_FirstName == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Last_Name));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_FirstName));
+            }
+            if ((Original_LastName == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_LastName));
             }
             if ((Original_Email == null)) {
-                throw new global::System.ArgumentNullException("Original_Email");
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Email));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Email));
             }
             if ((Original_PhoneNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_PhoneNumber");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_PhoneNumber));
-            }
-            if ((Original_GuestType == null)) {
-                throw new global::System.ArgumentNullException("Original_GuestType");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_GuestType));
-            }
-            if ((Original_Age.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_Age.Value));
-            }
-            else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_PhoneNumber));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2146,49 +2031,36 @@ SELECT ID, GuestID, [First Name], [Last Name], Email, PhoneNumber, GuestType, Ag
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ID, string GuestID, string First_Name, string Last_Name, string Email, string PhoneNumber, string GuestType, global::System.Nullable<int> Age) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID));
+        public virtual int Insert(string GuestID, string FirstName, string LastName, string Email, string PhoneNumber) {
             if ((GuestID == null)) {
                 throw new global::System.ArgumentNullException("GuestID");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(GuestID));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(GuestID));
             }
-            if ((First_Name == null)) {
-                throw new global::System.ArgumentNullException("First_Name");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(First_Name));
-            }
-            if ((Last_Name == null)) {
-                throw new global::System.ArgumentNullException("Last_Name");
+            if ((FirstName == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Last_Name));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(FirstName));
+            }
+            if ((LastName == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(LastName));
             }
             if ((Email == null)) {
-                throw new global::System.ArgumentNullException("Email");
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Email));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Email));
             }
             if ((PhoneNumber == null)) {
-                throw new global::System.ArgumentNullException("PhoneNumber");
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(PhoneNumber));
-            }
-            if ((GuestType == null)) {
-                throw new global::System.ArgumentNullException("GuestType");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(GuestType));
-            }
-            if ((Age.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(Age.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(PhoneNumber));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2210,110 +2082,74 @@ SELECT ID, GuestID, [First Name], [Last Name], Email, PhoneNumber, GuestType, Ag
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    int ID, 
-                    string GuestID, 
-                    string First_Name, 
-                    string Last_Name, 
-                    string Email, 
-                    string PhoneNumber, 
-                    string GuestType, 
-                    global::System.Nullable<int> Age, 
-                    int Original_ID, 
-                    string Original_GuestID, 
-                    string Original_First_Name, 
-                    string Original_Last_Name, 
-                    string Original_Email, 
-                    string Original_PhoneNumber, 
-                    string Original_GuestType, 
-                    global::System.Nullable<int> Original_Age) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID));
+        public virtual int Update(string GuestID, string FirstName, string LastName, string Email, string PhoneNumber, string Original_GuestID, string Original_FirstName, string Original_LastName, string Original_Email, string Original_PhoneNumber) {
             if ((GuestID == null)) {
                 throw new global::System.ArgumentNullException("GuestID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(GuestID));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(GuestID));
             }
-            if ((First_Name == null)) {
-                throw new global::System.ArgumentNullException("First_Name");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(First_Name));
-            }
-            if ((Last_Name == null)) {
-                throw new global::System.ArgumentNullException("Last_Name");
+            if ((FirstName == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Last_Name));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(FirstName));
+            }
+            if ((LastName == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(LastName));
             }
             if ((Email == null)) {
-                throw new global::System.ArgumentNullException("Email");
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Email));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Email));
             }
             if ((PhoneNumber == null)) {
-                throw new global::System.ArgumentNullException("PhoneNumber");
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(PhoneNumber));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(PhoneNumber));
             }
-            if ((GuestType == null)) {
-                throw new global::System.ArgumentNullException("GuestType");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(GuestType));
-            }
-            if ((Age.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Age.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_ID));
             if ((Original_GuestID == null)) {
                 throw new global::System.ArgumentNullException("Original_GuestID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_GuestID));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_GuestID));
             }
-            if ((Original_First_Name == null)) {
-                throw new global::System.ArgumentNullException("Original_First_Name");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_First_Name));
-            }
-            if ((Original_Last_Name == null)) {
-                throw new global::System.ArgumentNullException("Original_Last_Name");
+            if ((Original_FirstName == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Last_Name));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_FirstName));
+            }
+            if ((Original_LastName == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_LastName));
             }
             if ((Original_Email == null)) {
-                throw new global::System.ArgumentNullException("Original_Email");
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Email));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Email));
             }
             if ((Original_PhoneNumber == null)) {
-                throw new global::System.ArgumentNullException("Original_PhoneNumber");
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_PhoneNumber));
-            }
-            if ((Original_GuestType == null)) {
-                throw new global::System.ArgumentNullException("Original_GuestType");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_GuestType));
-            }
-            if ((Original_Age.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_Age.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2335,8 +2171,8 @@ SELECT ID, GuestID, [First Name], [Last Name], Email, PhoneNumber, GuestType, Ag
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ID, string First_Name, string Last_Name, string Email, string PhoneNumber, string GuestType, global::System.Nullable<int> Age, int Original_ID, string Original_GuestID, string Original_First_Name, string Original_Last_Name, string Original_Email, string Original_PhoneNumber, string Original_GuestType, global::System.Nullable<int> Original_Age) {
-            return this.Update(ID, Original_GuestID, First_Name, Last_Name, Email, PhoneNumber, GuestType, Age, Original_ID, Original_GuestID, Original_First_Name, Original_Last_Name, Original_Email, Original_PhoneNumber, Original_GuestType, Original_Age);
+        public virtual int Update(string FirstName, string LastName, string Email, string PhoneNumber, string Original_GuestID, string Original_FirstName, string Original_LastName, string Original_Email, string Original_PhoneNumber) {
+            return this.Update(Original_GuestID, FirstName, LastName, Email, PhoneNumber, Original_GuestID, Original_FirstName, Original_LastName, Original_Email, Original_PhoneNumber);
         }
     }
     
@@ -2461,7 +2297,6 @@ SELECT ID, GuestID, [First Name], [Last Name], Email, PhoneNumber, GuestType, Ag
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Reservation";
-            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("ReservationID", "ReservationID");
             tableMapping.ColumnMappings.Add("GuestID", "GuestID");
             tableMapping.ColumnMappings.Add("RoomID", "RoomID");
@@ -2471,20 +2306,19 @@ SELECT ID, GuestID, [First Name], [Last Name], Email, PhoneNumber, GuestType, Ag
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Reservation] WHERE (([ID] = @Original_ID) AND ([ReservationID] = @Original_ReservationID) AND ([GuestID] = @Original_GuestID) AND ([RoomID] = @Original_RoomID) AND ([CheckInDate] = @Original_CheckInDate) AND ([CheckOutDate] = @Original_CheckOutDate))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Reservation] WHERE (([ReservationID] = @Original_ReservationID) AND ([GuestID] = @Original_GuestID) AND ([RoomID] = @Original_RoomID) AND ([CheckInDate] = @Original_CheckInDate) AND ([CheckOutDate] = @Original_CheckOutDate) AND ([SpecialRequests] = @Original_SpecialRequests))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ReservationID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReservationID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GuestID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CheckInDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CheckInDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CheckOutDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CheckOutDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SpecialRequests", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpecialRequests", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Reservation] ([ID], [ReservationID], [GuestID], [RoomID], [CheckInDate], [CheckOutDate], [SpecialRequests]) VALUES (@ID, @ReservationID, @GuestID, @RoomID, @CheckInDate, @CheckOutDate, @SpecialRequests);
-SELECT ID, ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialRequests FROM Reservation WHERE (ReservationID = @ReservationID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Reservation] ([ReservationID], [GuestID], [RoomID], [CheckInDate], [CheckOutDate], [SpecialRequests]) VALUES (@ReservationID, @GuestID, @RoomID, @CheckInDate, @CheckOutDate, @SpecialRequests);
+SELECT ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialRequests FROM Reservation WHERE (ReservationID = @ReservationID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ReservationID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReservationID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GuestID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2493,22 +2327,21 @@ SELECT ID, ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialReq
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SpecialRequests", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpecialRequests", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Reservation] SET [ID] = @ID, [ReservationID] = @ReservationID, [GuestID] = @GuestID, [RoomID] = @RoomID, [CheckInDate] = @CheckInDate, [CheckOutDate] = @CheckOutDate, [SpecialRequests] = @SpecialRequests WHERE (([ID] = @Original_ID) AND ([ReservationID] = @Original_ReservationID) AND ([GuestID] = @Original_GuestID) AND ([RoomID] = @Original_RoomID) AND ([CheckInDate] = @Original_CheckInDate) AND ([CheckOutDate] = @Original_CheckOutDate));
-SELECT ID, ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialRequests FROM Reservation WHERE (ReservationID = @ReservationID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Reservation] SET [ReservationID] = @ReservationID, [GuestID] = @GuestID, [RoomID] = @RoomID, [CheckInDate] = @CheckInDate, [CheckOutDate] = @CheckOutDate, [SpecialRequests] = @SpecialRequests WHERE (([ReservationID] = @Original_ReservationID) AND ([GuestID] = @Original_GuestID) AND ([RoomID] = @Original_RoomID) AND ([CheckInDate] = @Original_CheckInDate) AND ([CheckOutDate] = @Original_CheckOutDate) AND ([SpecialRequests] = @Original_SpecialRequests));
+SELECT ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialRequests FROM Reservation WHERE (ReservationID = @ReservationID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ReservationID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReservationID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GuestID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CheckInDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CheckInDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CheckOutDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CheckOutDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SpecialRequests", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpecialRequests", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ReservationID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReservationID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GuestID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GuestID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CheckInDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CheckInDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CheckOutDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CheckOutDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SpecialRequests", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpecialRequests", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2524,8 +2357,8 @@ SELECT ID, ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialReq
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialRequ" +
-                "ests FROM dbo.Reservation";
+            this._commandCollection[0].CommandText = "SELECT ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialRequests" +
+                " FROM dbo.Reservation";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2586,33 +2419,33 @@ SELECT ID, ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialReq
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_ID, string Original_ReservationID, string Original_GuestID, string Original_RoomID, System.DateTime Original_CheckInDate, System.DateTime Original_CheckOutDate) {
-            if ((Original_ID == null)) {
-                throw new global::System.ArgumentNullException("Original_ID");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_ID));
-            }
+        public virtual int Delete(string Original_ReservationID, string Original_GuestID, string Original_RoomID, System.DateTime Original_CheckInDate, System.DateTime Original_CheckOutDate, string Original_SpecialRequests) {
             if ((Original_ReservationID == null)) {
                 throw new global::System.ArgumentNullException("Original_ReservationID");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_ReservationID));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_ReservationID));
             }
             if ((Original_GuestID == null)) {
                 throw new global::System.ArgumentNullException("Original_GuestID");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_GuestID));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_GuestID));
             }
             if ((Original_RoomID == null)) {
                 throw new global::System.ArgumentNullException("Original_RoomID");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_RoomID));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_RoomID));
             }
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_CheckInDate));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_CheckOutDate));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_CheckInDate));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_CheckOutDate));
+            if ((Original_SpecialRequests == null)) {
+                throw new global::System.ArgumentNullException("Original_SpecialRequests");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_SpecialRequests));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2633,38 +2466,32 @@ SELECT ID, ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialReq
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ID, string ReservationID, string GuestID, string RoomID, System.DateTime CheckInDate, System.DateTime CheckOutDate, string SpecialRequests) {
-            if ((ID == null)) {
-                throw new global::System.ArgumentNullException("ID");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ID));
-            }
+        public virtual int Insert(string ReservationID, string GuestID, string RoomID, System.DateTime CheckInDate, System.DateTime CheckOutDate, string SpecialRequests) {
             if ((ReservationID == null)) {
                 throw new global::System.ArgumentNullException("ReservationID");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(ReservationID));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ReservationID));
             }
             if ((GuestID == null)) {
                 throw new global::System.ArgumentNullException("GuestID");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(GuestID));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(GuestID));
             }
             if ((RoomID == null)) {
                 throw new global::System.ArgumentNullException("RoomID");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(RoomID));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(RoomID));
             }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(CheckInDate));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(CheckOutDate));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(CheckInDate));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(CheckOutDate));
             if ((SpecialRequests == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("SpecialRequests");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(SpecialRequests));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(SpecialRequests));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2686,65 +2513,59 @@ SELECT ID, ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialReq
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ID, string ReservationID, string GuestID, string RoomID, System.DateTime CheckInDate, System.DateTime CheckOutDate, string SpecialRequests, string Original_ID, string Original_ReservationID, string Original_GuestID, string Original_RoomID, System.DateTime Original_CheckInDate, System.DateTime Original_CheckOutDate) {
-            if ((ID == null)) {
-                throw new global::System.ArgumentNullException("ID");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ID));
-            }
+        public virtual int Update(string ReservationID, string GuestID, string RoomID, System.DateTime CheckInDate, System.DateTime CheckOutDate, string SpecialRequests, string Original_ReservationID, string Original_GuestID, string Original_RoomID, System.DateTime Original_CheckInDate, System.DateTime Original_CheckOutDate, string Original_SpecialRequests) {
             if ((ReservationID == null)) {
                 throw new global::System.ArgumentNullException("ReservationID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(ReservationID));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ReservationID));
             }
             if ((GuestID == null)) {
                 throw new global::System.ArgumentNullException("GuestID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(GuestID));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(GuestID));
             }
             if ((RoomID == null)) {
                 throw new global::System.ArgumentNullException("RoomID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(RoomID));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(RoomID));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(CheckInDate));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(CheckOutDate));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(CheckInDate));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(CheckOutDate));
             if ((SpecialRequests == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("SpecialRequests");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(SpecialRequests));
-            }
-            if ((Original_ID == null)) {
-                throw new global::System.ArgumentNullException("Original_ID");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_ID));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(SpecialRequests));
             }
             if ((Original_ReservationID == null)) {
                 throw new global::System.ArgumentNullException("Original_ReservationID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_ReservationID));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_ReservationID));
             }
             if ((Original_GuestID == null)) {
                 throw new global::System.ArgumentNullException("Original_GuestID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_GuestID));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_GuestID));
             }
             if ((Original_RoomID == null)) {
                 throw new global::System.ArgumentNullException("Original_RoomID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_RoomID));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_RoomID));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Original_CheckInDate));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_CheckOutDate));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_CheckInDate));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_CheckOutDate));
+            if ((Original_SpecialRequests == null)) {
+                throw new global::System.ArgumentNullException("Original_SpecialRequests");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_SpecialRequests));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2765,8 +2586,8 @@ SELECT ID, ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialReq
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ID, string GuestID, string RoomID, System.DateTime CheckInDate, System.DateTime CheckOutDate, string SpecialRequests, string Original_ID, string Original_ReservationID, string Original_GuestID, string Original_RoomID, System.DateTime Original_CheckInDate, System.DateTime Original_CheckOutDate) {
-            return this.Update(ID, Original_ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialRequests, Original_ID, Original_ReservationID, Original_GuestID, Original_RoomID, Original_CheckInDate, Original_CheckOutDate);
+        public virtual int Update(string GuestID, string RoomID, System.DateTime CheckInDate, System.DateTime CheckOutDate, string SpecialRequests, string Original_ReservationID, string Original_GuestID, string Original_RoomID, System.DateTime Original_CheckInDate, System.DateTime Original_CheckOutDate, string Original_SpecialRequests) {
+            return this.Update(Original_ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialRequests, Original_ReservationID, Original_GuestID, Original_RoomID, Original_CheckInDate, Original_CheckOutDate, Original_SpecialRequests);
         }
     }
     
@@ -2891,41 +2712,35 @@ SELECT ID, ReservationID, GuestID, RoomID, CheckInDate, CheckOutDate, SpecialReq
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Room";
-            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("RoomID", "RoomID");
             tableMapping.ColumnMappings.Add("MaxOccupancy", "MaxOccupancy");
             tableMapping.ColumnMappings.Add("Status", "Status");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Room] WHERE (([ID] = @Original_ID) AND ([RoomID] = @Original_R" +
-                "oomID) AND ([MaxOccupancy] = @Original_MaxOccupancy) AND ([Status] = @Original_S" +
-                "tatus))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Room] WHERE (([RoomID] = @Original_RoomID) AND ([MaxOccupancy]" +
+                " = @Original_MaxOccupancy) AND ([Status] = @Original_Status))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxOccupancy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxOccupancy", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Room] ([ID], [RoomID], [MaxOccupancy], [Status]) VALUES (@ID, " +
-                "@RoomID, @MaxOccupancy, @Status);\r\nSELECT ID, RoomID, MaxOccupancy, Status FROM " +
-                "Room WHERE (RoomID = @RoomID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Room] ([RoomID], [MaxOccupancy], [Status]) VALUES (@RoomID, @M" +
+                "axOccupancy, @Status);\r\nSELECT RoomID, MaxOccupancy, Status FROM Room WHERE (Roo" +
+                "mID = @RoomID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxOccupancy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxOccupancy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Room] SET [ID] = @ID, [RoomID] = @RoomID, [MaxOccupancy] = @MaxOccupancy, [Status] = @Status WHERE (([ID] = @Original_ID) AND ([RoomID] = @Original_RoomID) AND ([MaxOccupancy] = @Original_MaxOccupancy) AND ([Status] = @Original_Status));
-SELECT ID, RoomID, MaxOccupancy, Status FROM Room WHERE (RoomID = @RoomID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Room] SET [RoomID] = @RoomID, [MaxOccupancy] = @MaxOccupancy, [Status] = @Status WHERE (([RoomID] = @Original_RoomID) AND ([MaxOccupancy] = @Original_MaxOccupancy) AND ([Status] = @Original_Status));
+SELECT RoomID, MaxOccupancy, Status FROM Room WHERE (RoomID = @RoomID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoomID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxOccupancy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxOccupancy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoomID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoomID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxOccupancy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxOccupancy", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2944,7 +2759,7 @@ SELECT ID, RoomID, MaxOccupancy, Status FROM Room WHERE (RoomID = @RoomID)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, RoomID, MaxOccupancy, Status FROM dbo.Room";
+            this._commandCollection[0].CommandText = "SELECT RoomID, MaxOccupancy, Status FROM dbo.Room";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3005,20 +2820,19 @@ SELECT ID, RoomID, MaxOccupancy, Status FROM Room WHERE (RoomID = @RoomID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_RoomID, int Original_MaxOccupancy, string Original_Status) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
+        public virtual int Delete(string Original_RoomID, int Original_MaxOccupancy, string Original_Status) {
             if ((Original_RoomID == null)) {
                 throw new global::System.ArgumentNullException("Original_RoomID");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_RoomID));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_RoomID));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_MaxOccupancy));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_MaxOccupancy));
             if ((Original_Status == null)) {
                 throw new global::System.ArgumentNullException("Original_Status");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Status));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Status));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3040,20 +2854,19 @@ SELECT ID, RoomID, MaxOccupancy, Status FROM Room WHERE (RoomID = @RoomID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ID, string RoomID, int MaxOccupancy, string Status) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID));
+        public virtual int Insert(string RoomID, int MaxOccupancy, string Status) {
             if ((RoomID == null)) {
                 throw new global::System.ArgumentNullException("RoomID");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(RoomID));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(RoomID));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(MaxOccupancy));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(MaxOccupancy));
             if ((Status == null)) {
                 throw new global::System.ArgumentNullException("Status");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Status));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Status));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3075,34 +2888,32 @@ SELECT ID, RoomID, MaxOccupancy, Status FROM Room WHERE (RoomID = @RoomID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ID, string RoomID, int MaxOccupancy, string Status, int Original_ID, string Original_RoomID, int Original_MaxOccupancy, string Original_Status) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID));
+        public virtual int Update(string RoomID, int MaxOccupancy, string Status, string Original_RoomID, int Original_MaxOccupancy, string Original_Status) {
             if ((RoomID == null)) {
                 throw new global::System.ArgumentNullException("RoomID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(RoomID));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(RoomID));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(MaxOccupancy));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(MaxOccupancy));
             if ((Status == null)) {
                 throw new global::System.ArgumentNullException("Status");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Status));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Status));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID));
             if ((Original_RoomID == null)) {
                 throw new global::System.ArgumentNullException("Original_RoomID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_RoomID));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_RoomID));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_MaxOccupancy));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_MaxOccupancy));
             if ((Original_Status == null)) {
                 throw new global::System.ArgumentNullException("Original_Status");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Status));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Status));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3124,8 +2935,8 @@ SELECT ID, RoomID, MaxOccupancy, Status FROM Room WHERE (RoomID = @RoomID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ID, int MaxOccupancy, string Status, int Original_ID, string Original_RoomID, int Original_MaxOccupancy, string Original_Status) {
-            return this.Update(ID, Original_RoomID, MaxOccupancy, Status, Original_ID, Original_RoomID, Original_MaxOccupancy, Original_Status);
+        public virtual int Update(int MaxOccupancy, string Status, string Original_RoomID, int Original_MaxOccupancy, string Original_Status) {
+            return this.Update(Original_RoomID, MaxOccupancy, Status, Original_RoomID, Original_MaxOccupancy, Original_Status);
         }
     }
     
