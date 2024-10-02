@@ -10,7 +10,6 @@ namespace inf2010s_semesterProject.Business
     {
         #region Fields
         private string guestID;
-        private string check_inDate, check_outDate;
 
         #endregion
         #region Properties
@@ -24,9 +23,10 @@ namespace inf2010s_semesterProject.Business
         public Guest():base()
         {
             guestID = "";
-            check_inDate = "";
         }
-        public Guest(string pName, string lastName, string pPhone, string email, string guestID, string reservationID, string roomID, string check_inDate, string check_outDate):base(pName,lastName,pPhone, email)
+
+        public Guest(string pName, string lastName, string pPhone, string email, string guestID):base(pName,lastName,pPhone, email)
+
         {
             this.guestID = guestID;
         }

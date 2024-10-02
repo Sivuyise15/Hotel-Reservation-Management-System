@@ -45,8 +45,17 @@ namespace inf2010s_semesterProject.Presantation
             }
             return StringBuilder.ToString();
         }
+        public void Clear()
+        {
+            nameTextBox.Text = lastNameTextBox.Text = phoneTextBox.Text = emailTextBox.Text = roomTextBox.Text = adultsTextBox.Text = childrenTextBox.Text = regionTextBox.Text = specialRequestTextBox.Text = "";
+        }
 
-        private void submitButton_Click(object sender, EventArgs e)
+        private void childrenTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nextButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -55,8 +64,8 @@ namespace inf2010s_semesterProject.Presantation
                 string phone = phoneTextBox.Text;
                 string email = emailTextBox.Text;
                 string roomsRequired = roomTextBox.Text;
-                DateTime checkIn = checkinPicker.Value;
-                DateTime checkOut = checkoutPicker.Value;
+                DateTime checkInDateTime = checkInDateTimePicker.Value;
+                DateTime checkOutDateTime = checkOutDateTimePicker.Value;
                 string numberOfAdults = adultsTextBox.Text;
                 string numberOfChildren = childrenTextBox.Text;
                 string specialRequest = specialRequestTextBox.Text;
@@ -77,21 +86,23 @@ namespace inf2010s_semesterProject.Presantation
 
 
                 room = new Room(roomID, 2000, 4, Room.RoomStatus.Available);
-                reservation = new Reservation(guests, reservationID, checkIn, checkOut, room, Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren), specialRequest);
+                reservation = new Reservation(guests, reservationID, checkInDateTime, checkOutDateTime, room, Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren), specialRequest);
                 double cost = reservation.CalculateTotalCost();
 
+                costTextBox.Text = "R" + cost.ToString();
+                
                 ReservationDatabase db = new ReservationDatabase("Reservation");
                 GuestDatabase guestDb = new GuestDatabase("Guest");
-                
-                
-                if(individualRadioButton.Checked)
+
+
+                if (individualRadioButton.Checked)
                 {
                     PaymentForm paymentForm = new PaymentForm();
                     paymentForm.Show();
-                    paymentForm.totalCostTextBox.Text = "R"+cost.ToString();
+                    paymentForm.totalCostTextBox.Text = "R" + cost.ToString();
                 }
 
-                db.AddReservation(reservationID, roomID, guestID, checkIn, checkOut, specialRequest, cost);
+                db.AddReservation(reservationID, roomID, guestID, checkInDateTime, checkOutDateTime, specialRequest, cost);
                 guestDb.AddGuest(guestID, name, lastName, phone, email);
                 Clear();
             }
@@ -100,53 +111,10 @@ namespace inf2010s_semesterProject.Presantation
                 MessageBox.Show(ex.Message);
             }
         }
-        public void Clear()
-        {
-            nameTextBox.Text = lastNameTextBox.Text = phoneTextBox.Text = emailTextBox.Text = roomTextBox.Text = adultsTextBox.Text = childrenTextBox.Text = regionTextBox.Text = specialRequestTextBox.Text = "";
-            checkinPicker.Value = DateTime.Now;
-            checkoutPicker.Value = DateTime.Now;
-        }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnCalcPrice_Click(object sender, EventArgs e)
-        {
-            int inDate = checkinPicker.Value.Day;
-            int outDate = checkoutPicker.Value.Day;
-            int adults = 0;
-            int kids = 0;
-            decimal totalCost = 0;
-            if (adultsTextBox.Text != "" && childrenTextBox.Text != "")
-            {
-                adults = Convert.ToInt32(adultsTextBox.Text);
-                kids = Convert.ToInt32(childrenTextBox.Text);
-                int i = 0;
-                while (inDate <= outDate)
-                {
-                    if (inDate >= 1 && inDate <= 7)
-                    {
-                        totalCost += adults * 550;
-                        totalCost += kids * 550 / 2;
-                    } else if (inDate >= 8 && inDate <= 15)
-                    {
-                        totalCost += adults * 750;
-                        totalCost += kids * 750 / 2;
-                    } else if (inDate >= 16 && inDate <= 31)
-                    {
-                        totalCost += adults * 995;
-                        totalCost += kids * 995 / 2;
-                    }
-                    inDate++;
-                }
-                //totalCost = adults * 550 + kids * (550 / 2);
-                totalLabel.Text = "Total Price: R" + totalCost;
-            } else
-            {
-                MessageBox.Show("Please enter in amounts for both children and adults");
-            }
         }
     }
 }
