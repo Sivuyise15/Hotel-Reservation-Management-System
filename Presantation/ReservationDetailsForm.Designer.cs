@@ -46,6 +46,9 @@
             this.travellingAgentRadioButton = new System.Windows.Forms.RadioButton();
             this.companyRadioButton = new System.Windows.Forms.RadioButton();
             this.bookingDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.checkoutPicker = new System.Windows.Forms.DateTimePicker();
+            this.checkinPicker = new System.Windows.Forms.DateTimePicker();
             this.checkOutLabel = new System.Windows.Forms.Label();
             this.childrenTextBox = new System.Windows.Forms.TextBox();
             this.roomTextBox = new System.Windows.Forms.TextBox();
@@ -56,8 +59,7 @@
             this.customerDetailsGroupBox = new System.Windows.Forms.GroupBox();
             this.regionLab = new System.Windows.Forms.Label();
             this.specialRequestsGroupBox = new System.Windows.Forms.GroupBox();
-            this.checkinPicker = new System.Windows.Forms.DateTimePicker();
-            this.checkoutPicker = new System.Windows.Forms.DateTimePicker();
+            this.btnCalcPrice = new System.Windows.Forms.Button();
             this.bookingDetailsGroupBox.SuspendLayout();
             this.customerDetailsGroupBox.SuspendLayout();
             this.specialRequestsGroupBox.SuspendLayout();
@@ -230,6 +232,8 @@
             // 
             // bookingDetailsGroupBox
             // 
+            this.bookingDetailsGroupBox.Controls.Add(this.btnCalcPrice);
+            this.bookingDetailsGroupBox.Controls.Add(this.totalLabel);
             this.bookingDetailsGroupBox.Controls.Add(this.checkoutPicker);
             this.bookingDetailsGroupBox.Controls.Add(this.checkinPicker);
             this.bookingDetailsGroupBox.Controls.Add(this.checkOutLabel);
@@ -248,6 +252,30 @@
             this.bookingDetailsGroupBox.TabIndex = 18;
             this.bookingDetailsGroupBox.TabStop = false;
             this.bookingDetailsGroupBox.Text = "Booking details";
+            // 
+            // totalLabel
+            // 
+            this.totalLabel.AutoSize = true;
+            this.totalLabel.Location = new System.Drawing.Point(54, 389);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(87, 16);
+            this.totalLabel.TabIndex = 27;
+            this.totalLabel.Text = "Total Cost : R";
+            this.totalLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // checkoutPicker
+            // 
+            this.checkoutPicker.Location = new System.Drawing.Point(56, 153);
+            this.checkoutPicker.Name = "checkoutPicker";
+            this.checkoutPicker.Size = new System.Drawing.Size(200, 22);
+            this.checkoutPicker.TabIndex = 26;
+            // 
+            // checkinPicker
+            // 
+            this.checkinPicker.Location = new System.Drawing.Point(56, 79);
+            this.checkinPicker.Name = "checkinPicker";
+            this.checkinPicker.Size = new System.Drawing.Size(200, 22);
+            this.checkinPicker.TabIndex = 25;
             // 
             // checkOutLabel
             // 
@@ -361,19 +389,15 @@
             this.specialRequestsGroupBox.TabStop = false;
             this.specialRequestsGroupBox.Text = "Any special requests? (optional)";
             // 
-            // checkinPicker
+            // btnCalcPrice
             // 
-            this.checkinPicker.Location = new System.Drawing.Point(56, 79);
-            this.checkinPicker.Name = "checkinPicker";
-            this.checkinPicker.Size = new System.Drawing.Size(200, 22);
-            this.checkinPicker.TabIndex = 25;
-            // 
-            // checkoutPicker
-            // 
-            this.checkoutPicker.Location = new System.Drawing.Point(56, 153);
-            this.checkoutPicker.Name = "checkoutPicker";
-            this.checkoutPicker.Size = new System.Drawing.Size(200, 22);
-            this.checkoutPicker.TabIndex = 26;
+            this.btnCalcPrice.Location = new System.Drawing.Point(56, 350);
+            this.btnCalcPrice.Name = "btnCalcPrice";
+            this.btnCalcPrice.Size = new System.Drawing.Size(129, 23);
+            this.btnCalcPrice.TabIndex = 28;
+            this.btnCalcPrice.Text = "Calculate Price";
+            this.btnCalcPrice.UseVisualStyleBackColor = true;
+            this.btnCalcPrice.Click += new System.EventHandler(this.btnCalcPrice_Click);
             // 
             // ReservationDetailsForm
             // 
@@ -429,5 +453,7 @@
         private System.Windows.Forms.Label regionLab;
         private System.Windows.Forms.DateTimePicker checkoutPicker;
         private System.Windows.Forms.DateTimePicker checkinPicker;
+        private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.Button btnCalcPrice;
     }
 }

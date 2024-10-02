@@ -29,7 +29,7 @@ namespace inf2010s_semesterProject.Presantation
         }
         private void ReservationDetailsForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         /**
@@ -87,6 +87,27 @@ namespace inf2010s_semesterProject.Presantation
             checkoutPicker.Value = DateTime.Now;
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCalcPrice_Click(object sender, EventArgs e)
+        {
+            int adults = 0;
+            int kids = 0;
+            decimal totalCost = 0;
+            if (adultsTextBox.Text != "" && childrenTextBox.Text != "")
+            {
+                adults = Convert.ToInt32(adultsTextBox.Text);
+                kids = Convert.ToInt32(childrenTextBox.Text);
+                totalCost = adults * 550 + kids * (550 / 2);
+                totalLabel.Text = "Total Price: " + totalCost;
+            } else
+            {
+                MessageBox.Show("Please enter in amounts for both children and adults");
+            }
+        }
     }
 }
  
