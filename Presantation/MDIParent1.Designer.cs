@@ -59,6 +59,8 @@
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fccscsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listRoomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,8 +85,6 @@
             this.makeReservationButton = new System.Windows.Forms.Button();
             this.checkReservationButton = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
-            this.fccscsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listRoomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -291,6 +291,16 @@
             resources.ApplyResources(this.newWindowToolStripMenuItem, "newWindowToolStripMenuItem");
             this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
+            // fccscsToolStripMenuItem
+            // 
+            this.fccscsToolStripMenuItem.Name = "fccscsToolStripMenuItem";
+            resources.ApplyResources(this.fccscsToolStripMenuItem, "fccscsToolStripMenuItem");
+            // 
+            // listRoomsToolStripMenuItem
+            // 
+            this.listRoomsToolStripMenuItem.Name = "listRoomsToolStripMenuItem";
+            resources.ApplyResources(this.listRoomsToolStripMenuItem, "listRoomsToolStripMenuItem");
+            // 
             // helpMenu
             // 
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -443,16 +453,6 @@
             // 
             resources.ApplyResources(this.logoLabel, "logoLabel");
             this.logoLabel.Name = "logoLabel";
-            // 
-            // fccscsToolStripMenuItem
-            // 
-            this.fccscsToolStripMenuItem.Name = "fccscsToolStripMenuItem";
-            resources.ApplyResources(this.fccscsToolStripMenuItem, "fccscsToolStripMenuItem");
-            // 
-            // listRoomsToolStripMenuItem
-            // 
-            this.listRoomsToolStripMenuItem.Name = "listRoomsToolStripMenuItem";
-            resources.ApplyResources(this.listRoomsToolStripMenuItem, "listRoomsToolStripMenuItem");
             // 
             // MDIParent1
             // 
