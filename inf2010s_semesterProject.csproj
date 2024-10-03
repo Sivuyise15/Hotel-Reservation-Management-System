@@ -111,6 +111,12 @@
     <Compile Include="Presantation\ReservationListingForm.Designer.cs">
       <DependentUpon>ReservationListingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presantation\ShowGuest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presantation\ShowGuest.Designer.cs">
+      <DependentUpon>ShowGuest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presantation\ReservationListingForm.resx">
       <DependentUpon>ReservationListingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presantation\ShowGuest.resx">
+      <DependentUpon>ShowGuest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

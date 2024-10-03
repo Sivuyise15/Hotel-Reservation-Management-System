@@ -27,7 +27,7 @@ namespace inf2010s_semesterProject.Presantation
         {
             ReservationDatabase reservationDatabase = new ReservationDatabase("Reservation");
             reservationDatabase.CancelReservation(reservationIDTextBox.Text);
-            MessageBox.Show("Reservation "+ reservationIDTextBox.Text+" Cancelled");
+            MessageBox.Show("Reservation "+ reservationIDTextBox.Text+" Cancelled! Thank you for booking with us.");
             this.Close();
         }
     }

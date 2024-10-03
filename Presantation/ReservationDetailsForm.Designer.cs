@@ -46,7 +46,9 @@
             this.travellingAgentRadioButton = new System.Windows.Forms.RadioButton();
             this.companyRadioButton = new System.Windows.Forms.RadioButton();
             this.bookingDetailsGroupBox = new System.Windows.Forms.GroupBox();
-            this.reservationCostLabel = new System.Windows.Forms.Label();
+            this.costTextBox = new System.Windows.Forms.TextBox();
+            this.checkOutDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.checkInDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.totalLabel = new System.Windows.Forms.Label();
             this.checkOutLabel = new System.Windows.Forms.Label();
             this.childrenTextBox = new System.Windows.Forms.TextBox();
@@ -59,9 +61,9 @@
             this.specialRequestsGroupBox = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
-            this.checkInDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.checkOutDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.costTextBox = new System.Windows.Forms.TextBox();
+            this.reservationCostLabel = new System.Windows.Forms.Label();
+            this.ageTextBox = new System.Windows.Forms.TextBox();
+            this.ageLabel = new System.Windows.Forms.Label();
             this.bookingDetailsGroupBox.SuspendLayout();
             this.customerDetailsGroupBox.SuspendLayout();
             this.specialRequestsGroupBox.SuspendLayout();
@@ -225,6 +227,8 @@
             // 
             // bookingDetailsGroupBox
             // 
+            this.bookingDetailsGroupBox.Controls.Add(this.ageLabel);
+            this.bookingDetailsGroupBox.Controls.Add(this.ageTextBox);
             this.bookingDetailsGroupBox.Controls.Add(this.costTextBox);
             this.bookingDetailsGroupBox.Controls.Add(this.checkOutDateTimePicker);
             this.bookingDetailsGroupBox.Controls.Add(this.checkInDateTimePicker);
@@ -247,15 +251,28 @@
             this.bookingDetailsGroupBox.TabStop = false;
             this.bookingDetailsGroupBox.Text = "Booking details";
             // 
-            // reservationCostLabel
+            // costTextBox
             // 
-            this.reservationCostLabel.AutoSize = true;
-            this.reservationCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reservationCostLabel.Location = new System.Drawing.Point(49, 315);
-            this.reservationCostLabel.Name = "reservationCostLabel";
-            this.reservationCostLabel.Size = new System.Drawing.Size(151, 24);
-            this.reservationCostLabel.TabIndex = 19;
-            this.reservationCostLabel.Text = "Reservation Cost";
+            this.costTextBox.Location = new System.Drawing.Point(43, 432);
+            this.costTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.costTextBox.Name = "costTextBox";
+            this.costTextBox.Size = new System.Drawing.Size(94, 20);
+            this.costTextBox.TabIndex = 27;
+            // 
+            // checkOutDateTimePicker
+            // 
+            this.checkOutDateTimePicker.Location = new System.Drawing.Point(43, 115);
+            this.checkOutDateTimePicker.Name = "checkOutDateTimePicker";
+            this.checkOutDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.checkOutDateTimePicker.TabIndex = 26;
+            // 
+            // checkInDateTimePicker
+            // 
+            this.checkInDateTimePicker.Location = new System.Drawing.Point(43, 54);
+            this.checkInDateTimePicker.Name = "checkInDateTimePicker";
+            this.checkInDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.checkInDateTimePicker.TabIndex = 25;
+            this.checkInDateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // totalLabel
             // 
@@ -384,28 +401,32 @@
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
-            // checkInDateTimePicker
+            // reservationCostLabel
             // 
-            this.checkInDateTimePicker.Location = new System.Drawing.Point(43, 54);
-            this.checkInDateTimePicker.Name = "checkInDateTimePicker";
-            this.checkInDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.checkInDateTimePicker.TabIndex = 25;
-            this.checkInDateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.reservationCostLabel.AutoSize = true;
+            this.reservationCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reservationCostLabel.Location = new System.Drawing.Point(39, 404);
+            this.reservationCostLabel.Name = "reservationCostLabel";
+            this.reservationCostLabel.Size = new System.Drawing.Size(396, 24);
+            this.reservationCostLabel.TabIndex = 19;
+            this.reservationCostLabel.Text = "Reservation Cost(Do not enter anything here!!)";
             // 
-            // checkOutDateTimePicker
+            // ageTextBox
             // 
-            this.checkOutDateTimePicker.Location = new System.Drawing.Point(43, 115);
-            this.checkOutDateTimePicker.Name = "checkOutDateTimePicker";
-            this.checkOutDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.checkOutDateTimePicker.TabIndex = 26;
+            this.ageTextBox.Location = new System.Drawing.Point(198, 309);
+            this.ageTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ageTextBox.Name = "ageTextBox";
+            this.ageTextBox.Size = new System.Drawing.Size(49, 20);
+            this.ageTextBox.TabIndex = 28;
             // 
-            // costTextBox
+            // ageLabel
             // 
-            this.costTextBox.Location = new System.Drawing.Point(71, 343);
-            this.costTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.costTextBox.Name = "costTextBox";
-            this.costTextBox.Size = new System.Drawing.Size(94, 20);
-            this.costTextBox.TabIndex = 27;
+            this.ageLabel.AutoSize = true;
+            this.ageLabel.Location = new System.Drawing.Point(195, 292);
+            this.ageLabel.Name = "ageLabel";
+            this.ageLabel.Size = new System.Drawing.Size(176, 13);
+            this.ageLabel.TabIndex = 29;
+            this.ageLabel.Text = "Enter children`s age. e.g (1,15,5,3..)";
             // 
             // ReservationDetailsForm
             // 
@@ -459,11 +480,13 @@
         private System.Windows.Forms.GroupBox specialRequestsGroupBox;
         private System.Windows.Forms.Label regionLab;
         private System.Windows.Forms.Label totalLabel;
-        private System.Windows.Forms.Label reservationCostLabel;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.DateTimePicker checkInDateTimePicker;
         private System.Windows.Forms.DateTimePicker checkOutDateTimePicker;
         private System.Windows.Forms.TextBox costTextBox;
+        private System.Windows.Forms.Label ageLabel;
+        private System.Windows.Forms.TextBox ageTextBox;
+        private System.Windows.Forms.Label reservationCostLabel;
     }
 }

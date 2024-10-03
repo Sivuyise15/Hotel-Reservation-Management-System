@@ -31,8 +31,6 @@ namespace inf2010s_semesterProject.Data
             SqlInsert.ExecuteNonQuery();
             conStr.Close();
 
-            MessageBox.Show("Reservation Added");
-
         }
 
         /**
@@ -46,6 +44,20 @@ namespace inf2010s_semesterProject.Data
             conStr.Open();
             sqlCommand.ExecuteNonQuery();
             conStr.Close();
+        }
+        /** select guest by their reservation and return the all the guest details
+         */
+        public DataTable SelectGuestByReservation(string ReservationID)
+        {
+            SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Guest g INNER JOIN Reservation r ON g.GuestID = r.GuestID WHERE r.ReservationID = @ReservationID;", conStr);
+            sqlCommand.Parameters.Add(@"ReservationID", SqlDbType.NVarChar, 50, "ReservationID").Value = ReservationID;
+            conStr.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            conStr.Close();
+            return dataTable;
+
         }
     
     }

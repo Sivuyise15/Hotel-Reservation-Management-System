@@ -70,6 +70,8 @@
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showReservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -88,8 +90,6 @@
             this.makeReservationButton = new System.Windows.Forms.Button();
             this.checkReservationButton = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
-            this.reservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showReservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -366,6 +366,19 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             // 
+            // reservationsToolStripMenuItem
+            // 
+            this.reservationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showReservationsToolStripMenuItem});
+            this.reservationsToolStripMenuItem.Name = "reservationsToolStripMenuItem";
+            resources.ApplyResources(this.reservationsToolStripMenuItem, "reservationsToolStripMenuItem");
+            // 
+            // showReservationsToolStripMenuItem
+            // 
+            this.showReservationsToolStripMenuItem.Name = "showReservationsToolStripMenuItem";
+            resources.ApplyResources(this.showReservationsToolStripMenuItem, "showReservationsToolStripMenuItem");
+            this.showReservationsToolStripMenuItem.Click += new System.EventHandler(this.showReservationsToolStripMenuItem_Click);
+            // 
             // toolStrip
             // 
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -477,24 +490,12 @@
             resources.ApplyResources(this.checkReservationButton, "checkReservationButton");
             this.checkReservationButton.Name = "checkReservationButton";
             this.checkReservationButton.UseVisualStyleBackColor = true;
+            this.checkReservationButton.Click += new System.EventHandler(this.checkReservationButton_Click);
             // 
             // logoLabel
             // 
             resources.ApplyResources(this.logoLabel, "logoLabel");
             this.logoLabel.Name = "logoLabel";
-            // 
-            // reservationsToolStripMenuItem
-            // 
-            this.reservationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showReservationsToolStripMenuItem});
-            this.reservationsToolStripMenuItem.Name = "reservationsToolStripMenuItem";
-            resources.ApplyResources(this.reservationsToolStripMenuItem, "reservationsToolStripMenuItem");
-            // 
-            // showReservationsToolStripMenuItem
-            // 
-            this.showReservationsToolStripMenuItem.Name = "showReservationsToolStripMenuItem";
-            resources.ApplyResources(this.showReservationsToolStripMenuItem, "showReservationsToolStripMenuItem");
-            this.showReservationsToolStripMenuItem.Click += new System.EventHandler(this.showReservationsToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 

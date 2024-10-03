@@ -121,5 +121,11 @@ namespace inf2010s_semesterProject.Presantation
 
             reservationForm.Show();
         }
+
+        private void checkReservationButton_Click(object sender, EventArgs e)
+        {
+            ShowGuest showGuest = new ShowGuest();
+            showGuest.Show();
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace inf2010s_semesterProject.Presantation
 
         private void paymentButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Payment Successful");
+            MessageBox.Show("Reservation succesfully completed with phumlaKamnandi hotels. confirmation email will be sent to the customer shortly. Thannk you for choosing us.");
             this.Close();
         }
     }
