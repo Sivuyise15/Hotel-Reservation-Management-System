@@ -37,7 +37,7 @@
             this.reservationListView.HideSelection = false;
             this.reservationListView.Location = new System.Drawing.Point(15, 54);
             this.reservationListView.Name = "reservationListView";
-            this.reservationListView.Size = new System.Drawing.Size(773, 309);
+            this.reservationListView.Size = new System.Drawing.Size(307, 309);
             this.reservationListView.TabIndex = 0;
             this.reservationListView.UseCompatibleStateImageBehavior = false;
             this.reservationListView.View = System.Windows.Forms.View.Details;
@@ -55,7 +55,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(351, 383);
             this.Controls.Add(this.labelList);
             this.Controls.Add(this.reservationListView);
             this.Name = "ReservationListingForm";
