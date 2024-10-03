@@ -41,7 +41,7 @@ namespace inf2010s_semesterProject.Presantation
                     reservationListView.Items.Clear();
                     reservationListView.Columns.Clear();
                     reservationListView.Columns.Add("Reservation ID", 100, HorizontalAlignment.Left);
-                    reservationListView.Columns.Add("Guest Name", 150, HorizontalAlignment.Left);
+                    reservationListView.Columns.Add("Guest ID", 150, HorizontalAlignment.Left);
                     while (reader.Read())
                     {
                         // Example: Assuming your Reservation table has these columns: ID, Name, Date
