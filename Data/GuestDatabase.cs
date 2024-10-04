@@ -29,5 +29,33 @@ namespace inf2010s_semesterProject.Data
             conStr.Close();
 
         }
+
+        /**
+         * Update guest by their GuestID
+         */
+        public void UpdateGuest(string GuestID, string Name, string LastName, string Phone, string Email)
+        {
+            SqlCommand SqlUpdate = new SqlCommand("UPDATE Guest SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNumber = @PhoneNumber WHERE GuestID = @GuestID", conStr);
+            SqlUpdate.Parameters.Add(@"GuestID", SqlDbType.NVarChar, 50, "GuestID").Value = GuestID;
+            SqlUpdate.Parameters.Add(@"FirstName", SqlDbType.NVarChar, 50, "FirstName").Value = Name;
+            SqlUpdate.Parameters.Add(@"LastName", SqlDbType.NVarChar, 50, "LastName").Value = LastName;
+            SqlUpdate.Parameters.Add(@"PhoneNumber", SqlDbType.NVarChar, 50, "PhoneNumber").Value = Phone;
+            SqlUpdate.Parameters.Add(@"Email", SqlDbType.NVarChar, 50, "Email").Value = Email;
+
+            conStr.Open();
+            SqlUpdate.ExecuteNonQuery();
+            conStr.Close();
+
+        }
+        /** Delete guest by their GuestID
+         */
+        public void DeleteGuest(string GuestID) { 
+            SqlCommand sqlCommand = new SqlCommand("DELETE FROM Guest WHERE GuestID = @GuestID", conStr);
+            sqlCommand.Parameters.Add(@"GuestID", SqlDbType.NVarChar, 50, "GuestID").Value = GuestID;
+
+            conStr.Open();
+            sqlCommand.ExecuteNonQuery();
+            conStr.Close();
+        }
     }
 }

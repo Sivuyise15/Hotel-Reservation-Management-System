@@ -59,6 +59,54 @@ namespace inf2010s_semesterProject.Data
             return dataTable;
 
         }
-    
+
+        /** update reservation by ReservationID
+         */
+        public void UpdateReservation(string ReservationID, DateTime CheckIn, DateTime CheckOut, string specialRequest, double cost)
+        {
+            SqlCommand sqlCommand = new SqlCommand("UPDATE Reservation SET CheckInDate = @CheckInDate, CheckOutDate = @CheckOutDate, SpecialRequests = @SpecialRequests, ReservationTotalCost = @ReservationTotalCost WHERE ReservationID = @ReservationID", conStr);
+            sqlCommand.Parameters.Add(@"ReservationID", SqlDbType.NVarChar, 50, "ReservationID").Value = ReservationID;
+            sqlCommand.Parameters.Add(@"CheckInDate", SqlDbType.Date).Value = CheckIn;
+            sqlCommand.Parameters.Add(@"CheckOutDate", SqlDbType.Date).Value = CheckOut;
+            sqlCommand.Parameters.Add(@"SpecialRequests", SqlDbType.NVarChar, 50, "SpecialRequests").Value = specialRequest;
+            sqlCommand.Parameters.Add(@"ReservationTotalCost", SqlDbType.Money, 50, "ReservationTotalCost").Value = cost;
+
+            conStr.Open();
+            sqlCommand.ExecuteNonQuery();
+            conStr.Close();
+        }
+        /** update reservation date by ReservationID
+         */
+        public void UpdateReservationDate(string ReservationID, DateTime CheckIn, DateTime CheckOut)
+        {
+            SqlCommand sqlCommand = new SqlCommand("UPDATE Reservation SET CheckInDate = @CheckInDate, CheckOutDate = @CheckOutDate WHERE ReservationID = @ReservationID", conStr);
+            sqlCommand.Parameters.Add(@"ReservationID", SqlDbType.NVarChar, 50, "ReservationID").Value = ReservationID;
+            sqlCommand.Parameters.Add(@"CheckInDate", SqlDbType.Date).Value = CheckIn;
+            sqlCommand.Parameters.Add(@"CheckOutDate", SqlDbType.Date).Value = CheckOut;
+
+            conStr.Open();
+            sqlCommand.ExecuteNonQuery();
+            conStr.Close();
+        }
+        /** check room availability and the date
+         */
+        public bool CheckRoomAvailability(string RoomID, DateTime CheckIn, DateTime CheckOut)
+            {
+            SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Reservation WHERE RoomID = @RoomID AND CheckInDate <= @CheckOut AND CheckOutDate >= @CheckIn", conStr);
+            sqlCommand.Parameters.Add(@"RoomID", SqlDbType.NVarChar, 50, "RoomID").Value = RoomID;
+            sqlCommand.Parameters.Add(@"CheckIn", SqlDbType.Date).Value = CheckIn;
+            sqlCommand.Parameters.Add(@"CheckOut", SqlDbType.Date).Value = CheckOut;
+
+            conStr.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            conStr.Close();
+            if (dataTable.Rows.Count > 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

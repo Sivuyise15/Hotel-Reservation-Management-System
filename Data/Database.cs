@@ -12,6 +12,7 @@ namespace inf2010s_semesterProject.Data
     public class Database
     {
         public DataSet DataSet = new DataSet();
+        static string str = Settings.Default.phumlaKamnandiDataBaseConnectionString;
         public SqlConnection conStr = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\SIVUYISE\OneDrive - University of Cape Town\INF2011S\Semester Project\phumlakamnandiProject\inf2010s_semesterProject\phumlaKamnandiDataBase.mdf;Integrated Security=True");
         public SqlDataAdapter DataAdapter = new SqlDataAdapter();
         public Database(string table)
