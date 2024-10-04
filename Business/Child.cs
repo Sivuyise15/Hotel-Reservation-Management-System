@@ -31,7 +31,7 @@ namespace inf2010s_semesterProject.Business
             this.Age = age;
         }
         #endregion
-        #region
+        #region Methods
         public override double CalculateCost(double totalCost, int numDays)
         {
             if (this.Age < 5) {

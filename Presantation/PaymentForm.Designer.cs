@@ -105,9 +105,9 @@
             this.expiryDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expiryDateLabel.Location = new System.Drawing.Point(57, 152);
             this.expiryDateLabel.Name = "expiryDateLabel";
-            this.expiryDateLabel.Size = new System.Drawing.Size(74, 15);
+            this.expiryDateLabel.Size = new System.Drawing.Size(135, 15);
             this.expiryDateLabel.TabIndex = 4;
-            this.expiryDateLabel.Text = "Expiry Date*";
+            this.expiryDateLabel.Text = "Expiry Date*(MM/YYYY)";
             // 
             // expiryDateTextBox
             // 
@@ -141,9 +141,9 @@
             this.cardNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cardNumberLabel.Location = new System.Drawing.Point(53, 93);
             this.cardNumberLabel.Name = "cardNumberLabel";
-            this.cardNumberLabel.Size = new System.Drawing.Size(86, 15);
+            this.cardNumberLabel.Size = new System.Drawing.Size(160, 15);
             this.cardNumberLabel.TabIndex = 0;
-            this.cardNumberLabel.Text = "Card Number*";
+            this.cardNumberLabel.Text = "Card Number*(20 numbers)";
             this.cardNumberLabel.Click += new System.EventHandler(this.cardNumberLabel_Click);
             // 
             // logoLabel

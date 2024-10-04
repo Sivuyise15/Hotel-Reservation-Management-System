@@ -58,12 +58,6 @@
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tileVerticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tileHorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,15 +79,20 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.welcomeGroupBox = new System.Windows.Forms.GroupBox();
+            this.availableRoomsButton = new System.Windows.Forms.Button();
             this.cancelReservationButton = new System.Windows.Forms.Button();
             this.updateReservationButton = new System.Windows.Forms.Button();
             this.makeReservationButton = new System.Windows.Forms.Button();
             this.checkReservationButton = new System.Windows.Forms.Button();
             this.logoLabel = new System.Windows.Forms.Label();
+            this.availableRoomsDataGridView = new System.Windows.Forms.DataGridView();
+            this.doneButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.welcomeGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.availableRoomsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -284,51 +283,9 @@
             // 
             // windowsMenu
             // 
-            this.windowsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newWindowToolStripMenuItem,
-            this.cascadeToolStripMenuItem,
-            this.tileVerticalToolStripMenuItem,
-            this.tileHorizontalToolStripMenuItem,
-            this.closeAllToolStripMenuItem,
-            this.arrangeIconsToolStripMenuItem});
             this.windowsMenu.Name = "windowsMenu";
             resources.ApplyResources(this.windowsMenu, "windowsMenu");
-            // 
-            // newWindowToolStripMenuItem
-            // 
-            this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            resources.ApplyResources(this.newWindowToolStripMenuItem, "newWindowToolStripMenuItem");
-            this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
-            // 
-            // cascadeToolStripMenuItem
-            // 
-            this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            resources.ApplyResources(this.cascadeToolStripMenuItem, "cascadeToolStripMenuItem");
-            this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.CascadeToolStripMenuItem_Click);
-            // 
-            // tileVerticalToolStripMenuItem
-            // 
-            this.tileVerticalToolStripMenuItem.Name = "tileVerticalToolStripMenuItem";
-            resources.ApplyResources(this.tileVerticalToolStripMenuItem, "tileVerticalToolStripMenuItem");
-            this.tileVerticalToolStripMenuItem.Click += new System.EventHandler(this.TileVerticalToolStripMenuItem_Click);
-            // 
-            // tileHorizontalToolStripMenuItem
-            // 
-            this.tileHorizontalToolStripMenuItem.Name = "tileHorizontalToolStripMenuItem";
-            resources.ApplyResources(this.tileHorizontalToolStripMenuItem, "tileHorizontalToolStripMenuItem");
-            this.tileHorizontalToolStripMenuItem.Click += new System.EventHandler(this.TileHorizontalToolStripMenuItem_Click);
-            // 
-            // closeAllToolStripMenuItem
-            // 
-            this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
-            resources.ApplyResources(this.closeAllToolStripMenuItem, "closeAllToolStripMenuItem");
-            this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
-            // 
-            // arrangeIconsToolStripMenuItem
-            // 
-            this.arrangeIconsToolStripMenuItem.Name = "arrangeIconsToolStripMenuItem";
-            resources.ApplyResources(this.arrangeIconsToolStripMenuItem, "arrangeIconsToolStripMenuItem");
-            this.arrangeIconsToolStripMenuItem.Click += new System.EventHandler(this.ArrangeIconsToolStripMenuItem_Click);
+            this.windowsMenu.Click += new System.EventHandler(this.windowsMenu_Click);
             // 
             // helpMenu
             // 
@@ -340,6 +297,7 @@
             this.aboutToolStripMenuItem});
             this.helpMenu.Name = "helpMenu";
             resources.ApplyResources(this.helpMenu, "helpMenu");
+            this.helpMenu.Click += new System.EventHandler(this.helpMenu_Click);
             // 
             // contentsToolStripMenuItem
             // 
@@ -449,6 +407,7 @@
             this.toolStripStatusLabel});
             resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Name = "statusStrip";
+            this.statusStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip_ItemClicked);
             // 
             // toolStripStatusLabel
             // 
@@ -457,6 +416,7 @@
             // 
             // welcomeGroupBox
             // 
+            this.welcomeGroupBox.Controls.Add(this.availableRoomsButton);
             this.welcomeGroupBox.Controls.Add(this.cancelReservationButton);
             this.welcomeGroupBox.Controls.Add(this.updateReservationButton);
             this.welcomeGroupBox.Controls.Add(this.makeReservationButton);
@@ -464,6 +424,13 @@
             resources.ApplyResources(this.welcomeGroupBox, "welcomeGroupBox");
             this.welcomeGroupBox.Name = "welcomeGroupBox";
             this.welcomeGroupBox.TabStop = false;
+            // 
+            // availableRoomsButton
+            // 
+            resources.ApplyResources(this.availableRoomsButton, "availableRoomsButton");
+            this.availableRoomsButton.Name = "availableRoomsButton";
+            this.availableRoomsButton.UseVisualStyleBackColor = true;
+            this.availableRoomsButton.Click += new System.EventHandler(this.availableRoomsButton_Click);
             // 
             // cancelReservationButton
             // 
@@ -477,6 +444,7 @@
             resources.ApplyResources(this.updateReservationButton, "updateReservationButton");
             this.updateReservationButton.Name = "updateReservationButton";
             this.updateReservationButton.UseVisualStyleBackColor = true;
+            this.updateReservationButton.Click += new System.EventHandler(this.updateReservationButton_Click);
             // 
             // makeReservationButton
             // 
@@ -497,11 +465,33 @@
             resources.ApplyResources(this.logoLabel, "logoLabel");
             this.logoLabel.Name = "logoLabel";
             // 
+            // availableRoomsDataGridView
+            // 
+            this.availableRoomsDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.availableRoomsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.availableRoomsDataGridView, "availableRoomsDataGridView");
+            this.availableRoomsDataGridView.Name = "availableRoomsDataGridView";
+            // 
+            // doneButton
+            // 
+            resources.ApplyResources(this.doneButton, "doneButton");
+            this.doneButton.Name = "doneButton";
+            this.doneButton.UseVisualStyleBackColor = true;
+            this.doneButton.Click += new System.EventHandler(this.doneButton_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
             // MDIParent1
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.doneButton);
+            this.Controls.Add(this.availableRoomsDataGridView);
             this.Controls.Add(this.logoLabel);
             this.Controls.Add(this.welcomeGroupBox);
             this.Controls.Add(this.statusStrip);
@@ -511,6 +501,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MDIParent1";
             this.TransparencyKey = System.Drawing.Color.Transparent;
+            this.Load += new System.EventHandler(this.MDIParent1_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);
@@ -518,6 +509,7 @@
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.welcomeGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.availableRoomsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -539,7 +531,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tileHorizontalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileMenu;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -561,11 +552,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolsMenu;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsMenu;
-        private System.Windows.Forms.ToolStripMenuItem newWindowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tileVerticalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem closeAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem arrangeIconsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpMenu;
         private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
@@ -585,6 +571,10 @@
         private System.Windows.Forms.Label logoLabel;
         private System.Windows.Forms.ToolStripMenuItem reservationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showReservationsToolStripMenuItem;
+        private System.Windows.Forms.Button availableRoomsButton;
+        private System.Windows.Forms.DataGridView availableRoomsDataGridView;
+        private System.Windows.Forms.Button doneButton;
+        private System.Windows.Forms.Label label1;
     }
 }
 

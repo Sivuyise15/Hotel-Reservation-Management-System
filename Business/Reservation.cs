@@ -102,30 +102,33 @@ namespace inf2010s_semesterProject.Business
         #region Methods
         public double CalculateTotalCost()
         {
-
-            int totalGuests = numberOfAdults + numberOfChildren;
             int totalDays = checkOutDate.Day - checkInDate.Day;
 
             double totalCost = 0;
+            try { 
 
-            for (int i = 0; i < guests.Count; i++)
+                for (int i = 0; i < guests.Count; i++)
+                {
+                    if (checkInDate.Day > 0 && checkInDate.Day <= 7 && checkInDate.Month == 12)
+                    {
+                        totalCost += guests[i].CalculateCost(lowSeasonPrice, totalDays);
+                    }
+                    else if (checkInDate.Day >= 8 && checkInDate.Day <= 15 && checkInDate.Month == 12)
+                    {
+                        totalCost += guests[i].CalculateCost(midSeasonPrice, totalDays);
+                    }
+                    else if (checkInDate.Day > 15 && checkInDate.Day <= 31 && checkInDate.Month == 12)
+                    {
+                        totalCost += guests[i].CalculateCost(highSeasonPrice, totalDays);
+                    }
+                    else
+                    {
+                        totalCost += guests[i].CalculateCost(generalPrice, totalDays);
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                if (checkInDate.Day > 0 && checkInDate.Day <= 7 && checkInDate.Month == 12)
-                {
-                    totalCost += guests[i].CalculateCost(lowSeasonPrice, totalDays);
-                }
-                else if (checkInDate.Day >= 8 && checkInDate.Day <= 15 && checkInDate.Month == 12)
-                {
-                    totalCost += guests[i].CalculateCost(midSeasonPrice, totalDays);
-                }
-                else if (checkInDate.Day > 15 && checkInDate.Day <= 31 && checkInDate.Month == 12)
-                {
-                    totalCost += guests[i].CalculateCost(highSeasonPrice, totalDays);
-                }
-                else
-                {
-                    totalCost += guests[i].CalculateCost(generalPrice, totalDays);
-                }
             }
             return totalCost;
         }

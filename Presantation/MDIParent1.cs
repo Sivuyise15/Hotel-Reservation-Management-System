@@ -106,7 +106,8 @@ namespace inf2010s_semesterProject.Presantation
 
         private void makeReservationButton_Click(object sender, EventArgs e)
         {
-            new ReservationDetailsForm().Show();
+            ReservationDetailsForm res = new ReservationDetailsForm();
+            res.Show();
         }
 
         private void cancelReservationButton_Click(object sender, EventArgs e)
@@ -126,6 +127,62 @@ namespace inf2010s_semesterProject.Presantation
         {
             ShowGuest showGuest = new ShowGuest();
             showGuest.Show();
+        }
+
+        private void updateReservationButton_Click(object sender, EventArgs e)
+        {
+            UpdateReservation updateReservation = new UpdateReservation();
+            updateReservation.Show();
+        }
+
+        private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void MDIParent1_Load(object sender, EventArgs e)
+        {
+            availableRoomsDataGridView.Visible = false;
+            doneButton.Visible = false;
+        }
+
+        private void availableRoomsButton_Click(object sender, EventArgs e)
+        {
+            updateReservationButton.Visible = false;
+            availableRoomsDataGridView.Visible = true;
+            makeReservationButton.Visible = false;
+            cancelReservationButton.Visible = false;
+            checkReservationButton.Visible = false;
+            availableRoomsButton.Visible = false;
+            doneButton.Visible = true;
+            welcomeGroupBox.Visible = false;
+
+            Data.RoomDatabase roomDatabase = new Data.RoomDatabase("Room");
+            roomDatabase.ShowAvailableRooms();
+            availableRoomsDataGridView.DataSource = roomDatabase.DataSet.Tables["Room"];
+
+        }
+
+        private void doneButton_Click(object sender, EventArgs e)
+        {
+            doneButton.Visible = false;
+            availableRoomsDataGridView.Visible = false;
+            makeReservationButton.Visible = true;
+            cancelReservationButton.Visible = true;
+            checkReservationButton.Visible = true;
+            availableRoomsButton.Visible = true;
+            updateReservationButton.Visible = true;
+            welcomeGroupBox.Visible = true;
+        }
+
+        private void windowsMenu_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You can contact us at 1-800-123-4567 or email us at phumlakamnandihotels.co.za. Thank you for choosing us.");
+        }
+
+        private void helpMenu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

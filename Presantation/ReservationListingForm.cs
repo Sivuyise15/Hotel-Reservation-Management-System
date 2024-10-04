@@ -16,7 +16,6 @@ namespace inf2010s_semesterProject.Presantation
 {
     public partial class ReservationListingForm : Form
     {
-        Collection<Reservation> resevations;
         bool reservFormClosed;
         public ReservationListingForm()
         {

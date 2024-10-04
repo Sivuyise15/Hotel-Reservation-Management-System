@@ -32,6 +32,8 @@
             this.reservationIDTextBox = new System.Windows.Forms.TextBox();
             this.cancelResevGroupBox = new System.Windows.Forms.GroupBox();
             this.cancelReservationButton = new System.Windows.Forms.Button();
+            this.guestIDLabel = new System.Windows.Forms.Label();
+            this.guestTextBox = new System.Windows.Forms.TextBox();
             this.cancelResevGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,19 +57,21 @@
             // 
             // cancelResevGroupBox
             // 
+            this.cancelResevGroupBox.Controls.Add(this.guestTextBox);
+            this.cancelResevGroupBox.Controls.Add(this.guestIDLabel);
             this.cancelResevGroupBox.Controls.Add(this.ReservationIDLabel);
             this.cancelResevGroupBox.Controls.Add(this.reservationIDTextBox);
             this.cancelResevGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelResevGroupBox.Location = new System.Drawing.Point(12, 34);
             this.cancelResevGroupBox.Name = "cancelResevGroupBox";
-            this.cancelResevGroupBox.Size = new System.Drawing.Size(342, 100);
+            this.cancelResevGroupBox.Size = new System.Drawing.Size(427, 100);
             this.cancelResevGroupBox.TabIndex = 2;
             this.cancelResevGroupBox.TabStop = false;
-            this.cancelResevGroupBox.Text = "Please Enter the ReservationID to cancel";
+            this.cancelResevGroupBox.Text = "Please Enter the ReservationID and GuestID to cancel";
             // 
             // cancelReservationButton
             // 
-            this.cancelReservationButton.Location = new System.Drawing.Point(254, 169);
+            this.cancelReservationButton.Location = new System.Drawing.Point(343, 174);
             this.cancelReservationButton.Name = "cancelReservationButton";
             this.cancelReservationButton.Size = new System.Drawing.Size(75, 23);
             this.cancelReservationButton.TabIndex = 3;
@@ -75,11 +79,28 @@
             this.cancelReservationButton.UseVisualStyleBackColor = true;
             this.cancelReservationButton.Click += new System.EventHandler(this.cancelReservationButton_Click);
             // 
+            // guestIDLabel
+            // 
+            this.guestIDLabel.AutoSize = true;
+            this.guestIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guestIDLabel.Location = new System.Drawing.Point(178, 33);
+            this.guestIDLabel.Name = "guestIDLabel";
+            this.guestIDLabel.Size = new System.Drawing.Size(55, 16);
+            this.guestIDLabel.TabIndex = 2;
+            this.guestIDLabel.Text = "GuestID";
+            // 
+            // guestTextBox
+            // 
+            this.guestTextBox.Location = new System.Drawing.Point(181, 60);
+            this.guestTextBox.Name = "guestTextBox";
+            this.guestTextBox.Size = new System.Drawing.Size(100, 26);
+            this.guestTextBox.TabIndex = 3;
+            // 
             // CancelReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 221);
+            this.ClientSize = new System.Drawing.Size(451, 221);
             this.Controls.Add(this.cancelReservationButton);
             this.Controls.Add(this.cancelResevGroupBox);
             this.Name = "CancelReservation";
@@ -96,5 +117,7 @@
         private System.Windows.Forms.TextBox reservationIDTextBox;
         private System.Windows.Forms.GroupBox cancelResevGroupBox;
         private System.Windows.Forms.Button cancelReservationButton;
+        private System.Windows.Forms.TextBox guestTextBox;
+        private System.Windows.Forms.Label guestIDLabel;
     }
 }

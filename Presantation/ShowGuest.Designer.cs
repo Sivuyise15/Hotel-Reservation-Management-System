@@ -30,9 +30,9 @@
         {
             this.guestIDTextBox = new System.Windows.Forms.TextBox();
             this.guestViewGroupBox = new System.Windows.Forms.GroupBox();
+            this.guestDataGridView = new System.Windows.Forms.DataGridView();
             this.guestIDLabel = new System.Windows.Forms.Label();
             this.okayButton = new System.Windows.Forms.Button();
-            this.guestDataGridView = new System.Windows.Forms.DataGridView();
             this.viewButton = new System.Windows.Forms.Button();
             this.guestViewGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guestDataGridView)).BeginInit();
@@ -58,7 +58,15 @@
             this.guestViewGroupBox.Size = new System.Drawing.Size(749, 385);
             this.guestViewGroupBox.TabIndex = 2;
             this.guestViewGroupBox.TabStop = false;
-            this.guestViewGroupBox.Text = "Enter the guest ID to view their details.";
+            this.guestViewGroupBox.Text = "Enter the reservatrion ID to view its details.";
+            // 
+            // guestDataGridView
+            // 
+            this.guestDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.guestDataGridView.Location = new System.Drawing.Point(44, 148);
+            this.guestDataGridView.Name = "guestDataGridView";
+            this.guestDataGridView.Size = new System.Drawing.Size(682, 150);
+            this.guestDataGridView.TabIndex = 3;
             // 
             // guestIDLabel
             // 
@@ -66,9 +74,9 @@
             this.guestIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guestIDLabel.Location = new System.Drawing.Point(40, 59);
             this.guestIDLabel.Name = "guestIDLabel";
-            this.guestIDLabel.Size = new System.Drawing.Size(70, 20);
+            this.guestIDLabel.Size = new System.Drawing.Size(106, 20);
             this.guestIDLabel.TabIndex = 2;
-            this.guestIDLabel.Text = "GuestID";
+            this.guestIDLabel.Text = "ReservationD";
             // 
             // okayButton
             // 
@@ -79,14 +87,6 @@
             this.okayButton.Text = "OKAY";
             this.okayButton.UseVisualStyleBackColor = true;
             this.okayButton.Click += new System.EventHandler(this.okayButton_Click);
-            // 
-            // guestDataGridView
-            // 
-            this.guestDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.guestDataGridView.Location = new System.Drawing.Point(44, 148);
-            this.guestDataGridView.Name = "guestDataGridView";
-            this.guestDataGridView.Size = new System.Drawing.Size(682, 150);
-            this.guestDataGridView.TabIndex = 3;
             // 
             // viewButton
             // 

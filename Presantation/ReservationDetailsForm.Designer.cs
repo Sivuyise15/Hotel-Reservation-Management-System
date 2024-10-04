@@ -46,9 +46,12 @@
             this.travellingAgentRadioButton = new System.Windows.Forms.RadioButton();
             this.companyRadioButton = new System.Windows.Forms.RadioButton();
             this.bookingDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.ageLabel = new System.Windows.Forms.Label();
+            this.ageTextBox = new System.Windows.Forms.TextBox();
             this.costTextBox = new System.Windows.Forms.TextBox();
             this.checkOutDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.checkInDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.reservationCostLabel = new System.Windows.Forms.Label();
             this.totalLabel = new System.Windows.Forms.Label();
             this.checkOutLabel = new System.Windows.Forms.Label();
             this.childrenTextBox = new System.Windows.Forms.TextBox();
@@ -61,9 +64,6 @@
             this.specialRequestsGroupBox = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
-            this.reservationCostLabel = new System.Windows.Forms.Label();
-            this.ageTextBox = new System.Windows.Forms.TextBox();
-            this.ageLabel = new System.Windows.Forms.Label();
             this.bookingDetailsGroupBox.SuspendLayout();
             this.customerDetailsGroupBox.SuspendLayout();
             this.specialRequestsGroupBox.SuspendLayout();
@@ -114,18 +114,18 @@
             this.emailLabel.AutoSize = true;
             this.emailLabel.Location = new System.Drawing.Point(56, 98);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(36, 13);
+            this.emailLabel.Size = new System.Drawing.Size(147, 13);
             this.emailLabel.TabIndex = 6;
-            this.emailLabel.Text = "Email*";
+            this.emailLabel.Text = "Email*(e.g ronald@gmail.com)";
             // 
             // phoneLabel
             // 
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Location = new System.Drawing.Point(378, 98);
             this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(42, 13);
+            this.phoneLabel.Size = new System.Drawing.Size(124, 13);
             this.phoneLabel.TabIndex = 7;
-            this.phoneLabel.Text = "Phone*";
+            this.phoneLabel.Text = "Phone*(XXX-XXX-XXXX)";
             // 
             // nameLabel
             // 
@@ -212,6 +212,7 @@
             this.travellingAgentRadioButton.TabStop = true;
             this.travellingAgentRadioButton.Text = "Travelling agent";
             this.travellingAgentRadioButton.UseVisualStyleBackColor = true;
+            this.travellingAgentRadioButton.CheckedChanged += new System.EventHandler(this.travellingAgentRadioButton_CheckedChanged);
             // 
             // companyRadioButton
             // 
@@ -224,6 +225,7 @@
             this.companyRadioButton.TabStop = true;
             this.companyRadioButton.Text = "Company";
             this.companyRadioButton.UseVisualStyleBackColor = true;
+            this.companyRadioButton.CheckedChanged += new System.EventHandler(this.companyRadioButton_CheckedChanged);
             // 
             // bookingDetailsGroupBox
             // 
@@ -251,6 +253,23 @@
             this.bookingDetailsGroupBox.TabStop = false;
             this.bookingDetailsGroupBox.Text = "Booking details";
             // 
+            // ageLabel
+            // 
+            this.ageLabel.AutoSize = true;
+            this.ageLabel.Location = new System.Drawing.Point(195, 292);
+            this.ageLabel.Name = "ageLabel";
+            this.ageLabel.Size = new System.Drawing.Size(176, 13);
+            this.ageLabel.TabIndex = 29;
+            this.ageLabel.Text = "Enter children`s age. e.g (1,15,5,3..)";
+            // 
+            // ageTextBox
+            // 
+            this.ageTextBox.Location = new System.Drawing.Point(198, 309);
+            this.ageTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ageTextBox.Name = "ageTextBox";
+            this.ageTextBox.Size = new System.Drawing.Size(49, 20);
+            this.ageTextBox.TabIndex = 28;
+            // 
             // costTextBox
             // 
             this.costTextBox.Location = new System.Drawing.Point(43, 432);
@@ -274,12 +293,23 @@
             this.checkInDateTimePicker.TabIndex = 25;
             this.checkInDateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
+            // reservationCostLabel
+            // 
+            this.reservationCostLabel.AutoSize = true;
+            this.reservationCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reservationCostLabel.Location = new System.Drawing.Point(39, 404);
+            this.reservationCostLabel.Name = "reservationCostLabel";
+            this.reservationCostLabel.Size = new System.Drawing.Size(396, 24);
+            this.reservationCostLabel.TabIndex = 19;
+            this.reservationCostLabel.Text = "Reservation Cost(Do not enter anything here!!)";
+            // 
             // totalLabel
             // 
             this.totalLabel.Location = new System.Drawing.Point(0, 0);
             this.totalLabel.Name = "totalLabel";
-            this.totalLabel.Size = new System.Drawing.Size(100, 23);
+            this.totalLabel.Size = new System.Drawing.Size(247, 23);
             this.totalLabel.TabIndex = 21;
+            this.totalLabel.Text = "Please enter the reservation details";
             // 
             // checkOutLabel
             // 
@@ -393,40 +423,13 @@
             // nextButton
             // 
             this.nextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextButton.Location = new System.Drawing.Point(1069, 564);
+            this.nextButton.Location = new System.Drawing.Point(1072, 576);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(79, 36);
             this.nextButton.TabIndex = 30;
             this.nextButton.Text = "NEXT";
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
-            // 
-            // reservationCostLabel
-            // 
-            this.reservationCostLabel.AutoSize = true;
-            this.reservationCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reservationCostLabel.Location = new System.Drawing.Point(39, 404);
-            this.reservationCostLabel.Name = "reservationCostLabel";
-            this.reservationCostLabel.Size = new System.Drawing.Size(396, 24);
-            this.reservationCostLabel.TabIndex = 19;
-            this.reservationCostLabel.Text = "Reservation Cost(Do not enter anything here!!)";
-            // 
-            // ageTextBox
-            // 
-            this.ageTextBox.Location = new System.Drawing.Point(198, 309);
-            this.ageTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.ageTextBox.Name = "ageTextBox";
-            this.ageTextBox.Size = new System.Drawing.Size(49, 20);
-            this.ageTextBox.TabIndex = 28;
-            // 
-            // ageLabel
-            // 
-            this.ageLabel.AutoSize = true;
-            this.ageLabel.Location = new System.Drawing.Point(195, 292);
-            this.ageLabel.Name = "ageLabel";
-            this.ageLabel.Size = new System.Drawing.Size(176, 13);
-            this.ageLabel.TabIndex = 29;
-            this.ageLabel.Text = "Enter children`s age. e.g (1,15,5,3..)";
             // 
             // ReservationDetailsForm
             // 

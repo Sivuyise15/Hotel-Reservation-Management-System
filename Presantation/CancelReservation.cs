@@ -26,7 +26,9 @@ namespace inf2010s_semesterProject.Presantation
         private void cancelReservationButton_Click(object sender, EventArgs e)
         {
             ReservationDatabase reservationDatabase = new ReservationDatabase("Reservation");
+            GuestDatabase guestDatabase = new GuestDatabase("Guest");
             reservationDatabase.CancelReservation(reservationIDTextBox.Text);
+            guestDatabase.DeleteGuest(guestTextBox.Text);
             MessageBox.Show("Reservation "+ reservationIDTextBox.Text+" Cancelled! Thank you for booking with us.");
             this.Close();
         }
