@@ -184,5 +184,11 @@ namespace inf2010s_semesterProject.Presantation
         {
 
         }
+
+        private void addGuestButton_Click(object sender, EventArgs e)
+        {
+            addGuest addGuest = new addGuest();
+           addGuest.Show();
+        }
     }
 }

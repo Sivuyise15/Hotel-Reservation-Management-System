@@ -27,10 +27,23 @@ namespace inf2010s_semesterProject.Presantation
         {
             ReservationDatabase reservationDatabase = new ReservationDatabase("Reservation");
             GuestDatabase guestDatabase = new GuestDatabase("Guest");
-            reservationDatabase.CancelReservation(reservationIDTextBox.Text);
-            guestDatabase.DeleteGuest(guestTextBox.Text);
-            MessageBox.Show("Reservation "+ reservationIDTextBox.Text+" Cancelled! Thank you for booking with us.");
-            this.Close();
+            try
+            {
+                if (reservationDatabase.SearchReservation(reservationIDTextBox.Text)){
+                    reservationDatabase.CancelReservation(reservationIDTextBox.Text);
+                    guestDatabase.DeleteGuest(guestTextBox.Text);
+                    MessageBox.Show("Reservation " + reservationIDTextBox.Text + " Cancelled! Thank you for booking with us.");
+                    this.Close();
+                }
+                                else
+                {
+                    MessageBox.Show("Reservation " + reservationIDTextBox.Text + " not found.");
+                }
+            }
+                        catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }

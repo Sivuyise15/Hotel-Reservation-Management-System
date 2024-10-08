@@ -32,6 +32,24 @@ namespace inf2010s_semesterProject.Data
             conStr.Close();
 
         }
+        /** search a reservation by ID and return bool if found
+         */
+        public bool SearchReservation(string ReservationID)
+            {
+            SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Reservation WHERE ReservationID = @ReservationID", conStr);
+            sqlCommand.Parameters.Add(@"ReservationID", SqlDbType.NVarChar, 50, "ReservationID").Value = ReservationID;
+
+            conStr.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            conStr.Close();
+            if (dataTable.Rows.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
 
         /**
          * Cancell reservaation by ReservationID

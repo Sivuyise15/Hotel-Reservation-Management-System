@@ -121,6 +121,8 @@ namespace inf2010s_semesterProject.Presantation
                 if (roomDb.IsAvailableRooms())
                 {
                     string roomID = roomDb.UpdateRooms();
+                    roomDb.UpdateRoomStatus(roomID);
+                    MessageBox.Show(roomID);
                     room = new Room(roomID, 2000, 4, Room.RoomStatus.Available);
                     reservation = new Reservation(guests, reservationID, checkInDateTime, checkOutDateTime, room, Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren), specialRequest);
                     double cost = reservation.CalculateTotalCost() * Convert.ToInt32(roomsRequired);
@@ -144,6 +146,7 @@ namespace inf2010s_semesterProject.Presantation
 
                     db.AddReservation(reservationID, roomID, guestID, checkInDateTime, checkOutDateTime, specialRequest, cost);
                     guestDb.AddGuest(guestID, name, lastName, phone, email);
+                    roomDb.UpdateNumberOfGuests(roomID, Convert.ToInt32(numberOfAdults), Convert.ToInt32(numberOfChildren));
                 }
                 else
                 {

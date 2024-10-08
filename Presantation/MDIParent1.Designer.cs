@@ -88,6 +88,7 @@
             this.availableRoomsDataGridView = new System.Windows.Forms.DataGridView();
             this.doneButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.addGuestButton = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -416,6 +417,7 @@
             // 
             // welcomeGroupBox
             // 
+            this.welcomeGroupBox.Controls.Add(this.addGuestButton);
             this.welcomeGroupBox.Controls.Add(this.availableRoomsButton);
             this.welcomeGroupBox.Controls.Add(this.cancelReservationButton);
             this.welcomeGroupBox.Controls.Add(this.updateReservationButton);
@@ -483,6 +485,13 @@
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            // 
+            // addGuestButton
+            // 
+            resources.ApplyResources(this.addGuestButton, "addGuestButton");
+            this.addGuestButton.Name = "addGuestButton";
+            this.addGuestButton.UseVisualStyleBackColor = true;
+            this.addGuestButton.Click += new System.EventHandler(this.addGuestButton_Click);
             // 
             // MDIParent1
             // 
@@ -575,6 +584,7 @@
         private System.Windows.Forms.DataGridView availableRoomsDataGridView;
         private System.Windows.Forms.Button doneButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button addGuestButton;
     }
 }
 

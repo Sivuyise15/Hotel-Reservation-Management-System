@@ -48,12 +48,37 @@ namespace inf2010s_semesterProject.Data
             conStr.Open();
             DataAdapter.Fill(DataSet, "Room");
             conStr.Close();
+
             string roomID = DataSet.Tables["Room"].Rows[0]["RoomID"].ToString();
+
             SqlCommand SqlUpdate = new SqlCommand("UPDATE Room SET Status = 'Reserved' WHERE RoomID = '" + roomID + "'", conStr);
             conStr.Open();
             SqlUpdate.ExecuteNonQuery();
             conStr.Close();
             return roomID;
+        }
+        /** update number of guests in the room */
+
+        public void UpdateNumberOfGuests(string roomID, int adults, int children)
+        {
+            int total = adults + children;
+            SqlCommand SqlUpdate = new SqlCommand("UPDATE Room SET NumberOfGuests = @total WHERE RoomID = @RoomID", conStr);
+            SqlUpdate.Parameters.Add(@"RoomID", SqlDbType.NVarChar, 50, "RoomID").Value = roomID;
+            SqlUpdate.Parameters.Add(@"total", SqlDbType.Int, 50, "NumberOfGuests").Value = total;
+
+            conStr.Open();
+            SqlUpdate.ExecuteNonQuery();
+            conStr.Close();
+        }
+        /** update room by room ID to room status reserved */
+        public void UpdateRoomStatus(string roomID)
+        {
+            SqlCommand SqlUpdate = new SqlCommand("UPDATE Room SET Status = 'Reserved' WHERE RoomID = @RoomID", conStr);
+            SqlUpdate.Parameters.Add(@"RoomID", SqlDbType.NVarChar, 50, "RoomID").Value = roomID;
+
+            conStr.Open();
+            SqlUpdate.ExecuteNonQuery();
+            conStr.Close();
         }
     }
 }
