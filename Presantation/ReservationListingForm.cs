@@ -28,7 +28,7 @@ namespace inf2010s_semesterProject.Presantation
         {
 
 
-            string conStr = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\User\\Desktop\\University of Cape Town\\2024\\Semester 2\\INF2011S\\Semester Project\\Actual Program 2\\phumlaKamnandiDataBase.mdf\";Integrated Security=True";
+            string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\SIVUYISE\OneDrive - University of Cape Town\INF2011S\Semester Project\phumlakamnandiProject\inf2010s_semesterProject\phumlaKamnandiDataBase.mdf"";Integrated Security=True";
             string query = "SELECT ReservationID, GuestID FROM Reservation";
             using (SqlConnection connection = new SqlConnection(conStr))
             {

@@ -68,8 +68,6 @@ namespace inf2010s_semesterProject.Presantation
             {
                 reservationIDLabel.Visible = true;
                 reservationIDTextBox.Visible = true;
-                guestIDlabel.Visible = true;
-                guestIDTextBox.Visible = true;
                 checkInDateTimePicker.Visible = true;
                 checkOuDateTimePicker.Visible = true;
                 checkLabel.Visible = true;
@@ -110,8 +108,6 @@ namespace inf2010s_semesterProject.Presantation
             {
                 reservationIDLabel.Visible = true;
                 reservationIDTextBox.Visible = true;
-                guestIDlabel.Visible = true;
-                guestIDTextBox.Visible = true;
                 requestLabel.Visible = true;
                 specialRequestTextBox.Visible = true;
             }
