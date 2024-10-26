@@ -1,8 +1,9 @@
 services:
   - type: web
     name: MyDotNetApp
-    env: dotnet
+    runtime: "dotnet-core-7.0"  # Adjust this to match your .NET version (e.g., dotnet-core-6.0 if you're using .NET 6)
     plan: free
     buildCommand: "dotnet publish -c Release -o out"
     startCommand: "dotnet out/MyDotNetApp.dll"
     autoDeploy: true
+
